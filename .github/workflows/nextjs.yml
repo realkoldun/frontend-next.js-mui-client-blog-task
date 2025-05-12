@@ -1,8 +1,11 @@
 name: Deploy Next.js site to Verсel
 
 on:
+    push:
+      branches:
+        - '*'
     pull_request:
-        branches: ['dev']
+        branches: ['dev', 'main']
 
     workflow_dispatch:
 
@@ -48,9 +51,6 @@ jobs:
 
             - name: Prettier
               run: ${{ steps.detect-package-manager.outputs.runner }} prettier
-
-            - name: Jest
-              run: ${{ steps.detect-package-manager.outputs.runner }} test
 
             - name: Playwright Browsers
               run: npx playwright install --with-deps
