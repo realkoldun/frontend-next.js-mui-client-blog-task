@@ -1,6 +1,6 @@
 @use "@/styles/_constants";
 
 .title {
-  color: blue;
+  color: constants.$color-blue;
   font-family: constants.$main-font;
 }
