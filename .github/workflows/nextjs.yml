@@ -79,4 +79,4 @@ jobs:
             - name: Deploy to Vercel
               run: |
                   npm i -g vercel
-                  vercel --yes --token ${{ secrets.VERCEL_TOKEN }}
+                  vercel --prod  --yes --token ${{ secrets.VERCEL_TOKEN }}
