@@ -4,5 +4,6 @@ export default {
     transform: {
         '^.+\\.[tj]sx?$': 'babel-jest',
     },
-    transformIgnorePatterns: ['node_modules/(?!(nanoid)/)'],
+    transformIgnorePatterns: ['node_modules/(?!(nanoid)/)', 'e2e/*'],
+    testPathIgnorePatterns: ['<rootDir>/e2e/'],
 };
