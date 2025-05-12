@@ -64,8 +64,15 @@ jobs:
             - name: Jest
               run: ${{ steps.detect-package-manager.outputs.runner }} test
 
+            - name: Playwright Browsers
+              run: npx playwright install --with-deps
+
             - name: Playwright
-              run: ${{ steps.detect-package-manager.outputs.runner }} e2e
+              run: | 
+                  ${{ steps.detect-package-manager.outputs.runner }} create playwright
+                  ${{ steps.detect-package-manager.outputs.runner }} e2e
+              
+              
 
             - name: Build with Next.js
               run: ${{ steps.detect-package-manager.outputs.runner }} next build
