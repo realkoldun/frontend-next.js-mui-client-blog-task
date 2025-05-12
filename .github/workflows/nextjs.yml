@@ -11,7 +11,7 @@ concurrency:
     cancel-in-progress: false
 
 jobs:
-    build-and-deploy:
+    build:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -60,7 +60,11 @@ jobs:
             - name: Build with Next.js
               run: ${{ steps.detect-package-manager.outputs.runner }} build
 
-            - name: Deploy to Vercel
+    deploy:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - name: Vercel deploy
               run: |
-                  npm i -g vercel
-                  vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
+                npm i -g vercel
+                vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
