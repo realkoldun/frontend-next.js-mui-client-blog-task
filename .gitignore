@@ -22,6 +22,7 @@
 # misc
 .DS_Store
 *.pem
+/.idea/
 
 # debug
 npm-debug.log*
@@ -38,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
