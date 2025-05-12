@@ -90,7 +90,7 @@
 
 ### 1. Главная страница — **Blog (список постов, категории, кнопки, навигация)**
 
-- `app/page.tsx` — главная страница на App Router
+- `app/index.tsx` — главная страница на App Router
 - **Server Component** — для рендеринга списка постов на сервере
 - `fetch` - для запросов
 - **Pagination** — через query-параметры `?page=1` (`useSearchParams`)
@@ -98,7 +98,7 @@
 
 ### 2. Страница — **Blog Post (`/post/[slug]`)**
 
-- `app/post/[slug]/page.tsx` — динамический route
+- `app/post/[slug]/index.tsx` — динамический route
 - **Server Component** — подгрузка контента по `slug`
 - **Metadata API** — для SEO
 
