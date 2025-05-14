@@ -1,0 +1,52 @@
+@use '@/styles/_constants';
+@use '@/styles/mixins';
+
+.post-list {
+  &__container {
+    @include mixins.flex-column;
+
+    width: constants.$full-size;
+    max-width: constants.$max-container-width;
+    gap: constants.$gap-l;
+  }
+
+  &__title {
+    font-family: constants.$sen-font;
+    font-size: constants.$font-size-xxxl;
+    font-weight: constants.$font-weight-xl;
+  }
+
+  &__list-container {
+    @include mixins.flex-column;
+
+    gap: constants.$gap-xl;
+  }
+}
+
+.pagination-container {
+  @include mixins.flex-center;
+
+  gap: constants.$gap-m;
+  width: constants.$full-size;
+
+  button {
+    background-color: constants.$color-white;
+    border: none;
+    font-family: constants.$sen-font;
+    cursor: pointer;
+    font-size: constants.$font-size-m;
+
+
+    /*transition: background-color 0.3s ease;
+
+    &:hover {
+      font-size: constants.$font-size-xl;
+      cursor: pointer;
+    }*/
+
+    :disabled {
+      color: constants.$color-medium-gray;
+      cursor: default;
+    }
+  }
+}

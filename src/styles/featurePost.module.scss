@@ -1,0 +1,139 @@
+@use '@/styles/_constants';
+@use '@/styles/mixins';
+
+.feature-post-section {
+  @include mixins.flex-center;
+
+  height: constants.$size-xxxl;
+  background-color: constants.$color-light-light-gray;
+  padding: constants.$padding-xl;
+}
+
+.feature-post-container {
+  @include mixins.flex-space-between;
+
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: constants.$full-size;
+  max-width: constants.$max-container-width;
+  height: constants.$full-size;
+
+  gap: constants.$gap-m;
+}
+
+.information-section {
+  @include mixins.flex-start;
+
+  flex-direction: column;
+  gap: constants.$gap-m;
+}
+
+.information-container {
+  @include mixins.flex-start;
+
+  flex-direction: column;
+  gap: constants.$gap-s;
+}
+
+.section-title {
+  font-size: constants.$font-size-s;
+  font-weight: constants.$font-weight-m;
+  letter-spacing: constants.$gap-xs;
+  line-height: constants.$size-xs;
+  color: constants.$color-dark-blue;
+}
+
+.feature-post {
+  &__title {
+    font-size: constants.$font-size-xxl;
+    color: constants.$color-dark-blue;
+    font-weight: 700;
+  }
+
+  &__info-container {
+    @include mixins.flex-start;
+
+    gap: constants.$gap-s;
+    height: constants.$size-xs;
+  }
+
+  &__meta-info {
+    font-size: constants.$font-size-s;
+  }
+
+  &__author-span {
+    color: constants.$color-purple
+  }
+
+  &__description-text {
+    color: constants.$color-medium-gray;
+  }
+
+  &__image-container {
+    position: relative;
+    width: constants.$full-size;
+    max-width: constants.$size-xxxl;
+    min-width: constants.$size-xxl;
+    height: constants.$full-size;
+    max-height: constants.$size-xl;
+  }
+}
+
+.vertical-devider {
+  border-left: constants.$size-min constants.$color-black solid;
+  height: constants.$full-size;
+}
+
+@media only screen and (max-width: constants.$screen-size-small) {
+  .feature-post-section {
+    padding: constants.$padding-l;
+  }
+
+  .feature-post-section {
+    height: constants.$full-size;
+  }
+
+  .section-title {
+    font-size: constants.$font-size-xs;
+  }
+
+  .feature-post {
+    &__title {
+      font-size: constants.$font-size-xl;
+    }
+
+    &__meta-info {
+      font-size: constants.$font-size-xs;
+    }
+
+
+    &__description-text {
+      font-size: constants.$font-size-xs;
+    }
+
+    &__image-container {
+      height: constants.$size-xl;
+      min-width: constants.$size-xl;
+    }
+  }
+}
+
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .feature-post-section {
+    padding: constants.$padding-l;
+  }
+
+  .feature-post-container {
+    flex-direction: column;
+  }
+
+  .feature-post {
+    &__image-container {
+      min-width: constants.$size-xl;
+    }
+  }
+}
+
+
+

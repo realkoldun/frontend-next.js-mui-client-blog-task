@@ -36,6 +36,7 @@ module.exports = {
         'import/order': [
             'error',
             {
+                warnOnUnsortedImports: true,
                 groups: [
                     ['external', 'builtin'],
                     'internal',

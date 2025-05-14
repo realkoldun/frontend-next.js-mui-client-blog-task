@@ -1,0 +1,92 @@
+@use '@/styles/_constants';
+@use '@/styles/mixins';
+
+.post-card {
+  &__section {
+    @include mixins.flex-center;
+
+    justify-content: space-between;
+    width: constants.$full-size;
+    height: constants.$size-xl;
+    gap: constants.$gap-m;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: constants.$color-light-light-gray;
+      cursor: pointer;
+    }
+  }
+
+  &__information-container {
+    @include mixins.flex-start;
+
+    flex-direction: column;
+    gap: constants.$gap-s;
+  }
+
+  &__type {
+    color: constants.$color-purple;
+  }
+
+  &__title {
+    font-family: constants.$main-font;
+    font-weight: constants.$font-weight-xl;
+    font-size: constants.$font-size-xxl;
+  }
+
+  &__description {
+    color: constants.$color-medium-gray;
+    font-size: constants.$font-size-s;
+  }
+
+  &__image-container {
+    position: relative;
+    max-width: constants.$size-xxl;
+    width: constants.$full-size;
+    min-width: 350px;
+    height: constants.$full-size;
+  }
+}
+
+@media only screen and (max-width: constants.$screen-size-small) {
+  .post-card {
+    &__section {
+      flex-direction: column;
+      justify-content: center;
+      gap: constants.$gap-s;
+      height: constants.$size-xxxl;
+    }
+
+    &__information-container {
+      gap: constants.$gap-xs;
+    }
+
+    &__type {
+      font-size: constants.$font-size-s;
+    }
+
+    &__title {
+      font-weight: constants.$font-weight-m;
+      font-size: constants.$font-size-xxl;
+    }
+
+    &__description {
+      font-size: constants.$font-size-s;
+    }
+
+    &__image-container {
+      width: constants.$full-size;
+      height: constants.$size-xl;
+    }
+  }
+}
+
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .post-card {
+    &__image-container {
+      min-width: 300px;
+      height: 250px;
+    }
+  }
+}
+

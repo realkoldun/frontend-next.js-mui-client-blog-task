@@ -1,5 +1,75 @@
 //fonts
-$main-font: 'Inter', sans-serif !default;
+$main-font: "Inter", sans-serif !default;
+$sen-font: "SenFont", serif !default;
 
 //colors
-$color-green: green !default;
+$color-white: #ffffff !default;
+$color-black: #000000 !default;
+$color-dark-gray: #2E3040 !default;
+$color-dark-blue: #232536 !default;
+$color-purple: #592EA9 !default;
+$color-light-light-gray: #f4f4f4 !default;
+$color-medium-gray: #6D6E76 !default;
+$color-light-gray: #4C4C4C !default;
+$color-yellow: #FFD050 !default;
+$color-light-yellow: #FFD099 !default;
+
+
+//sizes
+$full-size: 100% !default;
+$max-container-width: 1500px !default;
+$max-page-container-width: 900px !default;
+$size-xxxl: 500px !default;
+$size-xxl: 400px !default;
+$size-xl: 300px !default;
+$size-l: 150px !default;
+$size-m: 48px !default;
+$size-s: 24px !default;
+$size-xs: 20px !default;
+$size-min: 1px !default;
+
+//special sizes
+$big-item-height: 56px !default;
+$small-item-height: 40px !default;
+$big-item-width: 200px !default;
+$small-item-width: 120px !default;
+
+//padding
+$padding-max: 200px !default;
+$padding-xl: 80px !default;
+$padding-l: 20px !default;
+$padding-m: 10px !default;
+$padding-s: 5px !default;
+
+//gaps
+$gap-xl: 50px !default;
+$gap-l: 40px !default;
+$gap-m: 20px !default;
+$gap-s: 10px !default;
+$gap-xs: 2px !default;
+
+//screen sizes
+$screen-size-small: 800px !default;
+$screen-size-mobile: 550px !default;
+
+//fonts sizes
+$font-size-xxxl: 40px !default;
+$font-size-xxl: 32px !default;
+$font-size-xl: 26px !default;
+$font-size-l: 24px !default;
+$font-size-m: 20px !default;
+$font-size-s: 16px !default;
+$font-size-xs: 12px !default;
+$font-size-xxs: 10px !default;
+
+//font weights
+$font-weight-xl: 700 !default;
+$font-weight-l: 600 !default;
+$font-weight-m: 500 !default;
+$font-weight-s: 400 !default;
+
+//border
+$border-radius-l: 50% !default;
+$border-radius-m: 20px !default;
+$border-radius-s: 10px !default;
+$border-radius-xs: 5px !default;

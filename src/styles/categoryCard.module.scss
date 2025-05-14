@@ -1,0 +1,128 @@
+@use '@/styles/_constants';
+@use '@/styles/mixins';
+
+@mixin default-section-size {
+  width: constants.$size-xl;
+  height: constants.$big-item-width;
+  border: constants.$size-min constants.$color-medium-gray solid;
+  padding: constants.$padding-l;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: constants.$color-light-yellow;
+    cursor: pointer;
+  }
+}
+
+@mixin small-section-size {
+  width: constants.$small-item-width;
+  height: 100px;
+  padding: 0;
+}
+
+@mixin full-section-size {
+  width: constants.$full-size;
+  height: 200px;
+  padding: constants.$padding-l;
+}
+
+.category {
+  &__section {
+    @include default-section-size;
+
+    &__selected {
+      @include default-section-size;
+
+      background-color: constants.$color-yellow;
+    }
+  }
+
+  &__container {
+    @include mixins.flex-start;
+
+    flex-direction: column;
+    justify-content: center;
+    width: constants.$full-size;
+    height: constants.$full-size;
+    gap: constants.$gap-s;
+    padding: constants.$padding-s;
+  }
+
+  &__name {
+    font-family: constants.$sen-font;
+    font-size: constants.$font-size-l;
+    font-weight: constants.$font-weight-xl;
+  }
+
+  &__description {
+    font-family: constants.$sen-font;
+    font-size: constants.$font-size-s;
+    font-weight: constants.$font-weight-s;
+    color: constants.$color-medium-gray;
+  }
+
+  &__image-container {
+    position: relative;
+    width: constants.$size-m;
+    min-height: constants.$size-m;
+  }
+
+  @media only screen and (max-width: constants.$screen-size-small) {
+    &__section {
+      @include small-section-size;
+
+      &__selected {
+        @include small-section-size
+      }
+    }
+    &__container {
+      gap: constants.$gap-xs;
+      padding: constants.$padding-s;
+    }
+
+    &__name {
+      font-size: constants.$font-size-s;
+    }
+
+    &__description {
+      font-size: constants.$font-size-xxs;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &__image-container {
+      position: relative;
+      width: constants.$size-s;
+      min-height: constants.$size-s;
+    }
+  }
+
+  @media only screen and (max-width: constants.$screen-size-mobile) {
+    &__section {
+      @include full-section-size;
+
+      &__selected {
+        @include full-section-size;
+      }
+    }
+    &__container {
+      gap: constants.$gap-s;
+      padding: constants.$padding-m;
+    }
+
+    &__name {
+      font-size: constants.$font-size-xl;
+    }
+
+    &__description {
+      font-size: constants.$font-size-s;
+    }
+
+    &__image-container {
+      position: relative;
+      width: constants.$size-m;
+      min-height: constants.$size-m;
+    }
+  }
+}
