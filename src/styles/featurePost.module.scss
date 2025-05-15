@@ -6,20 +6,17 @@
 
   height: constants.$size-xxxl;
   background-color: constants.$color-light-light-gray;
-  padding: constants.$padding-xl;
+  padding: constants.$padding-l;
 }
 
 .feature-post-container {
   @include mixins.flex-space-between;
 
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   width: constants.$full-size;
   max-width: constants.$max-container-width;
   height: constants.$full-size;
-
-  gap: constants.$gap-m;
+  gap: constants.$gap-xl;
 }
 
 .information-section {
@@ -27,13 +24,14 @@
 
   flex-direction: column;
   gap: constants.$gap-m;
+  max-width: constants.$screen-size-small;
 }
 
 .information-container {
   @include mixins.flex-start;
 
   flex-direction: column;
-  gap: constants.$gap-s;
+  gap: constants.$gap-m;
 }
 
 .section-title {
@@ -48,7 +46,7 @@
   &__title {
     font-size: constants.$font-size-xxl;
     color: constants.$color-dark-blue;
-    font-weight: 700;
+    font-weight: constants.$font-weight-xl;
   }
 
   &__info-container {
