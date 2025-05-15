@@ -2,6 +2,8 @@ import Image from 'next/image';
 
 import styles from './postCard.module.scss';
 
+import { imageConfig } from '@/components/PostCard/config';
+
 interface PostCardProps {
     type: string;
     title: string;
@@ -14,14 +16,7 @@ export default function PostCard(post: PostCardProps) {
     return (
         <section className={styles['post-card__section']}>
             <div className={styles['post-card__image-container']}>
-                <Image
-                    src={imgUrl}
-                    alt={title}
-                    fill
-                    placeholder={'blur'}
-                    blurDataURL={'/blurPlaceholder.png'}
-                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                />
+                <Image src={imgUrl} alt={title} {...imageConfig} />
             </div>
             <div className={styles['post-card__information-container']}>
                 <p className={styles['post-card__type']}>{type}</p>

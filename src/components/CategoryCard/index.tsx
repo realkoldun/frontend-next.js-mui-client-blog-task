@@ -2,6 +2,8 @@ import Image from 'next/image';
 
 import styles from './categoryCard.module.scss';
 
+import { imageConfig } from '@/components/CategoryCard/config';
+
 interface CategoryCardProps {
     imgUrl: string;
     title: string;
@@ -19,14 +21,7 @@ export default function CategoryCard(category: CategoryCardProps) {
         >
             <div className={styles.category__container}>
                 <div className={styles['category__image-container']}>
-                    <Image
-                        src={imgUrl}
-                        alt={title}
-                        fill
-                        placeholder={'blur'}
-                        blurDataURL={'/blurPlaceholder.png'}
-                        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                    />
+                    <Image src={imgUrl} alt={title} {...imageConfig} />
                 </div>
                 <p className={styles.category__name}>{title}</p>
                 <p className={styles.category__description}>{description}</p>

@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import styles from './footer.module.scss';
 
+import { imageConfig } from '@/components/Footer/config';
 import StyledButton from '@/components/StyledButton';
 import { socialLinks } from '@/constants/socialLinks';
 
@@ -35,8 +36,7 @@ export default function Footer() {
                                 key={id}
                                 src={imgUrl}
                                 alt={title}
-                                width={16}
-                                height={16}
+                                {...imageConfig}
                             />
                         );
                     })}

@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import styles from './featurePost.module.scss';
 
+import { imageConfig } from '@/components/FeaturePost/config';
 import StyledButton from '@/components/StyledButton';
 
 interface FeaturePostComponentProps {
@@ -48,12 +49,8 @@ export default function FeaturePost(post: FeaturePostComponentProps) {
                 <div className={styles['feature-post__image-container']}>
                     <Image
                         src={imgUrl}
-                        fill
-                        alt='featurePostMockImg'
-                        priority
-                        placeholder={'blur'}
-                        blurDataURL={'/blurPlaceholder.png'}
-                        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                        alt='feature post image'
+                        {...imageConfig}
                     />
                 </div>
             </div>
