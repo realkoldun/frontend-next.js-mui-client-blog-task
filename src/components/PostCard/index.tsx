@@ -9,12 +9,8 @@ interface PostCardProps {
     imgUrl: string;
 }
 
-export default function PostCard({
-    title,
-    type,
-    description,
-    imgUrl,
-}: PostCardProps) {
+export default function PostCard(post: PostCardProps) {
+    const { title, type, description, imgUrl } = post;
     return (
         <section className={styles['post-card__section']}>
             <div className={styles['post-card__image-container']}>

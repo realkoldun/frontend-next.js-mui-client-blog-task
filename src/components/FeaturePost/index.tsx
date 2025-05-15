@@ -12,13 +12,8 @@ interface FeaturePostComponentProps {
     imgUrl: string;
 }
 
-export default function FeaturePost({
-    title,
-    author,
-    description,
-    imgUrl,
-    date,
-}: FeaturePostComponentProps) {
+export default function FeaturePost(post: FeaturePostComponentProps) {
+    const { author, description, imgUrl, date, title } = post;
     return (
         <article className={styles['feature-post-section']}>
             <div className={styles['feature-post-container']}>

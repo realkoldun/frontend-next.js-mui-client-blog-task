@@ -9,12 +9,8 @@ interface CategoryCardProps {
     isSelected: boolean;
 }
 
-export default function CategoryCard({
-    imgUrl,
-    title,
-    description,
-    isSelected,
-}: CategoryCardProps) {
+export default function CategoryCard(category: CategoryCardProps) {
+    const { title, description, imgUrl, isSelected } = category;
     return (
         <section
             className={
