@@ -1,11 +1,11 @@
 import styles from '@/styles/postList.module.scss';
 import PostCard from '@/components/PostCard';
-import ContentSection from '@/components/ContentSection';
 import { posts } from '@/constants/posts';
+import contentSectionStyle from '@/styles/contentSection.module.scss';
 
 export default function PostList() {
     return (
-        <ContentSection>
+        <section className={contentSectionStyle['content-section']}>
             <div className={styles['post-list__container']}>
                 <h1 className={styles['post-list__title']}>All posts</h1>
                 <hr />
@@ -19,6 +19,6 @@ export default function PostList() {
                     <button>{'Next >'}</button>
                 </div>
             </div>
-        </ContentSection>
+        </section>
     );
 }

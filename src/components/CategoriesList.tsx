@@ -1,11 +1,11 @@
-import ContentSection from '@/components/ContentSection';
 import styles from '@//styles/categoriesList.module.scss';
+import contentSectionStyle from '@/styles/contentSection.module.scss';
 import CategoryCard from '@/components/CategoryCard';
 import { categories } from '@/constants/categories';
 
 export default function CategoriesList() {
     return (
-        <ContentSection>
+        <section className={contentSectionStyle['content-section']}>
             <div className={styles['categories-list__container']}>
                 <h2 className={styles['categories-list__title']}>
                     All Categories
@@ -22,6 +22,6 @@ export default function CategoriesList() {
                     })}
                 </div>
             </div>
-        </ContentSection>
+        </section>
     );
 }

@@ -1,6 +1,7 @@
 import StyledButton from '@/components/StyledButton';
 import styles from '@/styles/footer.module.scss';
 import Image from 'next/image';
+import { socialLinks } from '@/constants/socialLinks';
 
 export default function Footer() {
     return (
@@ -26,30 +27,17 @@ export default function Footer() {
                     <p>Hello@finsweet.com 020 7993 2905</p>
                 </div>
                 <div className={styles['info-container__socials-container']}>
-                    <Image
-                        src={'/linkedIn.png'}
-                        alt={'linkedIn'}
-                        width={16}
-                        height={16}
-                    />
-                    <Image
-                        src={'/linkedIn.png'}
-                        alt={'linkedIn'}
-                        width={16}
-                        height={16}
-                    />
-                    <Image
-                        src={'/linkedIn.png'}
-                        alt={'linkedIn'}
-                        width={16}
-                        height={16}
-                    />
-                    <Image
-                        src={'/linkedIn.png'}
-                        alt={'linkedIn'}
-                        width={16}
-                        height={16}
-                    />
+                    {socialLinks.map(({ id, title, imgUrl }) => {
+                        return (
+                            <Image
+                                key={id}
+                                src={imgUrl}
+                                alt={title}
+                                width={16}
+                                height={16}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         </footer>
