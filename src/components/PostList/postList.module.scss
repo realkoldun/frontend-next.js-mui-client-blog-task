@@ -36,14 +36,6 @@
     cursor: pointer;
     font-size: constants.$font-size-m;
 
-
-    /*transition: background-color 0.3s ease;
-
-    &:hover {
-      font-size: constants.$font-size-xl;
-      cursor: pointer;
-    }*/
-
     :disabled {
       color: constants.$color-medium-gray;
       cursor: default;
