@@ -1,9 +1,11 @@
+import { ReactNode } from 'react';
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/styles/globals.scss';
-import { ReactNode } from 'react';
-import Header from '@/components/Header';
+
 import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 
 export const metadata: Metadata = {
     title: 'Create Next App',

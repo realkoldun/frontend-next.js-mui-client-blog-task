@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import styles from '@/styles/featurePost.module.scss';
+
 import StyledButton from '@/components/StyledButton';
+import styles from '@/styles/featurePost.module.scss';
 
 interface FeaturePostComponentProps {
     title: string;

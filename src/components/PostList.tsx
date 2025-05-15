@@ -1,7 +1,7 @@
-import styles from '@/styles/postList.module.scss';
 import PostCard from '@/components/PostCard';
 import { posts } from '@/constants/posts';
 import contentSectionStyle from '@/styles/contentSection.module.scss';
+import styles from '@/styles/postList.module.scss';
 
 export default function PostList() {
     return (

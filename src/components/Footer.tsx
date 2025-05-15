@@ -1,7 +1,8 @@
-import StyledButton from '@/components/StyledButton';
-import styles from '@/styles/footer.module.scss';
 import Image from 'next/image';
+
+import StyledButton from '@/components/StyledButton';
 import { socialLinks } from '@/constants/socialLinks';
+import styles from '@/styles/footer.module.scss';
 
 export default function Footer() {
     return (

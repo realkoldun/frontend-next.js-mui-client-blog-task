@@ -1,6 +1,6 @@
+import CategoriesList from '@/components/CategoriesList';
 import FeaturePostComponent from '@/components/FeaturePostComponent';
 import PostList from '@/components/PostList';
-import CategoriesList from '@/components/CategoriesList';
 
 const featurePost = {
     title: 'Step-by-step guide to choosing great font pairs',
