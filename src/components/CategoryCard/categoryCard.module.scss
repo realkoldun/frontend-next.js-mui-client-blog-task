@@ -16,14 +16,14 @@
 }
 
 @mixin small-section-size {
-  width: constants.$small-item-width;
-  height: 100px;
+  width: constants.$big-item-width;
+  height: constants.$size-l;
   padding: 0;
 }
 
 @mixin full-section-size {
   width: constants.$full-size;
-  height: 200px;
+  height: constants.$big-item-width;
   padding: constants.$padding-l;
 }
 
@@ -51,7 +51,7 @@
 
   &__name {
     font-family: constants.$sen-font;
-    font-size: constants.$font-size-l;
+    font-size: constants.$font-size-xl;
     font-weight: constants.$font-weight-xl;
   }
 
@@ -78,15 +78,15 @@
     }
     &__container {
       gap: constants.$gap-xs;
-      padding: constants.$padding-s;
+      padding: constants.$padding-m;
     }
 
     &__name {
-      font-size: constants.$font-size-s;
+      font-size: constants.$font-size-l;
     }
 
     &__description {
-      font-size: constants.$font-size-xxs;
+      font-size: constants.$font-size-s;
       text-overflow: ellipsis;
       overflow: hidden;
     }
@@ -112,7 +112,7 @@
     }
 
     &__name {
-      font-size: constants.$font-size-xl;
+      font-size: constants.$font-size-l;
     }
 
     &__description {
