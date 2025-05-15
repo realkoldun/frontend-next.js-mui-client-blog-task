@@ -1,7 +1,8 @@
 import Image from 'next/image';
 
+import styles from './featurePost.module.scss';
+
 import StyledButton from '@/components/StyledButton';
-import styles from '@/styles/featurePost.module.scss';
 
 interface FeaturePostComponentProps {
     title: string;
@@ -11,7 +12,7 @@ interface FeaturePostComponentProps {
     imgUrl: string;
 }
 
-export default function FeaturePostComponent({
+export default function FeaturePost({
     title,
     author,
     description,

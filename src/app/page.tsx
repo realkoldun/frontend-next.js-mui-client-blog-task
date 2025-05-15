@@ -1,5 +1,5 @@
 import CategoriesList from '@/components/CategoriesList';
-import FeaturePostComponent from '@/components/FeaturePostComponent';
+import FeaturePostComponent from '@/components/FeaturePost';
 import PostList from '@/components/PostList';
 
 const featurePost = {

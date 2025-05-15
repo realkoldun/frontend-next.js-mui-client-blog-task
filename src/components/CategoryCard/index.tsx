@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import styles from '@/styles/categoryCard.module.scss';
+import styles from './categoryCard.module.scss';
 
 interface CategoryCardProps {
     imgUrl: string;

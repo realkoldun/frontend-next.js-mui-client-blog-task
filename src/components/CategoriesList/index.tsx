@@ -1,6 +1,7 @@
+import styles from './categoriesList.module.scss';
+
 import CategoryCard from '@/components/CategoryCard';
 import { categories } from '@/constants/categories';
-import styles from '@/styles/categoriesList.module.scss';
 import contentSectionStyle from '@/styles/contentSection.module.scss';
 
 export default function CategoriesList() {

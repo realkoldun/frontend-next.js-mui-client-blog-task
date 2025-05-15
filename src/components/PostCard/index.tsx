@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import styles from '@/styles/postCard.module.scss';
+import styles from './postCard.module.scss';
 
 interface PostCardProps {
     type: string;

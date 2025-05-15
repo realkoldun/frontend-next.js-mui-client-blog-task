@@ -1,4 +1,4 @@
-import styles from '@/styles/button.module.scss';
+import styles from './button.module.scss';
 
 interface StyledButtonProps {
     text: string;
