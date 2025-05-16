@@ -17,7 +17,7 @@ export const posts: PostType[] = [
         description:
             'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
 
-        imgUrl: '/postTest.png',
+        imgUrl: '/postTest2.png',
     },
     {
         id: '3',
