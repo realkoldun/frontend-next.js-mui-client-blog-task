@@ -15,16 +15,14 @@ export default function CategoryCard(category: CategoryCardProps) {
     const { title, description, imgUrl, isSelected } = category;
     return (
         <section
-            className={
-                styles[`category__section${isSelected ? '__selected' : ''}`]
-            }
+            className={isSelected ? styles.selectedSection : styles.section}
         >
-            <div className={styles.category__container}>
-                <div className={styles['category__image-container']}>
+            <div className={styles.container}>
+                <div className={styles.image}>
                     <Image src={imgUrl} alt={title} {...imageConfig} />
                 </div>
-                <p className={styles.category__name}>{title}</p>
-                <p className={styles.category__description}>{description}</p>
+                <p className={styles.title}>{title}</p>
+                <p className={styles.description}>{description}</p>
             </div>
         </section>
     );

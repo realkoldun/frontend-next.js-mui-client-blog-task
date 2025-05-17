@@ -16,37 +16,27 @@ interface FeaturePostComponentProps {
 export default function FeaturePost(post: FeaturePostComponentProps) {
     const { author, description, imgUrl, date, title } = post;
     return (
-        <article className={styles['feature-post-section']}>
-            <div className={styles['feature-post-container']}>
-                <div className={styles['information-section']}>
-                    <div className={styles['information-container']}>
-                        <p className={styles['section-title']}>Feature post</p>
-                        <h2 className={styles['feature-post__title']}>
-                            {title}
-                        </h2>
-                        <div className={styles['feature-post__info-container']}>
-                            <p className={styles['feature-post__meta-info']}>
+        <article className={styles.featurePostSection}>
+            <div className={styles.featurePostContainer}>
+                <div className={styles.informationSection}>
+                    <div className={styles.informationContainer}>
+                        <p className={styles.sectionTitle}>Feature post</p>
+                        <h2 className={styles.title}>{title}</h2>
+                        <div className={styles.infoContainer}>
+                            <p className={styles.metaInfo}>
                                 By{' '}
-                                <span
-                                    className={
-                                        styles['feature-post__author-span']
-                                    }
-                                >
+                                <span className={styles.authorSpan}>
                                     {author}
                                 </span>
                             </p>
-                            <div className={styles['vertical-devider']}></div>
-                            <p className={styles['feature-post__meta-info']}>
-                                {date}
-                            </p>
+                            <div className={styles.verticalDevider}></div>
+                            <p className={styles.metaInfo}>{date}</p>
                         </div>
-                        <p className={styles['feature-post__description-text']}>
-                            {description}
-                        </p>
+                        <p className={styles.descriptionText}>{description}</p>
                     </div>
                     <StyledButton text='Read more >'></StyledButton>
                 </div>
-                <div className={styles['feature-post__image-container']}>
+                <div className={styles.imageContainer}>
                     <Image
                         src={imgUrl}
                         alt='feature post image'

@@ -1,29 +1,27 @@
 @use '@/styles/_constants';
 @use '@/styles/mixins';
 
-.post-list {
-  &__container {
-    @include mixins.flex-column;
+.container {
+  @include mixins.flex-column;
 
-    width: constants.$full-size;
-    max-width: constants.$max-container-width;
-    gap: constants.$gap-l;
-  }
-
-  &__title {
-    font-family: constants.$sen-font;
-    font-size: constants.$font-size-xxxl;
-    font-weight: constants.$font-weight-xl;
-  }
-
-  &__list-container {
-    @include mixins.flex-column;
-
-    gap: constants.$gap-xl;
-  }
+  width: constants.$full-size;
+  max-width: constants.$max-container-width;
+  gap: constants.$gap-l;
 }
 
-.pagination-container {
+.title {
+  font-family: constants.$sen-font;
+  font-size: constants.$font-size-xxxl;
+  font-weight: constants.$font-weight-xl;
+}
+
+.listContainer {
+  @include mixins.flex-column;
+
+  gap: constants.$gap-xl;
+}
+
+.paginationContainer {
   @include mixins.flex-center;
 
   gap: constants.$gap-m;
@@ -44,19 +42,17 @@
 }
 
 @media only screen and (max-width: constants.$screen-size-mobile) {
-  .post-list {
-    &__container {
-      gap: constants.$gap-s;
-    }
+  .container {
+    gap: constants.$gap-s;
+  }
 
-    &__list-container {
-      gap: constants.$gap-s;
-    }
+  .listContainer {
+    gap: constants.$gap-s;
+  }
 
-    &__title {
-      font-family: constants.$sen-font;
-      font-size: constants.$font-size-xl;
-      font-weight: constants.$font-weight-xl;
-    }
+  .title {
+    font-family: constants.$sen-font;
+    font-size: constants.$font-size-xl;
+    font-weight: constants.$font-weight-xl;
   }
 }

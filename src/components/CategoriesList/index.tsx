@@ -7,11 +7,9 @@ import contentSectionStyle from '@/styles/contentSection.module.scss';
 export default function CategoriesList() {
     return (
         <section className={contentSectionStyle['content-section']}>
-            <div className={styles['categories-list__container']}>
-                <h2 className={styles['categories-list__title']}>
-                    All Categories
-                </h2>
-                <div className={styles['categories-list__list-container']}>
+            <div className={styles.container}>
+                <h2 className={styles.title}>All Categories</h2>
+                <div className={styles.list}>
                     {categories.map((category) => {
                         return (
                             <CategoryCard

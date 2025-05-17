@@ -8,28 +8,28 @@ import { socialLinks } from '@/constants/socialLinks';
 
 export default function Footer() {
     return (
-        <footer className={styles['footer-section']}>
-            <section className={styles['subscribe-container']}>
-                <div className={styles['subscribe-container__text-container']}>
-                    <p className={styles['subscribe-container__text']}>
+        <footer className={styles.footerSection}>
+            <section className={styles.subscribeContainer}>
+                <div className={styles.subscribeTextContainer}>
+                    <p className={styles.subscribeText}>
                         Subscribe to our news letter to get latest updates and
                         news
                     </p>
                 </div>
-                <div className={styles['subscribe-container__input-container']}>
+                <div className={styles.subscribeInputContainer}>
                     <input
                         placeholder={'Enter Your Email'}
-                        className={styles['subscribe-container__input']}
+                        className={styles.subscribeInput}
                     />
                     <StyledButton text={'Subscribe'} />
                 </div>
             </section>
-            <div className={styles['info-container']}>
+            <div className={styles.infoContainer}>
                 <div>
                     <p>Finstreet 118 2561 Fintown</p>
                     <p>Hello@finsweet.com 020 7993 2905</p>
                 </div>
-                <div className={styles['info-container__socials-container']}>
+                <div className={styles.infoSocialsContainer}>
                     {socialLinks.map(({ id, title, imgUrl }) => {
                         return (
                             <Image

@@ -14,16 +14,14 @@ interface PostCardProps {
 export default function PostCard(post: PostCardProps) {
     const { title, type, description, imgUrl } = post;
     return (
-        <section className={styles['post-card__section']}>
-            <div className={styles['post-card__image-container']}>
+        <section className={styles.section}>
+            <div className={styles.imageContainer}>
                 <Image src={imgUrl} alt={title} {...imageConfig} />
             </div>
-            <div className={styles['post-card__information-container']}>
-                <p className={styles['post-card__type']}>{type}</p>
-                <p className={styles['post-card__title']}>{title}</p>
-                <p className={styles['post-card__description']}>
-                    {description}
-                </p>
+            <div className={styles.informationContainer}>
+                <p className={styles.type}>{type}</p>
+                <p className={styles.title}>{title}</p>
+                <p className={styles.description}>{description}</p>
             </div>
         </section>
     );

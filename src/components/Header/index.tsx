@@ -2,9 +2,9 @@ import styles from './header.module.scss';
 
 export default function Header() {
     return (
-        <header className={styles['header-section']}>
-            <div className={styles['header-container']}>
-                <p className={styles['header-container__text']}>Modsen Blog</p>
+        <header className={styles.headerSection}>
+            <div className={styles.headerContainer}>
+                <p className={styles.headerText}>Modsen Blog</p>
             </div>
         </header>
     );

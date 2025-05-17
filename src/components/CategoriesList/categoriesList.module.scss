@@ -1,44 +1,42 @@
 @use '@/styles/_constants';
 @use '@/styles/mixins';
 
-.categories-list {
-  &__container {
+.container {
+  @include mixins.flex-start;
+
+  flex-direction: column;
+  width: constants.$full-size;
+  max-width: constants.$max-container-width;
+  gap: constants.$gap-m;
+}
+
+.title {
+  font-family: constants.$sen-font;
+  font-size: constants.$font-size-xxl;
+  font-weight: constants.$font-weight-xl;
+}
+
+.list {
+  @include mixins.flex-space-between;
+
+  flex-direction: row;
+  width: constants.$full-size;
+  gap: constants.$gap-s;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .list {
+    gap: constants.$gap-xs;
+  }
+}
+
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .list {
     @include mixins.flex-start;
 
     flex-direction: column;
-    width: constants.$full-size;
-    max-width: constants.$max-container-width;
     gap: constants.$gap-m;
-  }
-
-  &__title {
-    font-family: constants.$sen-font;
-    font-size: constants.$font-size-xxl;
-    font-weight: constants.$font-weight-xl;
-  }
-
-  &__list-container {
-    @include mixins.flex-space-between;
-
-    flex-direction: row;
-    width: constants.$full-size;
-    gap: constants.$gap-s;
     flex-wrap: wrap;
-  }
-
-  @media only screen and (max-width: constants.$screen-size-mobile) {
-    &__list-container {
-      gap: constants.$gap-xs;
-    }
-  }
-
-    @media only screen and (max-width: constants.$screen-size-mobile) {
-    &__list-container {
-      @include mixins.flex-start;
-
-      flex-direction: column;
-      gap: constants.$gap-m;
-      flex-wrap: wrap;
-    }
   }
 }

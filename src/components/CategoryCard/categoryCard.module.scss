@@ -27,102 +27,101 @@
   padding: constants.$padding-l;
 }
 
-.category {
-  &__section {
-    @include default-section-size;
+.section {
+  @include default-section-size;
+}
 
-    &__selected {
-      @include default-section-size;
+.selectedSection {
+  @include default-section-size;
 
-      background-color: constants.$color-yellow;
-    }
+  background-color: constants.$color-yellow;
+}
+
+.container {
+  @include mixins.flex-start;
+
+  flex-direction: column;
+  justify-content: center;
+  width: constants.$full-size;
+  height: constants.$full-size;
+  gap: constants.$gap-s;
+  padding: constants.$padding-s;
+}
+
+.title {
+  font-family: constants.$sen-font;
+  font-size: constants.$font-size-xl;
+  font-weight: constants.$font-weight-xl;
+}
+
+.description {
+  font-family: constants.$sen-font;
+  font-size: constants.$font-size-s;
+  font-weight: constants.$font-weight-s;
+  color: constants.$color-medium-gray;
+}
+
+.image {
+  position: relative;
+  width: constants.$size-m;
+  min-height: constants.$size-m;
+}
+
+
+@media only screen and (max-width: constants.$screen-size-small) {
+  .section {
+    @include small-section-size;
   }
 
-  &__container {
-    @include mixins.flex-start;
-
-    flex-direction: column;
-    justify-content: center;
-    width: constants.$full-size;
-    height: constants.$full-size;
-    gap: constants.$gap-s;
-    padding: constants.$padding-s;
+  .selectedSection {
+    @include small-section-size
   }
 
-  &__name {
-    font-family: constants.$sen-font;
-    font-size: constants.$font-size-xl;
-    font-weight: constants.$font-weight-xl;
+  .container {
+    gap: constants.$gap-xs;
+    padding: constants.$padding-m;
   }
 
-  &__description {
-    font-family: constants.$sen-font;
+  .title {
+    font-size: constants.$font-size-l;
+  }
+
+  .description {
     font-size: constants.$font-size-s;
-    font-weight: constants.$font-weight-s;
-    color: constants.$color-medium-gray;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
-  &__image-container {
+  .image {
+    position: relative;
+    width: constants.$size-s;
+    min-height: constants.$size-s;
+  }
+}
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .section {
+    @include full-section-size;
+  }
+
+  .selectedSection {
+    @include full-section-size;
+  }
+
+  .container {
+    gap: 0;
+    padding: 0;
+  }
+
+  .title {
+    font-size: constants.$font-size-l;
+  }
+  .description {
+    font-size: constants.$font-size-s;
+  }
+
+  .image {
     position: relative;
     width: constants.$size-m;
     min-height: constants.$size-m;
-  }
-
-  @media only screen and (max-width: constants.$screen-size-small) {
-    &__section {
-      @include small-section-size;
-
-      &__selected {
-        @include small-section-size
-      }
-    }
-    &__container {
-      gap: constants.$gap-xs;
-      padding: constants.$padding-m;
-    }
-
-    &__name {
-      font-size: constants.$font-size-l;
-    }
-
-    &__description {
-      font-size: constants.$font-size-s;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-
-    &__image-container {
-      position: relative;
-      width: constants.$size-s;
-      min-height: constants.$size-s;
-    }
-  }
-
-  @media only screen and (max-width: constants.$screen-size-mobile) {
-    &__section {
-      @include full-section-size;
-
-      &__selected {
-        @include full-section-size;
-      }
-    }
-    &__container {
-      gap: 0;
-      padding: 0;
-    }
-
-    &__name {
-      font-size: constants.$font-size-l;
-    }
-
-    &__description {
-      font-size: constants.$font-size-s;
-    }
-
-    &__image-container {
-      position: relative;
-      width: constants.$size-m;
-      min-height: constants.$size-m;
-    }
   }
 }

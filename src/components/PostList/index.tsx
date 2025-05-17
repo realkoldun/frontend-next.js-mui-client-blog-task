@@ -6,16 +6,16 @@ import contentSectionStyle from '@/styles/contentSection.module.scss';
 
 export default function PostList() {
     return (
-        <section className={contentSectionStyle['content-section']}>
-            <div className={styles['post-list__container']}>
-                <h1 className={styles['post-list__title']}>All posts</h1>
+        <section className={contentSectionStyle.contentSection}>
+            <div className={styles.container}>
+                <h1 className={styles.title}>All posts</h1>
                 <hr />
-                <div className={styles['post-list__list-container']}>
+                <div className={styles.listContainer}>
                     {posts.map((post) => {
                         return <PostCard key={post.id} {...post} />;
                     })}
                 </div>
-                <div className={styles['pagination-container']}>
+                <div className={styles.paginationContainer}>
                     <button disabled={true}>{'< Prev'}</button>
                     <button>{'Next >'}</button>
                 </div>

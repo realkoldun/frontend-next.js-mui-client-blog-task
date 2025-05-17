@@ -1,7 +1,7 @@
 @use '@/styles/_constants';
 @use '@/styles/mixins';
 
-.feature-post-section {
+.featurePostSection {
   @include mixins.flex-center;
 
   height: constants.$size-xxxl;
@@ -9,7 +9,7 @@
   padding: constants.$padding-l;
 }
 
-.feature-post-container {
+.featurePostContainer {
   @include mixins.flex-space-between;
 
   align-items: center;
@@ -19,7 +19,7 @@
   gap: constants.$gap-xl;
 }
 
-.information-section {
+.informationSection {
   @include mixins.flex-start;
 
   flex-direction: column;
@@ -27,14 +27,14 @@
   max-width: constants.$screen-size-small;
 }
 
-.information-container {
+.informationContainer {
   @include mixins.flex-start;
 
   flex-direction: column;
   gap: constants.$gap-m;
 }
 
-.section-title {
+.sectionTitle {
   font-size: constants.$font-size-s;
   font-weight: constants.$font-weight-m;
   letter-spacing: constants.$gap-xs;
@@ -42,101 +42,88 @@
   color: constants.$color-dark-blue;
 }
 
-.feature-post {
-  &__title {
-    font-size: constants.$font-size-xxl;
-    color: constants.$color-dark-blue;
-    font-weight: constants.$font-weight-xl;
-  }
-
-  &__info-container {
-    @include mixins.flex-start;
-
-    gap: constants.$gap-s;
-    height: constants.$size-xs;
-  }
-
-  &__meta-info {
-    font-size: constants.$font-size-s;
-  }
-
-  &__author-span {
-    color: constants.$color-purple
-  }
-
-  &__description-text {
-    color: constants.$color-medium-gray;
-  }
-
-  &__image-container {
-    position: relative;
-    width: constants.$full-size;
-    max-width: constants.$size-xxxl;
-    min-width: constants.$size-xxl;
-    height: constants.$full-size;
-    max-height: constants.$size-xl;
-  }
+.title {
+  font-size: constants.$font-size-xxl;
+  color: constants.$color-dark-blue;
+  font-weight: constants.$font-weight-xl;
 }
 
-.vertical-devider {
+.infoContainer {
+  @include mixins.flex-start;
+
+  gap: constants.$gap-s;
+  height: constants.$size-xs;
+}
+
+.metaInfo {
+  font-size: constants.$font-size-s;
+}
+
+.authorSpan {
+  color: constants.$color-purple;
+}
+
+.descriptionText {
+  color: constants.$color-medium-gray;
+}
+
+.imageContainer {
+  position: relative;
+  width: constants.$full-size;
+  max-width: constants.$size-xxxl;
+  min-width: constants.$size-xxl;
+  height: constants.$full-size;
+  max-height: constants.$size-xl;
+}
+
+.verticalDevider {
   border-left: constants.$size-min constants.$color-black solid;
   height: constants.$full-size;
 }
 
 @media only screen and (max-width: constants.$screen-size-small) {
-  .feature-post-section {
+  .featurePostSection {
     padding: constants.$padding-l;
-  }
-
-  .feature-post-section {
     height: constants.$full-size;
   }
 
-  .section-title {
+  .sectionTitle {
     font-size: constants.$font-size-xs;
   }
 
-  .feature-post {
-    &__title {
-      font-size: constants.$font-size-xl;
-    }
+  .title {
+    font-size: constants.$font-size-xl;
+  }
 
-    &__meta-info {
-      font-size: constants.$font-size-xs;
-    }
+  .metaInfo {
+    font-size: constants.$font-size-xs;
+  }
 
+  .descriptionText {
+    font-size: constants.$font-size-xs;
+  }
 
-    &__description-text {
-      font-size: constants.$font-size-xs;
-    }
-
-    &__image-container {
-      height: constants.$size-xl;
-      min-width: constants.$size-xl;
-    }
+  .imageContainer {
+    height: constants.$size-xl;
+    min-width: constants.$size-xl;
   }
 }
 
 @media only screen and (max-width: constants.$screen-size-mobile) {
-  .feature-post-section {
+  .featurePostSection {
     padding: constants.$padding-l;
   }
 
-  .feature-post-container {
+  .featurePostContainer {
     flex-direction: column;
     gap: constants.$gap-m;
   }
 
-  .feature-post {
-    &__title {
-      font-size: constants.$font-size-l;
-    }
+  .title {
+    font-size: constants.$font-size-l;
+  }
 
-    &__image-container {
-      min-width: constants.$size-xl;
-    }
+  .imageContainer {
+    min-width: constants.$size-xl;
   }
 }
-
-
-
