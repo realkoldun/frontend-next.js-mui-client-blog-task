@@ -42,3 +42,21 @@
     }
   }
 }
+
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .post-list {
+    &__container {
+      gap: constants.$gap-s;
+    }
+
+    &__list-container {
+      gap: constants.$gap-s;
+    }
+
+    &__title {
+      font-family: constants.$sen-font;
+      font-size: constants.$font-size-xl;
+      font-weight: constants.$font-weight-xl;
+    }
+  }
+}

@@ -83,6 +83,17 @@
 
 @media only screen and (max-width: constants.$screen-size-mobile) {
   .post-card {
+    &__section {
+      flex-direction: column;
+      justify-content: center;
+      gap: constants.$gap-l;
+      height: constants.$size-xxxl;
+    }
+
+    &__title {
+      font-size: constants.$font-size-l;
+    }
+
     &__image-container {
       min-width: 300px;
       height: 250px;

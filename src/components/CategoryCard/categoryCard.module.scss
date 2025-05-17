@@ -23,7 +23,7 @@
 
 @mixin full-section-size {
   width: constants.$full-size;
-  height: constants.$big-item-width;
+  height: constants.$size-l;
   padding: constants.$padding-l;
 }
 
@@ -107,8 +107,8 @@
       }
     }
     &__container {
-      gap: constants.$gap-s;
-      padding: constants.$padding-m;
+      gap: 0;
+      padding: 0;
     }
 
     &__name {

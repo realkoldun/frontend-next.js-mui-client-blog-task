@@ -124,9 +124,14 @@
 
   .feature-post-container {
     flex-direction: column;
+    gap: constants.$gap-m;
   }
 
   .feature-post {
+    &__title {
+      font-size: constants.$font-size-l;
+    }
+
     &__image-container {
       min-width: constants.$size-xl;
     }
