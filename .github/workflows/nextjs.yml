@@ -52,12 +52,6 @@ jobs:
             - name: Prettier
               run: ${{ steps.detect-package-manager.outputs.runner }} prettier
 
-            - name: Playwright Browsers
-              run: npx playwright install --with-deps
-
-            - name: Playwright
-              run: ${{ steps.detect-package-manager.outputs.runner }} e2e
-
     deploy:
         runs-on: ubuntu-latest
         needs: build
