@@ -15,6 +15,14 @@
   font-weight: constants.$font-weight-xl;
 }
 
+.horizontalLine {
+  @include mixins.reset-sizes;
+
+  width: constants.$full-size;
+  height: constants.$size-min;
+  background-color: constants.$color-black;
+}
+
 .listContainer {
   @include mixins.flex-column;
 
@@ -47,12 +55,12 @@
   }
 
   .listContainer {
-    gap: constants.$gap-s;
+    gap: 0;
   }
 
   .title {
     font-family: constants.$sen-font;
-    font-size: constants.$font-size-xl;
+    font-size: constants.$font-size-l;
     font-weight: constants.$font-weight-xl;
   }
 }

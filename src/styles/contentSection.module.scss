@@ -1,7 +1,7 @@
 @use '@/styles/_constants';
 @use '@/styles/_mixins';
 
-.content-section {
+.contentSection {
   @include mixins.flex-center;
 
   width: constants.$full-size;

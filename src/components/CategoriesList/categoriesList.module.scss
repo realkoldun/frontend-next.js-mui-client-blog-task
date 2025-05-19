@@ -39,4 +39,8 @@
     gap: constants.$gap-m;
     flex-wrap: wrap;
   }
+
+  .title {
+    font-size: constants.$font-size-m;
+  }
 }

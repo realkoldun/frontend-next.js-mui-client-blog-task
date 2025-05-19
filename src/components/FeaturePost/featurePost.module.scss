@@ -43,6 +43,7 @@
 }
 
 .title {
+  font-family: constants.$sen-font-bold;
   font-size: constants.$font-size-xxl;
   color: constants.$color-dark-blue;
   font-weight: constants.$font-weight-xl;
@@ -120,7 +121,7 @@
   }
 
   .title {
-    font-size: constants.$font-size-l;
+    font-size: constants.$font-size-s;
   }
 
   .imageContainer {

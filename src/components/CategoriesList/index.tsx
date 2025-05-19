@@ -6,7 +6,7 @@ import contentSectionStyle from '@/styles/contentSection.module.scss';
 
 export default function CategoriesList() {
     return (
-        <section className={contentSectionStyle['content-section']}>
+        <section className={contentSectionStyle.contentSection}>
             <div className={styles.container}>
                 <h2 className={styles.title}>All Categories</h2>
                 <div className={styles.list}>

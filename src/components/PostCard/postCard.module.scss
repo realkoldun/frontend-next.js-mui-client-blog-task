@@ -23,17 +23,19 @@
   gap: constants.$gap-s;
 }
 
-.type {
+.category {
+  font-size: constants.$font-size-l;
+  font-family: constants.$sen-font;
   color: constants.$color-purple;
 }
 
 .title {
-  font-family: constants.$main-font;
-  font-weight: constants.$font-weight-xl;
+  font-family: constants.$sen-font-bold;
   font-size: constants.$font-size-xxl;
 }
 
 .description {
+  font-family: constants.$sen-font;
   color: constants.$color-medium-gray;
   font-size: constants.$font-size-s;
 }
@@ -58,10 +60,6 @@
     gap: constants.$gap-xs;
   }
 
-  .type {
-    font-size: constants.$font-size-s;
-  }
-
   .title {
     font-weight: constants.$font-weight-m;
     font-size: constants.$font-size-xxl;
@@ -72,6 +70,7 @@
   }
 
   .imageContainer {
+    aspect-ratio: 1 / 1;
     width: constants.$full-size;
     height: constants.$size-xl;
   }
@@ -81,16 +80,20 @@
   .section {
     flex-direction: column;
     justify-content: center;
-    gap: constants.$gap-l;
-    height: constants.$size-xxxl;
+    gap: constants.$gap-m;
+    height: constants.$size-xxl;
   }
 
   .title {
-    font-size: constants.$font-size-l;
+    font-size: constants.$font-size-s;
+  }
+
+  .description {
+    font-size: constants.$font-size-xs;
   }
 
   .imageContainer {
-    min-width: 300px;
-    height: 250px;
+    min-width: 200px;
+    height: 200px;
   }
 }
