@@ -23,8 +23,8 @@
 
 @mixin full-section-size {
   width: constants.$full-size;
-  height: constants.$size-l;
-  padding: constants.$padding-l;
+  height: constants.$small-item-width;
+  padding: constants.$padding-m;
 }
 
 .section {
@@ -113,15 +113,15 @@
   }
 
   .title {
-    font-size: constants.$font-size-l;
+    font-size: constants.$font-size-m;
   }
   .description {
-    font-size: constants.$font-size-s;
+    font-size: constants.$font-size-xs;
   }
 
   .image {
     position: relative;
-    width: constants.$size-m;
-    min-height: constants.$size-m;
+    width: constants.$small-item-height;
+    min-height: constants.$small-item-height;
   }
 }

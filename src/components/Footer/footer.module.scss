@@ -111,10 +111,17 @@
 @media only screen and (max-width: constants.$screen-size-mobile) {
   .subscribeContainer {
     flex-direction: column;
+    gap: constants.$gap-m;
+    padding: constants.$padding-l;
+    max-height: constants.$size-xl;
   }
 
   .subscribeInput {
     height: constants.$small-item-height;
     font-size: constants.$font-size-s;
+  }
+
+  .subscribeText {
+    font-size: constants.$font-size-m;
   }
 }

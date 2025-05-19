@@ -9,7 +9,7 @@ export default function PostList() {
         <section className={contentSectionStyle.contentSection}>
             <div className={styles.container}>
                 <h1 className={styles.title}>All posts</h1>
-                <hr />
+                <hr className={styles.horizontalLine} />
                 <div className={styles.listContainer}>
                     {posts.map((post) => {
                         return <PostCard key={post.id} {...post} />;

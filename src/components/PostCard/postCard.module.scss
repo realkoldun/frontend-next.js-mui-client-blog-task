@@ -23,7 +23,7 @@
   gap: constants.$gap-s;
 }
 
-.type {
+.category {
   color: constants.$color-purple;
 }
 
@@ -58,7 +58,7 @@
     gap: constants.$gap-xs;
   }
 
-  .type {
+  .category {
     font-size: constants.$font-size-s;
   }
 
@@ -72,6 +72,7 @@
   }
 
   .imageContainer {
+    aspect-ratio: 1 / 1;
     width: constants.$full-size;
     height: constants.$size-xl;
   }
@@ -81,16 +82,24 @@
   .section {
     flex-direction: column;
     justify-content: center;
-    gap: constants.$gap-l;
-    height: constants.$size-xxxl;
+    gap: constants.$gap-m;
+    height: constants.$size-xxl;
+  }
+
+  .category {
+    font-size: constants.$font-size-xs;
   }
 
   .title {
-    font-size: constants.$font-size-l;
+    font-size: constants.$font-size-m;
+  }
+
+  .description {
+    font-size: constants.$font-size-xs;
   }
 
   .imageContainer {
-    min-width: 300px;
-    height: 250px;
+    min-width: 200px;
+    height: 200px;
   }
 }
