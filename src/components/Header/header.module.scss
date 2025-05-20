@@ -1,0 +1,30 @@
+@use '@/styles/_constants';
+@use '@/styles/mixins';
+
+.headerSection {
+  @include mixins.flex-center;
+
+  width: constants.$full-size;
+  background-color: constants.$color-dark-blue;
+  height: constants.$padding-xl;
+  padding: 0 constants.$padding-xl;
+
+  @media only screen and (max-width: constants.$screen-size-small) {
+    padding: 0 constants.$padding-l;
+  }
+}
+
+.headerContainer {
+  @include mixins.flex-center;
+
+  justify-content: start;
+  width: constants.$full-size;
+  max-width: constants.$max-container-width;
+  height: constants.$full-size;
+}
+
+.headerText {
+  color: constants.$color-white;
+  font-weight: constants.$font-weight-xl;
+  font-size: constants.$font-size-l;
+}

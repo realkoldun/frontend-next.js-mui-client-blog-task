@@ -1,11 +1,22 @@
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
+@use '@/styles/_constants';
+
+@font-face {
+    font-family: 'SenFont';
+    src: url('/fonts/Sen.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
+@font-face {
+    font-family: 'SenFontBold';
+    src: url('/fonts/SenBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }

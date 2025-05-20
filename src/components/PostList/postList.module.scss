@@ -1,0 +1,66 @@
+@use '@/styles/_constants';
+@use '@/styles/mixins';
+
+.container {
+  @include mixins.flex-column;
+
+  width: constants.$full-size;
+  max-width: constants.$max-container-width;
+  gap: constants.$gap-l;
+}
+
+.title {
+  font-family: constants.$sen-font;
+  font-size: constants.$font-size-xxxl;
+  font-weight: constants.$font-weight-xl;
+}
+
+.horizontalLine {
+  @include mixins.reset-sizes;
+
+  width: constants.$full-size;
+  height: constants.$size-min;
+  background-color: constants.$color-black;
+}
+
+.listContainer {
+  @include mixins.flex-column;
+
+  gap: constants.$gap-xl;
+}
+
+.paginationContainer {
+  @include mixins.flex-center;
+
+  gap: constants.$gap-m;
+  width: constants.$full-size;
+
+  button {
+    background-color: constants.$color-white;
+    border: none;
+    font-family: constants.$sen-font;
+    cursor: pointer;
+    font-size: constants.$font-size-m;
+
+    :disabled {
+      color: constants.$color-medium-gray;
+      cursor: default;
+    }
+  }
+}
+
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .container {
+    gap: constants.$gap-s;
+  }
+
+  .listContainer {
+    gap: 0;
+  }
+
+  .title {
+    font-family: constants.$sen-font;
+    font-size: constants.$font-size-l;
+    font-weight: constants.$font-weight-xl;
+  }
+}

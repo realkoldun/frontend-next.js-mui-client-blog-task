@@ -1,0 +1,127 @@
+@use '@/styles/_constants';
+@use '@/styles/mixins';
+
+@mixin default-section-size {
+  width: constants.$size-xl;
+  height: constants.$big-item-width;
+  border: constants.$size-min constants.$color-medium-gray solid;
+  padding: constants.$padding-l;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: constants.$color-light-yellow;
+    cursor: pointer;
+  }
+}
+
+@mixin small-section-size {
+  width: constants.$big-item-width;
+  height: constants.$size-l;
+  padding: 0;
+}
+
+@mixin full-section-size {
+  width: constants.$full-size;
+  height: constants.$small-item-width;
+  padding: constants.$padding-m;
+}
+
+.section {
+  @include default-section-size;
+}
+
+.selectedSection {
+  @include default-section-size;
+
+  background-color: constants.$color-yellow;
+}
+
+.container {
+  @include mixins.flex-start;
+
+  flex-direction: column;
+  justify-content: center;
+  width: constants.$full-size;
+  height: constants.$full-size;
+  gap: constants.$gap-s;
+  padding: constants.$padding-s;
+}
+
+.title {
+  font-family: constants.$sen-font;
+  font-size: constants.$font-size-xl;
+  font-weight: constants.$font-weight-xl;
+}
+
+.description {
+  font-family: constants.$sen-font;
+  font-size: constants.$font-size-s;
+  font-weight: constants.$font-weight-s;
+  color: constants.$color-medium-gray;
+}
+
+.image {
+  position: relative;
+  width: constants.$size-m;
+  min-height: constants.$size-m;
+}
+
+
+@media only screen and (max-width: constants.$screen-size-small) {
+  .section {
+    @include small-section-size;
+  }
+
+  .selectedSection {
+    @include small-section-size
+  }
+
+  .container {
+    gap: constants.$gap-xs;
+    padding: constants.$padding-m;
+  }
+
+  .title {
+    font-size: constants.$font-size-l;
+  }
+
+  .description {
+    font-size: constants.$font-size-s;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .image {
+    position: relative;
+    width: constants.$size-s;
+    min-height: constants.$size-s;
+  }
+}
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .section {
+    @include full-section-size;
+  }
+
+  .selectedSection {
+    @include full-section-size;
+  }
+
+  .container {
+    gap: 0;
+    padding: 0;
+  }
+
+  .title {
+    font-size: constants.$font-size-m;
+  }
+  .description {
+    font-size: constants.$font-size-xs;
+  }
+
+  .image {
+    position: relative;
+    width: constants.$small-item-height;
+    min-height: constants.$small-item-height;
+  }
+}

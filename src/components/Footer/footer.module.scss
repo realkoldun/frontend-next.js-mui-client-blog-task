@@ -1,0 +1,127 @@
+@use '@/styles/_constants';
+@use '@/styles/mixins';
+
+.footerSection {
+  @include mixins.flex-center;
+
+  flex-direction: column;
+  padding: constants.$padding-max constants.$padding-l constants.$padding-l;
+  background-color: constants.$color-dark-blue;
+  height: constants.$size-xxxl;
+  gap: constants.$gap-xl;
+}
+
+.subscribeContainer {
+  @include mixins.flex-center;
+
+  justify-content: space-between;
+  padding: constants.$padding-l;
+  background-color: constants.$color-dark-gray;
+  width: constants.$full-size;
+  max-width: constants.$max-container-width;
+  height: constants.$full-size;
+  gap: constants.$gap-l;
+}
+
+.subscribeTextContainer {
+  max-width: constants.$size-xxxl;
+}
+
+.subscribeInputContainer {
+  @include mixins.flex-space-between;
+
+  min-width: constants.$size-xl;
+}
+
+.subscribeText {
+  font-family: constants.$sen-font-bold;
+  font-size: constants.$font-size-xxl;
+  color: constants.$color-white;
+  font-weight: constants.$font-weight-xl;
+}
+
+.subscribeInput {
+  background: none;
+  border: constants.$size-min constants.$color-light-gray solid;
+  outline: none;
+  color: constants.$color-white;
+  height: constants.$big-item-height;
+  width: constants.$full-size;
+  font-size: constants.$font-size-m;
+  padding: constants.$padding-s;
+
+  :focus {
+    outline: none;
+  }
+}
+
+.infoContainer {
+  @include mixins.flex-space-between;
+
+  width: constants.$full-size;
+  font-family: constants.$main-font;
+  color: constants.$color-light-light-gray;
+  max-width: constants.$max-container-width;
+}
+
+.infoSocialsContainer {
+  @include mixins.flex-space-between;
+
+  width: 144px;
+}
+
+@media only screen and (max-width: constants.$screen-size-small) {
+  .footerSection {
+    height: constants.$size-xxxl;
+    padding-top: constants.$padding-xl;
+    gap: constants.$gap-m;
+  }
+
+  .subscribeContainer {
+    @include mixins.flex-center;
+
+    max-width: constants.$max-page-container-width;
+  }
+
+  .subscribeTextContainer {
+    max-width: constants.$full-size;
+  }
+
+  .subscribeInputContainer {
+    width: constants.$full-size;
+    min-width: 0;
+  }
+
+  .subscribeText {
+    font-size: constants.$font-size-l;
+  }
+
+  .subscribeInput {
+    height: constants.$small-item-height;
+    font-size: constants.$font-size-s;
+  }
+
+  .infoContainer {
+    flex-direction: column;
+    gap: constants.$gap-m;
+    padding: constants.$padding-m;
+  }
+}
+
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .subscribeContainer {
+    flex-direction: column;
+    gap: constants.$gap-m;
+    padding: constants.$padding-l;
+    max-height: constants.$size-xl;
+  }
+
+  .subscribeInput {
+    height: constants.$small-item-height;
+    font-size: constants.$font-size-s;
+  }
+
+  .subscribeText {
+    font-size: constants.$font-size-m;
+  }
+}

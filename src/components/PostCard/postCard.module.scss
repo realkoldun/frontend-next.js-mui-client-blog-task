@@ -1,0 +1,99 @@
+@use '@/styles/_constants';
+@use '@/styles/mixins';
+
+.section {
+  @include mixins.flex-center;
+
+  justify-content: space-between;
+  width: constants.$full-size;
+  height: constants.$size-xl;
+  gap: constants.$gap-m;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: constants.$color-light-light-gray;
+    cursor: pointer;
+  }
+}
+
+.informationContainer {
+  @include mixins.flex-start;
+
+  flex-direction: column;
+  gap: constants.$gap-s;
+}
+
+.category {
+  font-size: constants.$font-size-l;
+  font-family: constants.$sen-font;
+  color: constants.$color-purple;
+}
+
+.title {
+  font-family: constants.$sen-font-bold;
+  font-size: constants.$font-size-xxl;
+}
+
+.description {
+  font-family: constants.$sen-font;
+  color: constants.$color-medium-gray;
+  font-size: constants.$font-size-s;
+}
+
+.imageContainer {
+  position: relative;
+  max-width: constants.$size-xxl;
+  width: constants.$full-size;
+  min-width: 350px;
+  height: constants.$full-size;
+}
+
+@media only screen and (max-width: constants.$screen-size-small) {
+  .section {
+    flex-direction: column;
+    justify-content: center;
+    gap: constants.$gap-s;
+    height: constants.$size-xxxl;
+  }
+
+  .informationContainer {
+    gap: constants.$gap-xs;
+  }
+
+  .title {
+    font-weight: constants.$font-weight-m;
+    font-size: constants.$font-size-xxl;
+  }
+
+  .description {
+    font-size: constants.$font-size-s;
+  }
+
+  .imageContainer {
+    aspect-ratio: 1 / 1;
+    width: constants.$full-size;
+    height: constants.$size-xl;
+  }
+}
+
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .section {
+    flex-direction: column;
+    justify-content: center;
+    gap: constants.$gap-m;
+    height: constants.$size-xxl;
+  }
+
+  .title {
+    font-size: constants.$font-size-s;
+  }
+
+  .description {
+    font-size: constants.$font-size-xs;
+  }
+
+  .imageContainer {
+    min-width: 200px;
+    height: 200px;
+  }
+}

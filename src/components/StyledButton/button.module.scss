@@ -1,0 +1,23 @@
+@use '@/styles/_constants';
+
+  .button {
+    width: constants.$big-item-width;
+    height: constants.$big-item-height;
+    background-color: constants.$color-yellow;
+    font-family: constants.$sen-font;
+    font-size: constants.$font-size-m;
+    font-weight: constants.$font-weight-xl;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: constants.$color-light-yellow;
+      cursor: pointer;
+    }
+
+    @media only screen and (max-width: constants.$screen-size-small) {
+      width: constants.$size-l;
+      height: constants.$small-item-height;
+      font-size: constants.$font-size-s;
+      font-weight: constants.$font-weight-l;
+    }
+  }
