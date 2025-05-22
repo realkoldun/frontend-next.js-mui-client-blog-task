@@ -1,4 +1,5 @@
 export default {
+    objectFit: 'cover',
     fill: true,
     placeholder: 'blur' as const,
     blurDataURL: '/blurPlaceholder.png',
