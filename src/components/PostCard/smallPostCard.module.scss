@@ -1,0 +1,100 @@
+@use '@/styles/_constants';
+@use '@/styles/mixins';
+
+.section {
+  @include mixins.flex-center;
+
+  flex-direction: column;
+  justify-content: center;
+  gap: constants.$gap-s;
+  width: constants.$size-xxl;
+  height: constants.$full-size;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: constants.$color-light-light-gray;
+    cursor: pointer;
+  }
+}
+
+.informationContainer {
+  @include mixins.flex-start;
+
+  flex-direction: column;
+  gap: constants.$gap-s;
+}
+
+.infoContainer {
+  @include mixins.flex-center;
+
+  gap: constants.$gap-s;
+  height: constants.$padding-m;
+}
+
+.metaInfo {
+  font-size: constants.$font-size-xxs;
+}
+
+.authorSpan {
+  color: constants.$color-purple;
+}
+
+.verticalDevider {
+  border-left: constants.$size-min constants.$color-black solid;
+  height: constants.$full-size;
+}
+
+.title {
+  font-family: constants.$sen-font-bold;
+  font-size: constants.$font-size-m;
+}
+
+.description {
+  font-family: constants.$sen-font;
+  color: constants.$color-medium-gray;
+  font-size: constants.$font-size-s;
+}
+
+.imageContainer {
+  position: relative;
+  width: constants.$full-size;
+  max-width: constants.$size-xl;
+  height: constants.$big-item-width;
+}
+
+@media only screen and (max-width: constants.$screen-size-small) {
+  .section {
+    flex-direction: column;
+    justify-content: center;
+    max-width: constants.$size-xl;
+  }
+
+  .title {
+    font-weight: constants.$font-weight-s;
+    font-size: constants.$font-size-l;
+  }
+
+  .description {
+    font-size: constants.$font-size-s;
+  }
+}
+
+@media only screen and (max-width: constants.$screen-size-mobile) {
+  .section {
+    gap: constants.$gap-m;
+    width: constants.$full-size;
+    height: constants.$size-xl;
+  }
+
+  .title {
+    font-size: constants.$font-size-s;
+  }
+
+  .description {
+    font-size: constants.$font-size-xs;
+  }
+
+  .imageContainer {
+    min-width: constants.$big-item-width;
+  }
+}

@@ -12,7 +12,7 @@ export default function PostList() {
                 <hr className={styles.horizontalLine} />
                 <div className={styles.listContainer}>
                     {posts.map((post) => {
-                        return <PostCard key={post.id} {...post} />;
+                        return <PostCard key={post.id} post={post} />;
                     })}
                 </div>
                 <div className={styles.paginationContainer}>
