@@ -1,11 +1,18 @@
+'use client';
+
+import { MouseEvent } from 'react';
+
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import styles from './featurePost.module.scss';
 
 import { imageConfig } from '@/components/FeaturePost/config';
 import StyledButton from '@/components/StyledButton';
+import { PATHS } from '@/constants/paths';
 
 interface FeaturePostComponentProps {
+    id: string;
     title: string;
     author: string;
     date: string;
@@ -14,7 +21,14 @@ interface FeaturePostComponentProps {
 }
 
 export default function FeaturePost(post: FeaturePostComponentProps) {
-    const { author, description, imgUrl, date, title } = post;
+    const { id, author, description, imgUrl, date, title } = post;
+    const router = useRouter();
+
+    const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        router.push(PATHS.POST + id);
+    };
+
     return (
         <article className={styles.featurePostSection}>
             <div className={styles.featurePostContainer}>
@@ -34,7 +48,10 @@ export default function FeaturePost(post: FeaturePostComponentProps) {
                         </div>
                         <p className={styles.descriptionText}>{description}</p>
                     </div>
-                    <StyledButton text='Read more >'></StyledButton>
+                    <StyledButton
+                        onClick={handleOnClick}
+                        text='Read more >'
+                    ></StyledButton>
                 </div>
                 <div className={styles.imageContainer}>
                     <Image
