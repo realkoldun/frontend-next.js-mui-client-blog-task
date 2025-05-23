@@ -15,7 +15,7 @@ export default function SuggestionsList({ id, category }: SuggestionsList) {
     const suggestionPosts = posts
         .map((post) => {
             if (post.category === category && post.id !== id)
-                return <PostCard key={post.id} isSmall post={post} />;
+                return <PostCard key={post.id} isSuggestionCard post={post} />;
             else return null;
         })
         .filter((post) => post)

@@ -14,10 +14,10 @@ import { PostType } from '@/types';
 
 interface PostCardProps {
     post: PostType;
-    isSmall?: boolean;
+    isSuggestionCard?: boolean;
 }
 
-export default function PostCard({ post, isSmall }: PostCardProps) {
+export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
     const { id, title, author, category, description, imgUrl, date } = post;
     const router = useRouter();
 
@@ -26,7 +26,7 @@ export default function PostCard({ post, isSmall }: PostCardProps) {
         router.push(PATHS.POST + id);
     };
 
-    if (isSmall) {
+    if (isSuggestionCard) {
         return (
             <section className={smallStyles.section} onClick={handleOnClick}>
                 <div className={smallStyles.imageContainer}>
