@@ -83,11 +83,11 @@
   }
 
   .title {
-    font-size: constants.$font-size-l;
+    font-size: constants.$font-size-m;
   }
 
   .description {
-    font-size: constants.$font-size-s;
+    font-size: constants.$font-size-xs;
     text-overflow: ellipsis;
     overflow: hidden;
   }
@@ -110,13 +110,6 @@
   .container {
     gap: 0;
     padding: 0;
-  }
-
-  .title {
-    font-size: constants.$font-size-m;
-  }
-  .description {
-    font-size: constants.$font-size-xs;
   }
 
   .image {
