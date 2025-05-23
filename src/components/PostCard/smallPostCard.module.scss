@@ -5,7 +5,6 @@
   @include mixins.flex-center;
 
   flex-direction: column;
-  justify-content: center;
   gap: constants.$gap-s;
   width: constants.$size-xxl;
   height: constants.$full-size;
