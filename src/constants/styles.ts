@@ -1,3 +1,3 @@
-export const constants: Record<string, string | number> = {
+export const styleConstants: Record<string, string | number> = {
     maxPageContainerWidth: 1500,
 };
