@@ -6,12 +6,14 @@ import { useRouter } from 'next/navigation';
 
 import styles from './header.module.scss';
 
+import { PATHS } from '@/constants/paths';
+
 export default function Header() {
     const router = useRouter();
 
     const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
-        router.push('/');
+        router.push(PATHS.HOME);
     };
 
     return (
