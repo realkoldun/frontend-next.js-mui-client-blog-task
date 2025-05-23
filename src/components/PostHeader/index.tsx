@@ -1,16 +1,17 @@
-import { useContext } from 'react';
-
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
 import SmallCategoryCard from '@/components/SmallCategoryCard';
-import { PostContext } from '@/context/PostContext';
+import type { Categories } from '@/types';
 
-export default function PostHeader() {
-    const post = useContext(PostContext);
+interface PostHeaderProps {
+    title: string;
+    category: Categories;
+    author: string;
+    date: string;
+}
 
-    if (!post) return null;
-
+export default function PostHeader(post: PostHeaderProps) {
     const { category, title, author, date } = post;
 
     return (
