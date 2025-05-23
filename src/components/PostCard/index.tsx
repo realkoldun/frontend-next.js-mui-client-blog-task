@@ -9,6 +9,7 @@ import normalStyles from './postCard.module.scss';
 import smallStyles from './smallPostCard.module.scss';
 
 import { imageConfig } from '@/components/PostCard/config';
+import { PATHS } from '@/constants/paths';
 import { PostType } from '@/types';
 
 interface PostCardProps {
@@ -22,7 +23,7 @@ export default function PostCard({ post, isSmall }: PostCardProps) {
 
     const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
-        router.push(`/post/${id}`);
+        router.push(PATHS.POST + id);
     };
 
     if (isSmall) {
