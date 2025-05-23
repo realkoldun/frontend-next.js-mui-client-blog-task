@@ -1,15 +1,9 @@
 import CategoriesList from '@/components/CategoriesList';
 import FeaturePostComponent from '@/components/FeaturePost';
 import PostList from '@/components/PostList';
+import { posts } from '@/constants/posts';
 
-const featurePost = {
-    title: 'Step-by-step guide to choosing great font pairs',
-    author: 'John Doe',
-    description:
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
-    date: 'May 23, 2022',
-    imgUrl: '/featurePostMockImg.png',
-};
+const featurePost = posts[Math.floor(Math.random() * posts.length)];
 
 export default function HomePage() {
     return (
