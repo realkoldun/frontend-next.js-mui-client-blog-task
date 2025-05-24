@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 
 import PostCard from '@/components/PostCard';
 import { posts } from '@/constants/posts';
-import { constants } from '@/constants/styles';
+import { styleConstants } from '@/constants/styles';
 
 interface SuggestionsList {
     id: string;
@@ -29,7 +29,7 @@ export default function SuggestionsList({ id, category }: SuggestionsList) {
             flexDirection='column'
             width='100%'
             alignItems={{ md: '', xs: 'center' }}
-            maxWidth={constants.maxPageContainerWidth}
+            maxWidth={styleConstants.maxPageContainerWidth}
             minHeight={550}
             gap={2}
         >

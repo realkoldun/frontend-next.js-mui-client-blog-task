@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
@@ -8,12 +10,21 @@ import { imageConfig } from '@/app/post/[id]/config';
 import PostHeader from '@/components/PostHeader';
 import SuggestionsList from '@/components/SuggestionsList';
 import { posts } from '@/constants/posts';
-import { constants } from '@/constants/styles';
+import { styleConstants } from '@/constants/styles';
 
 export default function PostPage() {
     const { id } = useParams();
 
+    const [blurDataURL, setBlurDataURL] = useState<string | null>(null);
+
     const post = posts.find((post) => post.id === id);
+
+    useEffect(() => {
+        if (post)
+            fetch(`/api/getBlurData?imgUrl=${post.imgUrl}`)
+                .then((res) => res.json())
+                .then((data) => setBlurDataURL(data.blurDataURL));
+    }, [post]);
 
     if (!post) return null;
 
@@ -33,11 +44,17 @@ export default function PostPage() {
                 height={{ xs: 300, sm: 400, md: 500 }}
                 position='relative'
                 maxWidth={{
-                    md: constants.maxPageContainerWidth,
+                    md: styleConstants.maxPageContainerWidth,
                     xs: '100%',
                 }}
             >
-                <Image src={post.imgUrl} alt='post img' {...imageConfig} />
+                <Image
+                    src={post.imgUrl}
+                    alt='post img'
+                    {...imageConfig}
+                    placeholder={blurDataURL ? 'blur' : 'empty'}
+                    blurDataURL={blurDataURL ?? undefined}
+                />
             </Box>
             <Box>
                 <Typography maxWidth={800}>

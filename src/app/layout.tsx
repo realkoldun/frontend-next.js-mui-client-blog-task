@@ -2,10 +2,11 @@ import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@/styles/globals.scss';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+
+import '@/styles/globals.scss';
 
 export const metadata: Metadata = {
     title: 'Modsen Blogs',

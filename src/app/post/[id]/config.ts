@@ -1,6 +1,3 @@
 import defaultImageConfig from '@/constants/defaultImageConfig';
 
-export const imageConfig = {
-    ...defaultImageConfig,
-    unoptimized: true,
-};
+export const imageConfig = defaultImageConfig;
