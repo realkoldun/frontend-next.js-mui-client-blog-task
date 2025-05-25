@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material';
 
 import PostCard from '@/components/PostCard';
-import { posts } from '@/constants/posts';
 import { styleConstants } from '@/constants/styles';
+import { getPostsByCategory } from '@/utils/apiUtils';
 
 interface SuggestionsList {
     id: string;
@@ -11,15 +11,16 @@ interface SuggestionsList {
 
 const MAX_SUGGESTIONS = 3;
 
-export default function SuggestionsList({ id, category }: SuggestionsList) {
-    const suggestionPosts = posts
-        .map((post) => {
-            if (post.category === category && post.id !== id)
-                return <PostCard key={post.id} isSuggestionCard post={post} />;
-            else return null;
-        })
-        .filter((post) => post)
-        .slice(0, MAX_SUGGESTIONS);
+export default async function SuggestionsList({
+    id,
+    category,
+}: SuggestionsList) {
+    const postsByCategory = await getPostsByCategory(category);
+
+    const suggestionPosts = postsByCategory
+        .filter((post) => post.id !== id)
+        .slice(0, MAX_SUGGESTIONS)
+        .map((post) => <PostCard key={post.id} isSuggestionCard post={post} />);
 
     if (suggestionPosts.length === 0) return null;
 

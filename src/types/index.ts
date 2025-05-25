@@ -20,5 +20,6 @@ export type PostType = GeneralType & {
     category: Categories;
     author: string;
     date: string;
+    text: string;
 };
 export type SocialLinkType = Omit<GeneralType, 'description'>;

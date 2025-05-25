@@ -11,6 +11,7 @@ export const posts: PostType[] = [
         imgUrl: '/postTest.png',
         author: 'Andrew Jonson',
         date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
     {
         id: '2',
@@ -22,6 +23,7 @@ export const posts: PostType[] = [
         imgUrl: '/postTest2.png',
         author: 'Andrew Jonson',
         date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
     {
         id: '3',
@@ -33,6 +35,7 @@ export const posts: PostType[] = [
         imgUrl: '/postTest.png',
         author: 'Andrew Jonson',
         date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
     {
         id: '4',
@@ -44,6 +47,7 @@ export const posts: PostType[] = [
         imgUrl: '/postTest.png',
         author: 'Andrew Jonson',
         date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
     {
         id: '5',
@@ -55,6 +59,7 @@ export const posts: PostType[] = [
         imgUrl: '/postTest.png',
         author: 'Andrew Jonson',
         date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
     {
         id: '6',
@@ -66,5 +71,6 @@ export const posts: PostType[] = [
         imgUrl: '/postTest.png',
         author: 'Andrew Jonson',
         date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
 ];

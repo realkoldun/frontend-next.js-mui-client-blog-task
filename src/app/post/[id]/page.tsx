@@ -1,33 +1,26 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
 
 import { imageConfig } from '@/app/post/[id]/config';
 import PostHeader from '@/components/PostHeader';
 import SuggestionsList from '@/components/SuggestionsList';
-import { posts } from '@/constants/posts';
-import { styleConstants } from '@/constants/styles';
+import { PostType } from '@/types';
+import { getPostBuId } from '@/utils/apiUtils';
+import { getBase64 } from '@/utils/getBase64';
 
-export default function PostPage() {
-    const { id } = useParams();
+interface PostPageProps {
+    params: Promise<{
+        id: string;
+    }>;
+}
 
-    const [blurDataURL, setBlurDataURL] = useState<string | null>(null);
-
-    const post = posts.find((post) => post.id === id);
-
-    useEffect(() => {
-        if (post)
-            fetch(`/api/getBlurData?imgUrl=${post.imgUrl}`)
-                .then((res) => res.json())
-                .then((data) => setBlurDataURL(data.blurDataURL));
-    }, [post]);
+export default async function PostPage({ params }: PostPageProps) {
+    const { id } = await params;
+    const post: PostType = await getPostBuId(id);
 
     if (!post) return null;
 
+    const blurImg = await getBase64(post?.imgUrl);
     return (
         <Box
             component='main'
@@ -44,7 +37,7 @@ export default function PostPage() {
                 height={{ xs: 300, sm: 400, md: 500 }}
                 position='relative'
                 maxWidth={{
-                    md: styleConstants.maxPageContainerWidth,
+                    md: 1500,
                     xs: '100%',
                 }}
             >
@@ -52,56 +45,12 @@ export default function PostPage() {
                     src={post.imgUrl}
                     alt='post img'
                     {...imageConfig}
-                    placeholder={blurDataURL ? 'blur' : 'empty'}
-                    blurDataURL={blurDataURL ?? undefined}
+                    blurDataURL={blurImg}
+                    style={{ objectFit: 'cover' }}
                 />
             </Box>
             <Box>
-                <Typography maxWidth={800}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Non blandit massa enim nec.
-                    Scelerisque viverra mauris in aliquam sem. At risus viverra
-                    adipiscing at in tellus. Sociis natoque penatibus et magnis
-                    dis parturient montes. Ridiculus mus mauris vitae ultricies
-                    leo. Neque egestas congue quisque egestas diam. Risus in
-                    hendrerit gravida rutrum quisque non. Lorem ipsum dolor sit
-                    amet, consectetur adipiscing elit, sed do eiusmod. Lorem
-                    ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Non blandit massa enim nec. Scelerisque viverra mauris in
-                    aliquam sem. At risus viverra adipiscing at in tellus.
-                    Sociis natoque penatibus et magnis dis parturient montes.
-                    Ridiculus mus mauris vitae ultricies leo. Neque egestas
-                    congue quisque egestas diam. Risus in hendrerit gravida
-                    rutrum quisque non. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Non blandit massa enim nec.
-                    Scelerisque viverra mauris in aliquam sem. At risus viverra
-                    adipiscing at in tellus. Sociis natoque penatibus et magnis
-                    dis parturient montes. Ridiculus mus mauris vitae ultricies
-                    leo. Neque egestas congue quisque egestas diam. Risus in
-                    hendrerit gravida rutrum quisque non. Lorem ipsum dolor sit
-                    amet Non blandit massa enim nec scelerisque Neque egestas
-                    congue quisque egestas Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Non blandit
-                    massa enim nec. Scelerisque viverra mauris in aliquam sem.
-                    At risus viverra adipiscing at in tellus. Sociis natoque
-                    penatibus et magnis dis parturient montes. Ridiculus mus
-                    mauris vitae ultricies leo. Neque egestas congue quisque
-                    egestas diam. Risus in hendrerit gravida rutrum quisque non.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Non blandit massa enim nec.
-                    Scelerisque viverra mauris in aliquam sem. At risus viverra
-                    adipiscing at in tellus. Sociis natoque penatibus et magnis
-                    dis parturient montes. Ridiculus mus mauris vitae ultricies
-                    leo. Neque egestas congue quisque egestas diam. Risus in
-                    hendrerit gravida rutrum quisque non.
-                </Typography>
+                <Typography maxWidth={800}>{post.text}</Typography>
             </Box>
             <SuggestionsList {...post} />
         </Box>

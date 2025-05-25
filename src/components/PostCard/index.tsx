@@ -26,39 +26,35 @@ export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
         router.push(PATHS.POST + id);
     };
 
-    if (isSuggestionCard) {
-        return (
-            <section className={smallStyles.section} onClick={handleOnClick}>
-                <div className={smallStyles.imageContainer}>
-                    <Image src={imgUrl} alt={title} {...imageConfig} />
-                </div>
-                <div className={smallStyles.informationContainer}>
-                    <div className={smallStyles.infoContainer}>
-                        <p className={smallStyles.metaInfo}>
+    const currentStyle = isSuggestionCard ? smallStyles : normalStyles;
+
+    return (
+        <section className={currentStyle.section} onClick={handleOnClick}>
+            <div className={currentStyle.imageContainer}>
+                <Image
+                    src={imgUrl}
+                    alt={title}
+                    {...imageConfig}
+                    style={{ objectFit: 'cover' }}
+                />
+            </div>
+            <div className={currentStyle.informationContainer}>
+                {isSuggestionCard ? (
+                    <div className={currentStyle.infoContainer}>
+                        <p className={currentStyle.metaInfo}>
                             By{' '}
-                            <span className={smallStyles.authorSpan}>
+                            <span className={currentStyle.authorSpan}>
                                 {author}
                             </span>
                         </p>
-                        <div className={smallStyles.verticalDevider}></div>
-                        <p className={smallStyles.metaInfo}>{date}</p>
+                        <div className={currentStyle.verticalDevider}></div>
+                        <p className={currentStyle.metaInfo}>{date}</p>
                     </div>
-                    <p className={smallStyles.title}>{title}</p>
-                    <p className={smallStyles.description}>{description}</p>
-                </div>
-            </section>
-        );
-    }
-
-    return (
-        <section className={normalStyles.section} onClick={handleOnClick}>
-            <div className={normalStyles.imageContainer}>
-                <Image src={imgUrl} alt={title} {...imageConfig} />
-            </div>
-            <div className={normalStyles.informationContainer}>
-                <p className={normalStyles.category}>{category}</p>
-                <p className={normalStyles.title}>{title}</p>
-                <p className={normalStyles.description}>{description}</p>
+                ) : (
+                    <p className={normalStyles.category}>{category}</p>
+                )}
+                <p className={currentStyle.title}>{title}</p>
+                <p className={smallStyles.description}>{description}</p>
             </div>
         </section>
     );
