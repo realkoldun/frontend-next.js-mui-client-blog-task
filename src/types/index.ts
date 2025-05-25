@@ -6,10 +6,10 @@ type GeneralType = {
 };
 
 export enum Categories {
-    BUSINESS = 'Business',
-    STARTUP = 'Startup',
-    ECONOMY = 'Economy',
-    TECHNOLOGY = 'Technology',
+    BUSINESS = 'BUSINESS',
+    STARTUP = 'STARTUP',
+    ECONOMY = 'ECONOMY',
+    TECHNOLOGY = 'TECHNOLOGY',
 }
 
 export type CategoriesType = GeneralType & {

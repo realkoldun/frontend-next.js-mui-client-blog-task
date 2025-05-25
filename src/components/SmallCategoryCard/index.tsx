@@ -16,7 +16,12 @@ export default function SmallCategoryCard({
     if (!category) return null;
 
     return (
-        <Box display='flex' alignItems='center' width={150} gap={2}>
+        <Box
+            display='flex'
+            alignItems='center'
+            width={{ xs: 120, md: 200 }}
+            justifyContent='space-between'
+        >
             <Box
                 position='relative'
                 width={{ xs: 24, md: 48 }}
@@ -30,7 +35,10 @@ export default function SmallCategoryCard({
                 />
             </Box>
 
-            <Typography fontFamily='SenFontBold' fontSize={{ xs: 16, md: 24 }}>
+            <Typography
+                fontFamily={{ xs: 'SenFont', md: 'SenFontBold' }}
+                fontSize={{ xs: 14, md: 24 }}
+            >
                 {category.title}
             </Typography>
         </Box>
