@@ -50,7 +50,9 @@ export default async function PostPage({ params }: PostPageProps) {
                 />
             </Box>
             <Box>
-                <Typography maxWidth={800}>{post.text}</Typography>
+                <Typography maxWidth={800} fontSize={{ xs: 14, md: 16 }}>
+                    {post.text}
+                </Typography>
             </Box>
             <SuggestionsList {...post} />
         </Box>

@@ -23,7 +23,13 @@ export default function PostHeader(post: PostHeaderProps) {
             minHeight={{ xs: 200, md: 300 }}
             gap={{ xs: 2, md: 5 }}
         >
-            <Box display='flex' justifyContent='start' width='100%' gap={1}>
+            <Box
+                display='flex'
+                justifyContent='start'
+                width='100%'
+                gap={1}
+                alignItems='center'
+            >
                 <Image
                     src='/postTest2.png'
                     alt='avatar'
@@ -32,7 +38,11 @@ export default function PostHeader(post: PostHeaderProps) {
                     style={{ borderRadius: '50%' }}
                 />
                 <Box display='flex' flexDirection='column' alignItems='start'>
-                    <Typography fontFamily='SenFont' color='#592EA9'>
+                    <Typography
+                        fontFamily='SenFont'
+                        color='#592EA9'
+                        fontSize={{ xs: 24, md: 28 }}
+                    >
                         {author}
                     </Typography>
                     <Typography fontFamily='SenFont' color='#6D6E76'>

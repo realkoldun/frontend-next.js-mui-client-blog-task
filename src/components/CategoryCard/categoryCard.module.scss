@@ -23,8 +23,8 @@
 
 @mixin full-section-size {
   width: constants.$full-size;
-  height: constants.$small-item-width;
-  padding: constants.$padding-m;
+  height: constants.$big-item-width;
+  padding: constants.$padding-l;
 }
 
 .section {
@@ -110,6 +110,10 @@
   .container {
     gap: 0;
     padding: 0;
+  }
+
+  .title {
+    font-size: constants.$font-size-l;
   }
 
   .image {

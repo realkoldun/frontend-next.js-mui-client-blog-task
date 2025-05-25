@@ -31,7 +31,7 @@
 }
 
 .metaInfo {
-  font-size: constants.$font-size-xxs;
+  font-size: constants.$font-size-xs;
 }
 
 .authorSpan {
@@ -83,6 +83,10 @@
     gap: constants.$gap-m;
     width: constants.$full-size;
     height: constants.$size-xl;
+  }
+
+  .metaInfo {
+    font-size: constants.$font-size-xs;
   }
 
   .title {
