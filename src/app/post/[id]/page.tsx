@@ -20,12 +20,15 @@ export default async function PostPage({ params }: PostPageProps) {
 
     if (!post) return null;
 
-    const blurImg = await getBase64(post?.imgUrl);
+    const blurImg = await getBase64(post.imgUrl);
+
     return (
         <Box
             component='main'
             display='flex'
-            flexDirection={'column'}
+            width='100%'
+            height='100%'
+            flexDirection='column'
             alignItems='center'
             padding='20px'
             gap={{ xs: 3, md: 5 }}
@@ -40,13 +43,14 @@ export default async function PostPage({ params }: PostPageProps) {
                     md: 1500,
                     xs: '100%',
                 }}
+                style={{ position: 'relative', minHeight: 300 }}
             >
                 <Image
                     src={post.imgUrl}
                     alt='post img'
                     {...imageConfig}
                     blurDataURL={blurImg}
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'cover', display: 'block' }}
                 />
             </Box>
             <Box>

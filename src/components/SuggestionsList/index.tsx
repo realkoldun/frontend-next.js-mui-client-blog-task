@@ -1,3 +1,5 @@
+import { JSX } from 'react';
+
 import { Box, Typography } from '@mui/material';
 
 import PostCard from '@/components/PostCard';
@@ -17,10 +19,17 @@ export default async function SuggestionsList({
 }: SuggestionsList) {
     const postsByCategory = await getPostsByCategory(category);
 
-    const suggestionPosts = postsByCategory
-        .filter((post) => post.id !== id)
-        .slice(0, MAX_SUGGESTIONS)
-        .map((post) => <PostCard key={post.id} isSuggestionCard post={post} />);
+    const suggestionPosts = postsByCategory.reduce<JSX.Element[]>(
+        (acc, post) => {
+            if (post.id !== id && acc.length < MAX_SUGGESTIONS) {
+                acc.push(
+                    <PostCard key={post.id} isSuggestionCard post={post} />,
+                );
+            }
+            return acc;
+        },
+        [],
+    );
 
     if (suggestionPosts.length === 0) return null;
 

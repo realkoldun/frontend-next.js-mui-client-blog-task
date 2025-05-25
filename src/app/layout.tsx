@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import EmotionProvider from '@/provider/CacheProvider';
-import ClientWrapper from '@/provider/ThemeProvider';
+
 import '@/styles/globals.scss';
 
 export const metadata: Metadata = {
@@ -27,13 +27,11 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <body className={interFont.className}>
-                <EmotionProvider>
-                    <ClientWrapper>
-                        <Header />
-                        {children}
-                        <Footer />
-                    </ClientWrapper>
-                </EmotionProvider>
+                <AppRouterCacheProvider>
+                    <Header />
+                    {children}
+                    <Footer />
+                </AppRouterCacheProvider>
             </body>
         </html>
     );
