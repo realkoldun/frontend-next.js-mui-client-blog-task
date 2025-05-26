@@ -58,6 +58,7 @@ export default function FeaturePost(post: FeaturePostComponentProps) {
                         src={imgUrl}
                         alt='feature post image'
                         {...imageConfig}
+                        style={{ objectFit: 'cover' }}
                     />
                 </div>
             </div>

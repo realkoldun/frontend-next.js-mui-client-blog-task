@@ -25,6 +25,15 @@
 - **Стили**: для всех стилей используется единая система измерений:
     - px - для точно задания размерности
     - % - для относительного задания размерности
+    - Для задания стилей MUI компонентов задается файл styled где в объектах описываются стили каждого компонента:
+      - export const metaInfoTextContainer = {
+            display: theme.display.flex,
+            flexDirection: theme.display.flexDirection.column,
+            alignItems: theme.display.align.start,
+        };
+    - все константы стилей находятся в файле app/styles/theme.ts
+    - в коде компонента стили применяются следующим образом:
+      -  <Box {...style.metaInfoTextContainer}>...</Box>
 - **Магические числа**: Все магические числа выносятся в отдельный файл:
     - файл _constants.scss для констант тем
     - папка constants для констант приложения

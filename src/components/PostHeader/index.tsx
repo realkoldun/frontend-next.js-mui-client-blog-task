@@ -1,6 +1,8 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
+import * as style from './styled';
+
 import SmallCategoryCard from '@/components/SmallCategoryCard';
 import type { Categories } from '@/types';
 
@@ -15,21 +17,8 @@ export default function PostHeader(post: PostHeaderProps) {
     const { category, title, author, date } = post;
 
     return (
-        <Box
-            display='flex'
-            justifyContent='center'
-            flexDirection='column'
-            maxWidth={800}
-            minHeight={{ xs: 200, md: 300 }}
-            gap={{ xs: 2, md: 5 }}
-        >
-            <Box
-                display='flex'
-                justifyContent='start'
-                width='100%'
-                gap={1}
-                alignItems='center'
-            >
+        <Box {...style.postHeaderSection}>
+            <Box {...style.metaInfoContainer}>
                 <Image
                     src='/postTest2.png'
                     alt='avatar'
@@ -37,26 +26,15 @@ export default function PostHeader(post: PostHeaderProps) {
                     height={48}
                     style={{ borderRadius: '50%' }}
                 />
-                <Box display='flex' flexDirection='column' alignItems='start'>
-                    <Typography
-                        fontFamily='SenFont'
-                        color='#592EA9'
-                        fontSize={{ xs: 24, md: 28 }}
-                    >
-                        {author}
-                    </Typography>
-                    <Typography fontFamily='SenFont' color='#6D6E76'>
+                <Box {...style.metaInfoTextContainer}>
+                    <Typography {...style.authorName}>{author}</Typography>
+                    <Typography {...style.dateText}>
                         Posted on {date}
                     </Typography>
                 </Box>
             </Box>
             <Box>
-                <Typography
-                    fontFamily='SenFontBold'
-                    fontSize={{ xs: 18, md: 48 }}
-                >
-                    {title}
-                </Typography>
+                <Typography {...style.titleText}>{title}</Typography>
             </Box>
             <SmallCategoryCard categoryTitle={category} />
         </Box>

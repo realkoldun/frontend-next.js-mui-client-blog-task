@@ -1,10 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
+
+import * as style from './styled';
 
 import { imageConfig } from '@/app/post/[id]/config';
 import PostHeader from '@/components/PostHeader';
 import SuggestionsList from '@/components/SuggestionsList';
-import { PostType } from '@/types';
 import { getPostBuId } from '@/utils/apiUtils';
 import { getBase64 } from '@/utils/getBase64';
 
@@ -16,47 +18,24 @@ interface PostPageProps {
 
 export default async function PostPage({ params }: PostPageProps) {
     const { id } = await params;
-    const post: PostType = await getPostBuId(id);
+    const post = await getPostBuId(id);
 
-    if (!post) return null;
+    if (!post) notFound();
 
     const blurImg = await getBase64(post.imgUrl);
 
     return (
-        <Box
-            component='main'
-            display='flex'
-            width='100%'
-            height='100%'
-            flexDirection='column'
-            alignItems='center'
-            padding='20px'
-            gap={{ xs: 3, md: 5 }}
-            margin={2}
-        >
+        <Box {...style.postPageContainer}>
             <PostHeader {...post} />
-            <Box
-                width='100%'
-                height={{ xs: 300, sm: 400, md: 500 }}
-                position='relative'
-                maxWidth={{
-                    md: 1500,
-                    xs: '100%',
-                }}
-                style={{ position: 'relative', minHeight: 300 }}
-            >
+            <Box {...style.imageContainer}>
                 <Image
                     src={post.imgUrl}
-                    alt='post img'
                     {...imageConfig}
                     blurDataURL={blurImg}
-                    style={{ objectFit: 'cover', display: 'block' }}
                 />
             </Box>
             <Box>
-                <Typography maxWidth={800} fontSize={{ xs: 14, md: 16 }}>
-                    {post.text}
-                </Typography>
+                <Typography {...style.mainText}>{post.text}</Typography>
             </Box>
             <SuggestionsList {...post} />
         </Box>
