@@ -1,10 +1,14 @@
 import styles from './postList.module.scss';
 
 import PostCard from '@/components/PostCard';
-import { posts } from '@/constants/posts';
 import contentSectionStyle from '@/styles/contentSection.module.scss';
+import { PostType } from '@/types';
 
-export default function PostList() {
+interface PostListProps {
+    posts: PostType[];
+}
+
+export default function PostList({ posts }: PostListProps) {
     return (
         <section className={contentSectionStyle.contentSection}>
             <div className={styles.container}>
@@ -12,7 +16,7 @@ export default function PostList() {
                 <hr className={styles.horizontalLine} />
                 <div className={styles.listContainer}>
                     {posts.map((post) => {
-                        return <PostCard key={post.id} {...post} />;
+                        return <PostCard key={post.id} post={post} />;
                     })}
                 </div>
                 <div className={styles.paginationContainer}>

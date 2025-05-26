@@ -11,7 +11,7 @@ interface CategoryCardProps {
     isSelected: boolean;
 }
 
-export default function CategoryCard(category: CategoryCardProps) {
+export default async function CategoryCard(category: CategoryCardProps) {
     const { title, description, imgUrl, isSelected } = category;
     return (
         <section

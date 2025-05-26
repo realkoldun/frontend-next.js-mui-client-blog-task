@@ -1,11 +1,13 @@
 import { ReactNode } from 'react';
 
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@/styles/globals.scss';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+
+import '@/styles/globals.scss';
 
 export const metadata: Metadata = {
     title: 'Modsen Blogs',
@@ -25,9 +27,11 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <body className={interFont.className}>
-                <Header />
-                {children}
-                <Footer />
+                <AppRouterCacheProvider>
+                    <Header />
+                    {children}
+                    <Footer />
+                </AppRouterCacheProvider>
             </body>
         </html>
     );

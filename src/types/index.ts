@@ -5,8 +5,21 @@ type GeneralType = {
     description: string;
 };
 
-export type CategoriesType = GeneralType;
+export enum Categories {
+    BUSINESS = 'BUSINESS',
+    STARTUP = 'STARTUP',
+    ECONOMY = 'ECONOMY',
+    TECHNOLOGY = 'TECHNOLOGY',
+}
+
+export type CategoriesType = GeneralType & {
+    title: Categories;
+};
+
 export type PostType = GeneralType & {
-    type: string;
+    category: Categories;
+    author: string;
+    date: string;
+    text: string;
 };
 export type SocialLinkType = Omit<GeneralType, 'description'>;

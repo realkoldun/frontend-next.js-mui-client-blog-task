@@ -1,31 +1,60 @@
 'use client';
 
-import Image from 'next/image';
+import { MouseEvent } from 'react';
 
-import styles from './postCard.module.scss';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+
+import normalStyles from './postCard.module.scss';
+import smallStyles from './smallPostCard.module.scss';
 
 import { imageConfig } from '@/components/PostCard/config';
+import { PATHS } from '@/constants/paths';
+import { PostType } from '@/types';
 
 interface PostCardProps {
-    id: string;
-    type: string;
-    title: string;
-    description: string;
-    imgUrl: string;
+    post: PostType;
+    isSuggestionCard?: boolean;
 }
 
-export default function PostCard(post: PostCardProps) {
-    const { title, type, description, imgUrl } = post;
+export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
+    const { id, title, author, category, description, imgUrl, date } = post;
+    const router = useRouter();
+
+    const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        router.push(PATHS.POST + id);
+    };
+
+    const currentStyle = isSuggestionCard ? smallStyles : normalStyles;
 
     return (
-        <section className={styles.section}>
-            <div className={styles.imageContainer}>
-                <Image src={imgUrl} alt={title} {...imageConfig} />
+        <section className={currentStyle.section} onClick={handleOnClick}>
+            <div className={currentStyle.imageContainer}>
+                <Image
+                    src={imgUrl}
+                    alt={title}
+                    {...imageConfig}
+                    style={{ objectFit: 'cover' }}
+                />
             </div>
-            <div className={styles.informationContainer}>
-                <p className={styles.category}>{type}</p>
-                <p className={styles.title}>{title}</p>
-                <p className={styles.description}>{description}</p>
+            <div className={currentStyle.informationContainer}>
+                {isSuggestionCard ? (
+                    <div className={currentStyle.infoContainer}>
+                        <p className={currentStyle.metaInfo}>
+                            By{' '}
+                            <span className={currentStyle.authorSpan}>
+                                {author}
+                            </span>
+                        </p>
+                        <div className={currentStyle.verticalDevider}></div>
+                        <p className={currentStyle.metaInfo}>{date}</p>
+                    </div>
+                ) : (
+                    <p className={normalStyles.category}>{category}</p>
+                )}
+                <p className={currentStyle.title}>{title}</p>
+                <p className={smallStyles.description}>{description}</p>
             </div>
         </section>
     );

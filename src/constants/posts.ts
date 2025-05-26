@@ -1,49 +1,76 @@
-import { PostType } from '@/types';
+import { Categories, PostType } from '@/types';
 
 export const posts: PostType[] = [
     {
         id: '1',
-        type: 'economi',
-        title: 'Design tips for designers that cover everything you need',
+        category: Categories.BUSINESS,
+        title: 'Design tips for designers that cover everything you need1',
         description:
             'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
 
         imgUrl: '/postTest.png',
+        author: 'Andrew Jonson',
+        date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
     {
         id: '2',
-        type: 'economi',
-        title: 'Design tips for designers that cover everything you need',
+        category: Categories.TECHNOLOGY,
+        title: 'Design tips for designers that cover everything you need2',
         description:
             'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
 
         imgUrl: '/postTest2.png',
+        author: 'Andrew Jonson',
+        date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
     {
         id: '3',
-        type: 'economi',
-        title: 'Design tips for designers that cover everything you need',
+        category: Categories.BUSINESS,
+        title: 'Design tips for designers that cover everything you need3',
         description:
             'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
 
         imgUrl: '/postTest.png',
+        author: 'Andrew Jonson',
+        date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
     {
         id: '4',
-        type: 'economi',
-        title: 'Design tips for designers that cover everything you need',
+        category: Categories.BUSINESS,
+        title: 'Design tips for designers that cover everything you need4',
         description:
             'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
 
         imgUrl: '/postTest.png',
+        author: 'Andrew Jonson',
+        date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
     {
         id: '5',
-        type: 'economi',
-        title: 'Design tips for designers that cover everything you need',
+        category: Categories.ECONOMY,
+        title: 'Design tips for designers that cover everything you need5',
         description:
             'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
 
         imgUrl: '/postTest.png',
+        author: 'Andrew Jonson',
+        date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
+    },
+    {
+        id: '6',
+        category: Categories.ECONOMY,
+        title: 'Design tips for designers that cover everything you need6',
+        description:
+            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
+
+        imgUrl: '/postTest.png',
+        author: 'Andrew Jonson',
+        date: '27th January 2022',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
 ];

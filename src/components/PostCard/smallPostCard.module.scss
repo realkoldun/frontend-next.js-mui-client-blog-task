@@ -4,10 +4,10 @@
 .section {
   @include mixins.flex-center;
 
-  justify-content: space-between;
-  width: constants.$full-size;
-  height: constants.$size-xl;
-  gap: constants.$gap-m;
+  flex-direction: column;
+  gap: constants.$gap-s;
+  width: constants.$size-xxl;
+  height: constants.$full-size;
   transition: background-color 0.3s ease;
 
   &:hover {
@@ -23,15 +23,29 @@
   gap: constants.$gap-s;
 }
 
-.category {
-  font-size: constants.$font-size-s;
-  font-family: constants.$sen-font;
+.infoContainer {
+  @include mixins.flex-center;
+
+  gap: constants.$gap-s;
+  height: constants.$padding-m;
+}
+
+.metaInfo {
+  font-size: constants.$font-size-xs;
+}
+
+.authorSpan {
   color: constants.$color-purple;
+}
+
+.verticalDevider {
+  border-left: constants.$size-min constants.$color-black solid;
+  height: constants.$full-size;
 }
 
 .title {
   font-family: constants.$sen-font-bold;
-  font-size: constants.$font-size-xxl;
+  font-size: constants.$font-size-m;
 }
 
 .description {
@@ -42,46 +56,37 @@
 
 .imageContainer {
   position: relative;
-  max-width: constants.$size-xxl;
   width: constants.$full-size;
-  min-width: 350px;
-  height: constants.$full-size;
+  max-width: constants.$size-xl;
+  height: constants.$big-item-width;
 }
 
 @media only screen and (max-width: constants.$screen-size-small) {
   .section {
     flex-direction: column;
     justify-content: center;
-    gap: constants.$gap-s;
-    height: constants.$size-xxxl;
-  }
-
-  .informationContainer {
-    gap: constants.$gap-xs;
+    max-width: constants.$size-xl;
   }
 
   .title {
-    font-weight: constants.$font-weight-m;
-    font-size: constants.$font-size-xxl;
+    font-weight: constants.$font-weight-s;
+    font-size: constants.$font-size-l;
   }
 
   .description {
     font-size: constants.$font-size-s;
   }
-
-  .imageContainer {
-    aspect-ratio: 1 / 1;
-    width: constants.$full-size;
-    height: constants.$size-xl;
-  }
 }
 
 @media only screen and (max-width: constants.$screen-size-mobile) {
   .section {
-    flex-direction: column;
-    justify-content: center;
     gap: constants.$gap-m;
-    height: constants.$size-xxl;
+    width: constants.$full-size;
+    height: constants.$size-xl;
+  }
+
+  .metaInfo {
+    font-size: constants.$font-size-xs;
   }
 
   .title {
@@ -93,7 +98,6 @@
   }
 
   .imageContainer {
-    min-width: 200px;
-    height: 200px;
+    min-width: constants.$big-item-width;
   }
 }

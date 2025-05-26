@@ -1,21 +1,18 @@
 import CategoriesList from '@/components/CategoriesList';
-import FeaturePostComponent from '@/components/FeaturePost';
+import FeaturePost from '@/components/FeaturePost';
 import PostList from '@/components/PostList';
+import { getPosts } from '@/utils/apiUtils';
+//import { posts } from '@/constants/posts';
 
-const featurePost = {
-    title: 'Step-by-step guide to choosing great font pairs',
-    author: 'John Doe',
-    description:
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
-    date: 'May 23, 2022',
-    imgUrl: '/featurePostMockImg.png',
-};
+export default async function HomePage() {
+    const posts = await getPosts();
 
-export default function HomePage() {
+    const featurePost = posts[Math.floor(Math.random() * posts.length)];
+
     return (
         <main>
-            <FeaturePostComponent {...featurePost} />
-            <PostList />
+            <FeaturePost {...featurePost} />
+            <PostList posts={posts} />
             <CategoriesList />
         </main>
     );
