@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
@@ -13,8 +14,10 @@ interface PostHeaderProps {
     date: string;
 }
 
-export default function PostHeader(post: PostHeaderProps) {
+export default async function PostHeader(post: PostHeaderProps) {
     const { category, title, author, date } = post;
+
+    const t = await getTranslations();
 
     return (
         <Box {...style.postHeaderSection}>
@@ -29,7 +32,7 @@ export default function PostHeader(post: PostHeaderProps) {
                 <Box {...style.metaInfoTextContainer}>
                     <Typography {...style.authorName}>{author}</Typography>
                     <Typography {...style.dateText}>
-                        Posted on {date}
+                        {t('postHeaderDate')} {date}
                     </Typography>
                 </Box>
             </Box>

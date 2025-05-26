@@ -1,11 +1,12 @@
 import { JSX } from 'react';
 
 import { Box, Typography } from '@mui/material';
+import { getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
 import PostCard from '@/components/PostCard';
-import { getPostsByCategory } from '@/utils/apiUtils';
+import { getPostsByCategory } from '@/utils';
 
 interface SuggestionsList {
     id: string;
@@ -21,6 +22,8 @@ export default async function SuggestionsList({
     const postsByCategory = await getPostsByCategory(category);
 
     if (!postsByCategory) return null;
+
+    const t = await getTranslations();
 
     const suggestionPosts = postsByCategory.reduce<JSX.Element[]>(
         (acc, post) => {
@@ -39,7 +42,7 @@ export default async function SuggestionsList({
     return (
         <Box {...style.suggestionListContainer}>
             <Typography {...style.title}>
-                What to read next on {category}
+                {t('suggestionPosts')} {category}
             </Typography>
             <Box {...style.suggestionsContainer}>{suggestionPosts}</Box>
         </Box>

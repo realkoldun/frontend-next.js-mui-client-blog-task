@@ -32,8 +32,8 @@ export default function LanguageSwitcher() {
                         <Image
                             src={imgUrl}
                             alt={title}
-                            width={48}
-                            height={48}
+                            width={30}
+                            height={30}
                         />
                         <Typography fontFamily='SenFont' fontSize={14}>
                             {title}
