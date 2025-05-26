@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import styles from './header.module.scss';
 
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { PATHS } from '@/constants/paths';
 
 export default function Header() {
@@ -23,6 +24,7 @@ export default function Header() {
                     Modsen Blog
                 </p>
             </div>
+            <LanguageSwitcher />
         </header>
     );
 }

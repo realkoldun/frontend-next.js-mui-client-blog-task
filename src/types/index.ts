@@ -11,6 +11,15 @@ export enum Categories {
     ECONOMY = 'ECONOMY',
     TECHNOLOGY = 'TECHNOLOGY',
 }
+export enum Languages {
+    RUSSIAN = 'RUSSIAN',
+    ENGLISH = 'ENGLISH',
+}
+
+export enum LanguageCodes {
+    RUSSIAN = 'ru',
+    ENGLISH = 'en',
+}
 
 export type CategoriesType = GeneralType & {
     title: Categories;
@@ -23,3 +32,9 @@ export type PostType = GeneralType & {
     text: string;
 };
 export type SocialLinkType = Omit<GeneralType, 'description'>;
+
+export type LanguageType = Omit<GeneralType, 'description'> & {
+    json: Record<string, string>;
+    code: LanguageCodes;
+    title: Languages;
+};
