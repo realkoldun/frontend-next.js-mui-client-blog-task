@@ -1,12 +1,21 @@
 import { useState } from 'react';
 
-import { MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
+import {
+    Box,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+    Typography,
+} from '@mui/material';
 import { setCookie } from 'cookies-next';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
+import * as style from './styled';
+
 import { languages } from '@/constants/languages';
+import { LanguageType } from '@/types';
 
 export default function LanguageSwitcher() {
     const locale = useLocale();
@@ -20,24 +29,45 @@ export default function LanguageSwitcher() {
         router.refresh();
     };
 
+    const SelectedValue = ({ imgUrl, title }: LanguageType) => {
+        return (
+            <Box
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                }}
+            >
+                <Image src={imgUrl} alt={title} width={24} height={24} />
+                <Typography {...style.selectedText}>{title}</Typography>
+            </Box>
+        );
+    };
+
     return (
-        <Select autoWidth value={selectedLanguage} onChange={handleChange}>
+        <Select
+            value={selectedLanguage}
+            onChange={handleChange}
+            {...style.select}
+            renderValue={(selected) => {
+                const selectedItem = languages.find(
+                    (lang) => lang.code === selected,
+                );
+                return selectedItem ? (
+                    <SelectedValue {...selectedItem} />
+                ) : null;
+            }}
+        >
             {languages.map(({ id, title, imgUrl, code }) => {
                 return (
-                    <MenuItem
-                        key={id}
-                        sx={{ justifyContent: 'space-between', width: '150px' }}
-                        value={code}
-                    >
+                    <MenuItem key={id} {...style.menuItem} value={code}>
                         <Image
                             src={imgUrl}
                             alt={title}
-                            width={30}
-                            height={30}
+                            width={24}
+                            height={24}
                         />
-                        <Typography fontFamily='SenFont' fontSize={14}>
-                            {title}
-                        </Typography>
+                        <Typography {...style.text}>{title}</Typography>
                     </MenuItem>
                 );
             })}
