@@ -20,7 +20,7 @@ import { LanguageType } from '@/types';
 export default function LanguageSwitcher() {
     const locale = useLocale();
     const router = useRouter();
-    const [selectedLanguage, setSelectedLanguage] = useState(locale);
+    const [selectedLanguage, setSelectedLanguage] = useState<string>(locale);
 
     const handleChange = (event: SelectChangeEvent) => {
         const newLocale = event.target.value as string;

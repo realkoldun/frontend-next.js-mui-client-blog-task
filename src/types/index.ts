@@ -12,7 +12,7 @@ export enum Categories {
     TECHNOLOGY = 'TECHNOLOGY',
 }
 export enum Languages {
-    RUSSIAN = 'RUSSIAN',
+    RUSSIAN = 'РУССКИЙ',
     ENGLISH = 'ENGLISH',
 }
 
