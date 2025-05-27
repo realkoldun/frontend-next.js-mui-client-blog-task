@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 
 import { categories } from '@/constants/categories';
 import { Categories } from '@/types';
@@ -8,12 +9,14 @@ interface SmallCategoryCardInterface {
     categoryTitle: Categories;
 }
 
-export default function SmallCategoryCard({
+export default async function SmallCategoryCard({
     categoryTitle,
 }: SmallCategoryCardInterface) {
     const category = categories.find(({ title }) => title === categoryTitle);
 
     if (!category) return null;
+
+    const t = await getTranslations(`Categories.${category.title}`);
 
     return (
         <Box
@@ -28,8 +31,8 @@ export default function SmallCategoryCard({
                 height={{ xs: 24, md: 40 }}
             >
                 <Image
-                    src={category.imgUrl}
-                    alt={category.title}
+                    src={t('imgUrl')}
+                    alt={t('title')}
                     fill
                     style={{ borderRadius: '50%' }}
                 />
@@ -39,7 +42,7 @@ export default function SmallCategoryCard({
                 fontFamily={{ xs: 'SenFont', md: 'SenFontBold' }}
                 fontSize={{ xs: 14, md: 24 }}
             >
-                {category.title}
+                {t('title')}
             </Typography>
         </Box>
     );

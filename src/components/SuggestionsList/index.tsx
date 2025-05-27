@@ -23,7 +23,10 @@ export default async function SuggestionsList({
 
     if (!postsByCategory) return null;
 
-    const t = await getTranslations('PostPage.SuggestionPost');
+    const suggestionTranslation = await getTranslations(
+        'PostPage.SuggestionPost',
+    );
+    const categoryTranslation = await getTranslations(`Categories.${category}`);
 
     const suggestionPosts = postsByCategory.reduce<JSX.Element[]>(
         (acc, post) => {
@@ -42,7 +45,8 @@ export default async function SuggestionsList({
     return (
         <Box {...style.suggestionListContainer}>
             <Typography {...style.title}>
-                {t('SectionTitle')} {category}
+                {suggestionTranslation('SectionTitle')}{' '}
+                {categoryTranslation('title')}
             </Typography>
             <Box {...style.suggestionsContainer}>{suggestionPosts}</Box>
         </Box>

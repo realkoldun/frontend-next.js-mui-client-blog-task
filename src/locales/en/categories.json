@@ -1,0 +1,28 @@
+{
+  "Categories": {
+    "BUSINESS": {
+      "id": "1",
+      "title": "BUSINESS",
+      "description": "Successful strategies, trends, and solutions for company growth.",
+      "imgUrl": "/icons/categories/businessCategoryIcon.svg"
+    },
+    "STARTUP": {
+      "id": "2",
+      "title": "STARTUP",
+      "description": "Innovative ideas, advice, and success stories for entrepreneurs.",
+      "imgUrl": "/icons/categories/startupCategoryIcon.svg"
+    },
+    "ECONOMY": {
+      "id": "3",
+      "title": "ECONOMY",
+      "description": "Financial market analysis, current news, and future prospects.",
+      "imgUrl": "/icons/categories/economyCategoryIcon.svg"
+    },
+    "TECHNOLOGY": {
+      "id": "4",
+      "title": "TECHNOLOGY",
+      "description": "The latest developments, gadgets, and the future of the digital world.",
+      "imgUrl": "/icons/categories/technologyCategoryIcon.svg"
+    }
+  }
+}

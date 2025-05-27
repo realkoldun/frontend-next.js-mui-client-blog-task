@@ -8,6 +8,9 @@
     "PostList": {
       "SectionTitle": "Все посты"
     },
+    "PostCard": {
+      "ByAuthor": "От"
+    },
     "Pagination": {
       "Next": "Далее >",
       "Prev": "< Назад"

@@ -8,6 +8,9 @@
         "PostList": {
             "SectionTitle": "All posts"
         },
+        "PostCard": {
+            "ByAuthor": "By"
+        },
         "Pagination": {
             "Next": "Next >",
             "Prev": "< Prev"

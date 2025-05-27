@@ -4,6 +4,7 @@ import { MouseEvent } from 'react';
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'use-intl';
 
 import normalStyles from './postCard.module.scss';
 import smallStyles from './smallPostCard.module.scss';
@@ -20,6 +21,8 @@ interface PostCardProps {
 export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
     const { id, title, author, category, description, imgUrl, date } = post;
     const router = useRouter();
+    const categoryTranslation = useTranslations(`Categories.${category}`);
+    const postTranslation = useTranslations('HomePage.PostCard');
 
     const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
@@ -42,7 +45,7 @@ export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
                 {isSuggestionCard ? (
                     <div className={currentStyle.infoContainer}>
                         <p className={currentStyle.metaInfo}>
-                            By{' '}
+                            {postTranslation('ByAuthor')}{' '}
                             <span className={currentStyle.authorSpan}>
                                 {author}
                             </span>
@@ -51,7 +54,9 @@ export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
                         <p className={currentStyle.metaInfo}>{date}</p>
                     </div>
                 ) : (
-                    <p className={normalStyles.category}>{category}</p>
+                    <p className={normalStyles.category}>
+                        {categoryTranslation('title')}
+                    </p>
                 )}
                 <p className={currentStyle.title}>{title}</p>
                 <p className={smallStyles.description}>{description}</p>

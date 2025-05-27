@@ -21,7 +21,8 @@ export enum LanguageCodes {
     ENGLISH = 'en',
 }
 
-export type CategoriesType = GeneralType & {
+export type CategoriesType = {
+    id: string;
     title: Categories;
 };
 
