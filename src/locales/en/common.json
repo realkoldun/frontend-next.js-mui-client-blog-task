@@ -1,14 +1,32 @@
 {
-    "featurePostSectionTitle": "Feature post",
-    "featurePostByAuthor": "By",
-    "featurePostButtonText": "Read more >",
-    "postListSectionTitle": "All posts",
-    "paginationNext": "Next >",
-    "paginationPrev": "< Prev",
-    "categoryListSectionTitle": "All categories",
-    "footerSubscribeText": "Subscribe to our news letter to get latest updates and news",
-    "footerSubscribeButtonText": "Subscribe",
-    "footerSubscribeInputPlaceholder": "Enter Your Email",
-    "suggestionPosts": "What to read next on",
-    "postHeaderDate": "Posted on"
+    "HomePage": {
+        "FeaturePost": {
+            "SectionTitle": "Feature post",
+            "ByAuthor": "By",
+            "ButtonText": "Read more >"
+        },
+        "PostList": {
+            "SectionTitle": "All posts"
+        },
+        "Pagination": {
+            "Next": "Next >",
+            "Prev": "< Prev"
+        },
+        "CategoryList": {
+            "SectionTitle": "All categories"
+        }
+    },
+    "FooterSection": {
+        "SubscribeText": "Subscribe to our news letter to get latest updates and news",
+        "SubscribeButtonText": "Subscribe",
+        "SubscribeInputPlaceholder": "Enter Your Email"
+    },
+    "PostPage": {
+        "SuggestionPost": {
+            "SectionTitle": "What to read next on"
+        },
+        "PostHeader": {
+            "Date": "Posted on"
+        }
+    }
 }

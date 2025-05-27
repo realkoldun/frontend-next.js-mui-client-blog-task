@@ -17,7 +17,7 @@ interface PostHeaderProps {
 export default async function PostHeader(post: PostHeaderProps) {
     const { category, title, author, date } = post;
 
-    const t = await getTranslations();
+    const t = await getTranslations('PostPage.PostHeader');
 
     return (
         <Box {...style.postHeaderSection}>
@@ -32,7 +32,7 @@ export default async function PostHeader(post: PostHeaderProps) {
                 <Box {...style.metaInfoTextContainer}>
                     <Typography {...style.authorName}>{author}</Typography>
                     <Typography {...style.dateText}>
-                        {t('postHeaderDate')} {date}
+                        {t('Date')} {date}
                     </Typography>
                 </Box>
             </Box>

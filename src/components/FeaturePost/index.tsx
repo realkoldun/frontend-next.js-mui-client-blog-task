@@ -24,7 +24,7 @@ interface FeaturePostComponentProps {
 export default function FeaturePost(post: FeaturePostComponentProps) {
     const { id, author, description, imgUrl, date, title } = post;
     const router = useRouter();
-    const t = useTranslations();
+    const t = useTranslations('HomePage.FeaturePost');
 
     const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -37,12 +37,12 @@ export default function FeaturePost(post: FeaturePostComponentProps) {
                 <div className={styles.informationSection}>
                     <div className={styles.informationContainer}>
                         <p className={styles.sectionTitle}>
-                            {t('featurePostSectionTitle')}
+                            {t('SectionTitle')}
                         </p>
                         <h2 className={styles.title}>{title}</h2>
                         <div className={styles.infoContainer}>
                             <p className={styles.metaInfo}>
-                                {t('featurePostByAuthor')}{' '}
+                                {t('ByAuthor')}{' '}
                                 <span className={styles.authorSpan}>
                                     {author}
                                 </span>
@@ -54,7 +54,7 @@ export default function FeaturePost(post: FeaturePostComponentProps) {
                     </div>
                     <StyledButton
                         onClick={handleOnClick}
-                        text={t('featurePostButtonText')}
+                        text={t('ButtonText')}
                     ></StyledButton>
                 </div>
                 <div className={styles.imageContainer}>

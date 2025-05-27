@@ -8,22 +8,20 @@ import StyledButton from '@/components/StyledButton';
 import { socialLinks } from '@/constants/socialLinks';
 
 export default async function Footer() {
-    const t = await getTranslations();
+    const t = await getTranslations('FooterSection');
 
     return (
         <footer className={styles.footerSection}>
             <section className={styles.subscribeContainer}>
                 <div className={styles.subscribeTextContainer}>
-                    <p className={styles.subscribeText}>
-                        {t('footerSubscribeText')}
-                    </p>
+                    <p className={styles.subscribeText}>{t('SubscribeText')}</p>
                 </div>
                 <div className={styles.subscribeInputContainer}>
                     <input
-                        placeholder={t('footerSubscribeInputPlaceholder')}
+                        placeholder={t('SubscribeInputPlaceholder')}
                         className={styles.subscribeInput}
                     />
-                    <StyledButton text={t('footerSubscribeButtonText')} />
+                    <StyledButton text={t('SubscribeButtonText')} />
                 </div>
             </section>
             <div className={styles.infoContainer}>

@@ -11,12 +11,12 @@ interface PostListProps {
 }
 
 export default async function PostList({ posts }: PostListProps) {
-    const t = await getTranslations();
+    const t = await getTranslations('HomePage');
 
     return (
         <section className={contentSectionStyle.contentSection}>
             <div className={styles.container}>
-                <h1 className={styles.title}>{t('postListSectionTitle')}</h1>
+                <h1 className={styles.title}>{t('PostList.SectionTitle')}</h1>
                 <hr className={styles.horizontalLine} />
                 <div className={styles.listContainer}>
                     {posts.map((post) => {
@@ -24,8 +24,8 @@ export default async function PostList({ posts }: PostListProps) {
                     })}
                 </div>
                 <div className={styles.paginationContainer}>
-                    <button disabled={true}>{t('paginationPrev')}</button>
-                    <button>{t('paginationNext')}</button>
+                    <button disabled={true}>{t('Pagination.Prev')}</button>
+                    <button>{t('Pagination.Next')}</button>
                 </div>
             </div>
         </section>

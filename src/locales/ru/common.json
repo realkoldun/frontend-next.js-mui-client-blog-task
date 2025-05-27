@@ -1,14 +1,32 @@
 {
-  "featurePostSectionTitle": "Избранный пост",
-  "featurePostByAuthor": "От",
-  "featurePostButtonText": "Подробнее >",
-  "postListSectionTitle": "Все посты",
-  "paginationNext": "Далее >",
-  "paginationPrev": "< Назад",
-  "categoryListSectionTitle": "Все категории",
-  "footerSubscribeText": "Подпишитесь на нашу рассылку, чтобы получать последние обновления и новости",
-  "footerSubscribeButtonText": "Подписаться",
-  "footerSubscribeInputPlaceholder": "Введите свой email",
-  "suggestionPosts": "Читать так же:",
-  "postHeaderDate": "Пост от"
+  "HomePage": {
+    "FeaturePost": {
+      "SectionTitle": "Избранный пост",
+      "ByAuthor": "От",
+      "ButtonText": "Подробнее >"
+    },
+    "PostList": {
+      "SectionTitle": "Все посты"
+    },
+    "Pagination": {
+      "Next": "Далее >",
+      "Prev": "< Назад"
+    },
+    "CategoryList": {
+      "SectionTitle": "Все категории"
+    }
+  },
+  "FooterSection": {
+    "SubscribeText": "Подпишитесь на нашу рассылку, чтобы получать последние обновления и новости",
+    "SubscribeButtonText": "Подписаться",
+    "SubscribeInputPlaceholder": "Введите свой email"
+  },
+  "PostPage": {
+    "SuggestionPost": {
+      "SectionTitle": "Читать также:"
+    },
+    "PostHeader": {
+      "Date": "Пост от"
+    }
+  }
 }

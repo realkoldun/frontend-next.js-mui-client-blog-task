@@ -7,14 +7,12 @@ import { categories } from '@/constants/categories';
 import contentSectionStyle from '@/styles/contentSection.module.scss';
 
 export default async function CategoriesList() {
-    const t = await getTranslations();
+    const t = await getTranslations('HomePage.CategoryList');
 
     return (
         <section className={contentSectionStyle.contentSection}>
             <div className={styles.container}>
-                <h2 className={styles.title}>
-                    {t('categoryListSectionTitle')}
-                </h2>
+                <h2 className={styles.title}>{t('SectionTitle')}</h2>
                 <div className={styles.list}>
                     {categories.map((category) => {
                         return (
