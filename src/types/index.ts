@@ -32,10 +32,16 @@ export type PostType = GeneralType & {
     date: string;
     text: string;
 };
-export type SocialLinkType = Omit<GeneralType, 'description'>;
+export type SocialLinkType = {
+    id: string;
+    title: string;
+    imgUrl: string;
+};
 
-export type LanguageType = Omit<GeneralType, 'description'> & {
+export type LanguageType = {
+    id: string;
+    title: Languages;
+    imgUrl: string;
     json: Record<string, Record<string, string | Record<string, string>>>;
     code: LanguageCodes;
-    title: Languages;
 };
