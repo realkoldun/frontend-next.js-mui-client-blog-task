@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
 import '@/styles/globals.scss';
+import { NextIntlClientProvider } from 'next-intl';
 
 export const metadata: Metadata = {
     title: 'Modsen Blogs',
@@ -28,9 +29,11 @@ export default function RootLayout({
         <html lang='en'>
             <body className={interFont.className}>
                 <AppRouterCacheProvider>
-                    <Header />
-                    {children}
-                    <Footer />
+                    <NextIntlClientProvider>
+                        <Header />
+                        {children}
+                        <Footer />
+                    </NextIntlClientProvider>
                 </AppRouterCacheProvider>
             </body>
         </html>

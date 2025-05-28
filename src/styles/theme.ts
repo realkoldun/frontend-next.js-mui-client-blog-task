@@ -24,9 +24,14 @@ export const theme = {
         m: 400,
         s: 300,
         xs: 200,
+        xxs: 150,
     },
     padding: {
+        xl: '80px',
         m: '20px',
+    },
+    specialSizes: {
+        switcherHeight: 50,
     },
     gap: {
         l: 10,
@@ -50,6 +55,9 @@ export const theme = {
     color: {
         purple: '#592EA9',
         gray: '#6D6E76',
+        darkGray: '#232536',
+        black: '#000000',
+        white: '#FFFFFF',
     },
     fontFamily: {
         sen: 'SenFont',

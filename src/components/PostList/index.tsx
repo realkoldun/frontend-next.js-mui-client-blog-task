@@ -1,3 +1,5 @@
+import { getTranslations } from 'next-intl/server';
+
 import styles from './postList.module.scss';
 
 import PostCard from '@/components/PostCard';
@@ -8,11 +10,13 @@ interface PostListProps {
     posts: PostType[];
 }
 
-export default function PostList({ posts }: PostListProps) {
+export default async function PostList({ posts }: PostListProps) {
+    const t = await getTranslations('HomePage');
+
     return (
         <section className={contentSectionStyle.contentSection}>
             <div className={styles.container}>
-                <h1 className={styles.title}>All posts</h1>
+                <h1 className={styles.title}>{t('PostList.SectionTitle')}</h1>
                 <hr className={styles.horizontalLine} />
                 <div className={styles.listContainer}>
                     {posts.map((post) => {
@@ -20,8 +24,8 @@ export default function PostList({ posts }: PostListProps) {
                     })}
                 </div>
                 <div className={styles.paginationContainer}>
-                    <button disabled={true}>{'< Prev'}</button>
-                    <button>{'Next >'}</button>
+                    <button disabled={true}>{t('Pagination.Prev')}</button>
+                    <button>{t('Pagination.Next')}</button>
                 </div>
             </div>
         </section>

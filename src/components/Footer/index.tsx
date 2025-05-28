@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 
 import styles from './footer.module.scss';
 
@@ -6,22 +7,21 @@ import { imageConfig } from '@/components/Footer/config';
 import StyledButton from '@/components/StyledButton';
 import { socialLinks } from '@/constants/socialLinks';
 
-export default function Footer() {
+export default async function Footer() {
+    const t = await getTranslations('FooterSection');
+
     return (
         <footer className={styles.footerSection}>
             <section className={styles.subscribeContainer}>
                 <div className={styles.subscribeTextContainer}>
-                    <p className={styles.subscribeText}>
-                        Subscribe to our news letter to get latest updates and
-                        news
-                    </p>
+                    <p className={styles.subscribeText}>{t('SubscribeText')}</p>
                 </div>
                 <div className={styles.subscribeInputContainer}>
                     <input
-                        placeholder={'Enter Your Email'}
+                        placeholder={t('SubscribeInputPlaceholder')}
                         className={styles.subscribeInput}
                     />
-                    <StyledButton text={'Subscribe'} />
+                    <StyledButton text={t('SubscribeButtonText')} />
                 </div>
             </section>
             <div className={styles.infoContainer}>

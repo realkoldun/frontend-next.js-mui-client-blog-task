@@ -5,7 +5,10 @@ export const suggestionListContainer = {
     display: theme.display.flex,
     flexDirection: theme.display.flexDirection.column,
     width: theme.sizes.full,
-    alignItems: { md: '', xs: theme.display.align.center },
+    alignItems: {
+        md: theme.display.align.start,
+        xs: theme.display.align.center,
+    },
     maxWidth: theme.sizes.xxl,
     minHeight: theme.sizes.l,
     gap: theme.gap.xs,

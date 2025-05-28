@@ -1,0 +1,35 @@
+{
+  "HomePage": {
+    "FeaturePost": {
+      "SectionTitle": "Избранный пост",
+      "ByAuthor": "От",
+      "ButtonText": "Подробнее >"
+    },
+    "PostList": {
+      "SectionTitle": "Все посты"
+    },
+    "PostCard": {
+      "ByAuthor": "От"
+    },
+    "Pagination": {
+      "Next": "Далее >",
+      "Prev": "< Назад"
+    },
+    "CategoryList": {
+      "SectionTitle": "Все категории"
+    }
+  },
+  "FooterSection": {
+    "SubscribeText": "Подпишитесь на нашу рассылку, чтобы получать последние обновления и новости",
+    "SubscribeButtonText": "Подписаться",
+    "SubscribeInputPlaceholder": "Введите свой email"
+  },
+  "PostPage": {
+    "SuggestionPost": {
+      "SectionTitle": "Читать также:"
+    },
+    "PostHeader": {
+      "Date": "Пост от"
+    }
+  }
+}

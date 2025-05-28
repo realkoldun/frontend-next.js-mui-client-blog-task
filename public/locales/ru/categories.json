@@ -1,0 +1,28 @@
+{
+  "Categories": {
+    "BUSINESS": {
+      "id": "1",
+      "title": "БИЗНЕС",
+      "description": "Успешные стратегии, тренды и решения для роста компаний.",
+      "imgUrl": "/icons/categories/businessCategoryIcon.svg"
+    },
+    "STARTUP": {
+      "id": "2",
+      "title": "СТАРТАП",
+      "description": "Инновационные идеи, советы и истории успеха предпринимателей.",
+      "imgUrl": "/icons/categories/startupCategoryIcon.svg"
+    },
+    "ECONOMY": {
+      "id": "3",
+      "title": "ЭКОНОМИКА",
+      "description": "Анализ финансовых рынков, актуальные новости и перспективы.",
+      "imgUrl": "/icons/categories/economyCategoryIcon.svg"
+    },
+    "TECHNOLOGY": {
+      "id": "4",
+      "title": "ТЕХНОЛОГИИ",
+      "description": "Последние разработки, гаджеты и будущее цифрового мира.",
+      "imgUrl": "/icons/categories/technologyCategoryIcon.svg"
+    }
+  }
+}

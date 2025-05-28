@@ -8,6 +8,7 @@ export const postPageContainer = {
     flexDirection: theme.display.flexDirection.column,
     alignItems: theme.display.align.center,
     padding: theme.padding.m,
+    marginTop: theme.padding.xl,
     gap: { xs: theme.gap.s, md: theme.gap.m },
 };
 

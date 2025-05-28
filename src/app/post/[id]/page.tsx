@@ -7,8 +7,7 @@ import * as style from './styled';
 import { imageConfig } from '@/app/post/[id]/config';
 import PostHeader from '@/components/PostHeader';
 import SuggestionsList from '@/components/SuggestionsList';
-import { getPostBuId } from '@/utils/apiUtils';
-import { getBase64 } from '@/utils/getBase64';
+import { getBase64, getPostBuId } from '@/utils';
 
 interface PostPageProps {
     params: Promise<{
