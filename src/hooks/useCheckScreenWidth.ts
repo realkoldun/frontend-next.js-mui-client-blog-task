@@ -1,26 +1,31 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 interface UseCheckScreenWidthArgs {
     targetWidth: number;
-    isWither: boolean;
+    isWider: boolean;
 }
 
 export function useCheckScreenWidth({
     targetWidth,
-    isWither,
-}: UseCheckScreenWidthArgs): boolean {
-    const [screenWidth, setScreenWidth] = useState<number>(
-        () => targetWidth + 1,
+    isWider,
+}: UseCheckScreenWidthArgs): boolean | undefined {
+    const [screenWidth, setScreenWidth] = useState<number | undefined>(
+        undefined,
     );
     useEffect(() => {
         if (typeof window !== 'undefined') {
+            setScreenWidth(window.innerWidth);
             const handleOnResize = () => {
                 setScreenWidth(window.innerWidth);
             };
             window.addEventListener('resize', handleOnResize);
             return () => window.removeEventListener('resize', handleOnResize);
         }
-    }, [setScreenWidth]);
+    }, []);
 
-    return isWither ? screenWidth > targetWidth : screenWidth < targetWidth;
+    if (!screenWidth) return undefined;
+
+    return isWider ? screenWidth > targetWidth : screenWidth < targetWidth;
 }

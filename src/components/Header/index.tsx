@@ -15,9 +15,9 @@ const MOBILE_SCREEN_SIZE = 500;
 
 export default function Header() {
     const router = useRouter();
-    const isWideScreenWidth = useCheckScreenWidth({
+    const isWideScreen = useCheckScreenWidth({
         targetWidth: MOBILE_SCREEN_SIZE,
-        isWither: true,
+        isWider: true,
     });
     const [isBurgerMenuOpen, setBurgerMenuOpen] = useState<boolean>(false);
 
@@ -33,16 +33,18 @@ export default function Header() {
                     Modsen Blog
                 </p>
             </div>
-            {isWideScreenWidth ? (
-                <LanguageSwitcher />
-            ) : (
-                <BurgerMenu
-                    open={isBurgerMenuOpen}
-                    setOpenAction={setBurgerMenuOpen}
-                >
+            {typeof isWideScreen !== 'undefined' &&
+                (isWideScreen ? (
                     <LanguageSwitcher />
-                </BurgerMenu>
-            )}
+                ) : (
+                    <BurgerMenu
+                        open={isBurgerMenuOpen}
+                        setOpenAction={setBurgerMenuOpen}
+                    >
+                        <LanguageSwitcher />
+                    </BurgerMenu>
+                ))}
+            {}
         </header>
     );
 }
