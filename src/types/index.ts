@@ -42,11 +42,5 @@ export type LanguageType = {
     id: string;
     title: Languages;
     imgUrl: string;
-    json: Record<string, Record<string, string | Record<string, string>>>;
     code: LanguageCodes;
-};
-
-export type ExtractRequestMetaReturnValue = {
-    host: string;
-    protocol: 'http' | 'https';
 };

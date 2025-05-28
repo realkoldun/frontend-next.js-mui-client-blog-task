@@ -1,3 +1,5 @@
+'use server';
+
 import { cookies } from 'next/headers';
 import { getRequestConfig } from 'next-intl/server';
 
@@ -16,9 +18,14 @@ export default getRequestConfig(async () => {
     return {
         locale: activeLocale,
         messages: {
-            ...(await import(`../locales/${activeLocale}/common.json`)).default,
-            ...(await import(`../locales/${activeLocale}/categories.json`))
-                .default,
+            ...(
+                await import(`../../public/locales/${activeLocale}/common.json`)
+            ).default,
+            ...(
+                await import(
+                    `../../public/locales/${activeLocale}/categories.json`
+                )
+            ).default,
         },
     };
 });
