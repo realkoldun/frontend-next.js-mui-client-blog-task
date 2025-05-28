@@ -30,6 +30,9 @@ export const theme = {
         xl: '80px',
         m: '20px',
     },
+    specialSizes: {
+        switcherHeight: 50,
+    },
     gap: {
         l: 10,
         m: 5,
