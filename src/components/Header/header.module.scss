@@ -18,9 +18,9 @@
 }
 
 .headerContainer {
-  @include mixins.flex-center;
+  @include mixins.flex-space-between;
 
-  justify-content: start;
+  align-items: center;
   width: constants.$full-size;
   max-width: constants.$max-container-width;
   height: constants.$full-size;

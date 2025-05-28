@@ -48,6 +48,7 @@ export default function LanguageSwitcher() {
         <Select
             value={selectedLanguage}
             onChange={handleChange}
+            MenuProps={{ disableScrollLock: true }}
             {...style.select}
             renderValue={(selected) => {
                 const selectedItem = languages.find(

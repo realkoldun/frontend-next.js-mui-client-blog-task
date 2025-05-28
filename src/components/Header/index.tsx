@@ -32,19 +32,18 @@ export default function Header() {
                 <p onClick={handleOnClick} className={styles.headerText}>
                     Modsen Blog
                 </p>
-            </div>
-            {typeof isWideScreen !== 'undefined' &&
-                (isWideScreen ? (
-                    <LanguageSwitcher />
-                ) : (
-                    <BurgerMenu
-                        open={isBurgerMenuOpen}
-                        setOpenAction={setBurgerMenuOpen}
-                    >
+                {typeof isWideScreen !== 'undefined' &&
+                    (isWideScreen ? (
                         <LanguageSwitcher />
-                    </BurgerMenu>
-                ))}
-            {}
+                    ) : (
+                        <BurgerMenu
+                            open={isBurgerMenuOpen}
+                            setOpenAction={setBurgerMenuOpen}
+                        >
+                            <LanguageSwitcher />
+                        </BurgerMenu>
+                    ))}
+            </div>
         </header>
     );
 }
