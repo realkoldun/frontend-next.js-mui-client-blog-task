@@ -27,6 +27,7 @@ export const theme = {
         xxs: 150,
     },
     padding: {
+        xl: '80px',
         m: '20px',
     },
     gap: {

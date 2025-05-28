@@ -8,6 +8,9 @@
   background-color: constants.$color-dark-blue;
   height: constants.$padding-xl;
   padding: 0 constants.$padding-xl;
+  position: fixed;
+  top: 0;
+  z-index: constants.$z-index-l;
 
   @media only screen and (max-width: constants.$screen-size-small) {
     padding: 0 constants.$padding-l;
