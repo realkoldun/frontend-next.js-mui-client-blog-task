@@ -26,9 +26,11 @@ export const imageConfig = {
 };
 
 export const messageStyle = {
-    fontFamily: theme.fontFamily.senBold,
+    fontSize: theme.fontSize.m,
+    fontFamily: theme.fontFamily.sen,
 };
 
 export const descriptionStyle = {
+    fontSize: theme.fontSize.xs,
     fontFamily: theme.fontFamily.sen,
 };

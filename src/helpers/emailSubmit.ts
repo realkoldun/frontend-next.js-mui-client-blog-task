@@ -13,8 +13,8 @@ export const emailSubmit = async (
         const email = formData.get('email') as string;
         if (!emailRegex.test(email)) {
             return {
-                message: 'Incorrect email',
-                description: 'Please check it',
+                message: 'InvalidEmailMessage',
+                description: 'InvalidEmailDescription',
                 error: true,
             };
         } else {
@@ -25,15 +25,15 @@ export const emailSubmit = async (
                 { publicKey: process.env.EMAIL_PUBLIC_KEY! },
             );
             return {
-                message: 'Success',
-                description: 'Your email was send successfully',
+                message: 'SuccessMessage',
+                description: 'SuccessDescription',
             };
         }
     } catch (e) {
         console.error(e);
         return {
-            message: 'Error',
-            description: 'Something went wrong',
+            message: 'ServerErrorMessage',
+            description: 'ServerErrorDescription',
             error: true,
         };
     }

@@ -31,5 +31,14 @@
     "PostHeader": {
       "Date": "Пост от"
     }
+  },
+  "ModalWindow": {
+    "SuccessMessage": "Успешно",
+    "SuccessDescription": "Ваше письмо было успешно отправлено",
+    "InvalidEmailMessage": "Некорректный email",
+    "InvalidEmailDescription": "Пожалуйста, проверьте его",
+    "ServerErrorMessage": "Ошибка",
+    "ServerErrorDescription": "Что-то пошло не так"
   }
+
 }

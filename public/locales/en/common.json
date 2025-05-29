@@ -31,5 +31,13 @@
         "PostHeader": {
             "Date": "Posted on"
         }
+    },
+    "ModalWindow": {
+        "SuccessMessage": "Success",
+        "SuccessDescription": "Your email was send successfully",
+        "InvalidEmailMessage": "Incorrect email",
+        "InvalidEmailDescription": "Please check it",
+        "ServerErrorMessage": "Error",
+        "ServerErrorDescription": "Something went wrong"
     }
 }

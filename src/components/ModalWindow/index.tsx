@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
+import { useTranslations } from 'use-intl';
 
 import * as style from './styled';
 
@@ -17,6 +18,7 @@ interface ModalWindowProps {
 const TIMER_DELAY = 3000;
 
 export default function ModalWindow(props: ModalWindowProps) {
+    const t = useTranslations('ModalWindow');
     const { message, description, onClose, error } = props;
 
     useEffect(() => {
@@ -34,9 +36,9 @@ export default function ModalWindow(props: ModalWindowProps) {
                 {...style.imageConfig}
             />
             <Box>
-                <Typography {...style.messageStyle}>{message}</Typography>
+                <Typography {...style.messageStyle}>{t(message)}</Typography>
                 <Typography {...style.descriptionStyle}>
-                    {description}
+                    {t(description)}
                 </Typography>
             </Box>
         </Box>
