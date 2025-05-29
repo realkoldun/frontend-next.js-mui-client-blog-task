@@ -45,6 +45,8 @@ export default function Footer() {
         });
     };
 
+    const isModalWindowShowed = message && modalRef && isModalWindowOpen;
+
     return (
         <footer className={styles.footerSection}>
             <section className={styles.subscribeContainer}>
@@ -85,9 +87,7 @@ export default function Footer() {
                     })}
                 </div>
             </div>
-            {message &&
-                modalRef &&
-                isModalWindowOpen &&
+            {isModalWindowShowed &&
                 createPortal(
                     <ModalWindow
                         {...message}

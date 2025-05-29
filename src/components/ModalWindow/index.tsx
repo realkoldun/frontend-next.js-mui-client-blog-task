@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
-
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useTranslations } from 'use-intl';
 
 import * as style from './styled';
+
+import { useTimeout } from '@/hooks';
 
 interface ModalWindowProps {
     message: string;
@@ -15,17 +15,13 @@ interface ModalWindowProps {
     error?: boolean;
 }
 
-const TIMER_DELAY = 3000;
+const TIMER_DELAY: number = 3000;
 
 export default function ModalWindow(props: ModalWindowProps) {
     const t = useTranslations('ModalWindow');
     const { message, description, onClose, error } = props;
 
-    useEffect(() => {
-        const timerId = setTimeout(onClose, TIMER_DELAY);
-
-        return () => clearTimeout(timerId);
-    }, [onClose]);
+    useTimeout({ callback: onClose, ms: TIMER_DELAY });
 
     return (
         <Box {...style.modalWindowContainer}>
