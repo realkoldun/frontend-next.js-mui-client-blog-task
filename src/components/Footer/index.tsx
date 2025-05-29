@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useTransition } from 'react';
 
 import Image from 'next/image';
 import { createPortal } from 'react-dom';
@@ -20,6 +20,7 @@ export default function Footer() {
     const t = useTranslations('FooterSection');
 
     const [message, setMessage] = useState<ModalWindowMessageType | null>(null);
+    const [pending, startTransition] = useTransition();
 
     const modalRef = usePortal('modal-window-container');
 
@@ -36,10 +37,12 @@ export default function Footer() {
     const handleEmailSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const formData = new FormData(e.currentTarget);
-        const result = await emailSubmit(formData);
-        setMessage(result);
-        handleOpenModalWindow();
+        startTransition(async () => {
+            const formData = new FormData(e.currentTarget);
+            const result = await emailSubmit(formData);
+            setMessage(result);
+            handleOpenModalWindow();
+        });
     };
 
     return (
@@ -57,7 +60,11 @@ export default function Footer() {
                         placeholder={t('SubscribeInputPlaceholder')}
                         className={styles.subscribeInput}
                     />
-                    <StyledButton submit text={t('SubscribeButtonText')} />
+                    <StyledButton
+                        disabled={pending}
+                        submit
+                        text={t('SubscribeButtonText')}
+                    />
                 </form>
             </section>
             <div className={styles.infoContainer}>
