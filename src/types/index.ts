@@ -44,3 +44,9 @@ export type LanguageType = {
     imgUrl: string;
     code: LanguageCodes;
 };
+
+export type ModalWindowMessageType = {
+    message: string;
+    description: string;
+    error?: boolean;
+};
