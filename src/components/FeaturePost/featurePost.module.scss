@@ -16,7 +16,7 @@
   width: constants.$full-size;
   max-width: constants.$max-container-width;
   height: constants.$full-size;
-  gap: constants.$gap-xl;
+  gap: constants.$gap-s;
 }
 
 .informationSection {
@@ -38,13 +38,12 @@
   font-size: constants.$font-size-s;
   font-weight: constants.$font-weight-m;
   letter-spacing: constants.$gap-xs;
-  line-height: constants.$size-xs;
   color: constants.$color-dark-blue;
 }
 
 .title {
   font-family: constants.$sen-font-bold;
-  font-size: constants.$font-size-xxl;
+  font-size: constants.$font-size-xl;
   color: constants.$color-dark-blue;
   font-weight: constants.$font-weight-xl;
 }
@@ -52,8 +51,10 @@
 .infoContainer {
   @include mixins.flex-start;
 
+  align-items: center;
+  width: fit-content;
   gap: constants.$gap-s;
-  height: constants.$size-xs;
+  height: constants.$size-s;
 }
 
 .metaInfo {
@@ -95,6 +96,10 @@
 
   .title {
     font-size: constants.$font-size-xl;
+  }
+
+  .authorSpan {
+    font-size: constants.$font-size-xs;
   }
 
   .metaInfo {

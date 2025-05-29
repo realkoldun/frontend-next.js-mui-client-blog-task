@@ -12,6 +12,7 @@ export const theme = {
         },
         position: {
             relative: 'relative' as const,
+            fixed: 'fixed' as const,
         },
     },
 
@@ -32,6 +33,8 @@ export const theme = {
     },
     specialSizes: {
         switcherHeight: 50,
+        modalWindowBottomPosition: 30,
+        modalWindowImageSize: 30,
     },
     gap: {
         l: 10,
