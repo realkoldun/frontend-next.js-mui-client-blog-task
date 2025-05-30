@@ -11,24 +11,23 @@ import styles from './featurePost.module.scss';
 import { imageConfig } from '@/components/FeaturePost/config';
 import StyledButton from '@/components/StyledButton';
 import { PATHS } from '@/constants/paths';
+import { PostType } from '@/types';
 
 interface FeaturePostComponentProps {
-    id: string;
-    title: string;
-    author: string;
-    date: string;
-    description: string;
-    imgUrl: string;
+    featurePost: PostType;
 }
 
-export default function FeaturePost(post: FeaturePostComponentProps) {
-    const { id, author, description, imgUrl, date, title } = post;
+export default function FeaturePost({
+    featurePost,
+}: FeaturePostComponentProps) {
+    const { uuid, author, description, published_at, image_url, title } =
+        featurePost;
     const router = useRouter();
     const t = useTranslations('HomePage.FeaturePost');
 
     const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        router.push(PATHS.POST + id);
+        router.push(PATHS.POST + uuid);
     };
 
     return (
@@ -48,7 +47,7 @@ export default function FeaturePost(post: FeaturePostComponentProps) {
                                 </span>
                             </p>
                             <div className={styles.verticalDevider}></div>
-                            <p className={styles.metaInfo}>{date}</p>
+                            <p className={styles.metaInfo}>{published_at}</p>
                         </div>
                         <p className={styles.descriptionText}>{description}</p>
                     </div>
@@ -59,7 +58,7 @@ export default function FeaturePost(post: FeaturePostComponentProps) {
                 </div>
                 <div className={styles.imageContainer}>
                     <Image
-                        src={imgUrl}
+                        src={image_url}
                         alt='feature post image'
                         {...imageConfig}
                         style={{ objectFit: 'cover' }}

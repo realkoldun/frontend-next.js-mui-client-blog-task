@@ -20,6 +20,7 @@
         "@mui/material-nextjs": "^7.1.0",
         "@plaiceholder/next": "^3.0.0",
         "cookies-next": "^5.1.0",
+        "newsapi": "^2.4.1",
         "next": "15.3.2",
         "next-intl": "^4.1.0",
         "plaiceholder": "^3.0.0",

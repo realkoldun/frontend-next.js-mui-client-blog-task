@@ -6,19 +6,19 @@
       "description": "Успешные стратегии, тренды и решения для роста компаний.",
       "imgUrl": "/icons/categories/businessCategoryIcon.svg"
     },
-    "STARTUP": {
+    "GENERAL": {
       "id": "2",
-      "title": "СТАРТАП",
-      "description": "Инновационные идеи, советы и истории успеха предпринимателей.",
+      "title": "ОБЩЕЕ",
+      "description": "Актуальные события со всего мира: политика, экономика, технологии и культура.",
       "imgUrl": "/icons/categories/startupCategoryIcon.svg"
     },
-    "ECONOMY": {
+    "POLITICS": {
       "id": "3",
-      "title": "ЭКОНОМИКА",
-      "description": "Анализ финансовых рынков, актуальные новости и перспективы.",
+      "title": "ПОЛИТИКА",
+      "description": "Последние политические события, решения мировых лидеров и тенденции, формирующие будущее.",
       "imgUrl": "/icons/categories/economyCategoryIcon.svg"
     },
-    "TECHNOLOGY": {
+    "TECH": {
       "id": "4",
       "title": "ТЕХНОЛОГИИ",
       "description": "Последние разработки, гаджеты и будущее цифрового мира.",

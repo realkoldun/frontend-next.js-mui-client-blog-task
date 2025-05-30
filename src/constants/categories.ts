@@ -3,15 +3,15 @@ import { Categories, CategoriesType } from '@/types';
 export const categories: CategoriesType[] = [
     {
         id: '1',
-        title: Categories.BUSINESS,
+        title: Categories.GENERAL,
     },
     {
         id: '2',
-        title: Categories.ECONOMY,
+        title: Categories.BUSINESS,
     },
     {
         id: '3',
-        title: Categories.STARTUP,
+        title: Categories.POLITICS,
     },
     {
         id: '4',

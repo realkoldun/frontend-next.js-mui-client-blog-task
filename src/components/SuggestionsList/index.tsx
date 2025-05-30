@@ -30,9 +30,9 @@ export default async function SuggestionsList({
 
     const suggestionPosts = postsByCategory.reduce<JSX.Element[]>(
         (acc, post) => {
-            if (post.id !== id && acc.length < MAX_SUGGESTIONS) {
+            if (post.uuid !== id && acc.length < MAX_SUGGESTIONS) {
                 acc.push(
-                    <PostCard key={post.id} isSuggestionCard post={post} />,
+                    <PostCard key={post.uuid} isSuggestionCard post={post} />,
                 );
             }
             return acc;

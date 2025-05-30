@@ -1,15 +1,8 @@
-type GeneralType = {
-    id: string;
-    title: string;
-    imgUrl: string;
-    description: string;
-};
-
 export enum Categories {
     BUSINESS = 'BUSINESS',
-    STARTUP = 'STARTUP',
-    ECONOMY = 'ECONOMY',
-    TECHNOLOGY = 'TECHNOLOGY',
+    GENERAL = 'GENERAL',
+    POLITICS = 'POLITICS',
+    TECHNOLOGY = 'TECH',
 }
 export enum Languages {
     RUSSIAN = 'РУССКИЙ',
@@ -26,11 +19,15 @@ export type CategoriesType = {
     title: Categories;
 };
 
-export type PostType = GeneralType & {
-    category: Categories;
+export type PostType = {
+    uuid: string;
+    category: string;
+    title: string;
     author: string;
-    date: string;
-    text: string;
+    published_at: string;
+    description: string;
+    snippet: string;
+    image_url: string;
 };
 export type SocialLinkType = {
     id: string;

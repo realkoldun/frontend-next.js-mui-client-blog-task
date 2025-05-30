@@ -19,14 +19,22 @@ interface PostCardProps {
 }
 
 export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
-    const { id, title, author, category, description, imgUrl, date } = post;
+    const {
+        uuid,
+        title,
+        author,
+        category,
+        description,
+        image_url,
+        published_at,
+    } = post;
     const router = useRouter();
     const categoryTranslation = useTranslations(`Categories.${category}`);
     const postTranslation = useTranslations('HomePage.PostCard');
 
     const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
-        router.push(PATHS.POST + id);
+        router.push(PATHS.POST + uuid);
     };
 
     const currentStyle = isSuggestionCard ? smallStyles : normalStyles;
@@ -35,7 +43,7 @@ export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
         <section className={currentStyle.section} onClick={handleOnClick}>
             <div className={currentStyle.imageContainer}>
                 <Image
-                    src={imgUrl}
+                    src={image_url}
                     alt={title}
                     {...imageConfig}
                     style={{ objectFit: 'cover' }}
@@ -51,7 +59,7 @@ export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
                             </span>
                         </p>
                         <div className={currentStyle.verticalDevider}></div>
-                        <p className={currentStyle.metaInfo}>{date}</p>
+                        <p className={currentStyle.metaInfo}>{published_at}</p>
                     </div>
                 ) : (
                     <p className={normalStyles.category}>
