@@ -29,26 +29,6 @@
   gap: constants.$gap-xl;
 }
 
-.paginationContainer {
-  @include mixins.flex-center;
-
-  gap: constants.$gap-m;
-  width: constants.$full-size;
-
-  button {
-    background-color: constants.$color-white;
-    border: none;
-    font-family: constants.$sen-font;
-    cursor: pointer;
-    font-size: constants.$font-size-m;
-
-    :disabled {
-      color: constants.$color-medium-gray;
-      cursor: default;
-    }
-  }
-}
-
 @media only screen and (max-width: constants.$screen-size-mobile) {
   .container {
     gap: constants.$gap-s;
