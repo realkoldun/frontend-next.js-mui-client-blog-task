@@ -22,11 +22,18 @@ export default function LanguageSwitcher() {
     const router = useRouter();
     const [selectedLanguage, setSelectedLanguage] = useState<string>(locale);
 
-    const handleChange = (event: SelectChangeEvent) => {
+    const handleOnChange = (event: SelectChangeEvent) => {
         const newLocale = event.target.value as string;
         setSelectedLanguage(newLocale);
         setCookie('locale', newLocale);
+        handleOnClose();
         router.refresh();
+    };
+
+    const handleOnClose = () => {
+        setTimeout(() => {
+            (document.activeElement as HTMLElement)?.blur();
+        });
     };
 
     const SelectedValue = ({ imgUrl, title }: LanguageType) => {
@@ -41,8 +48,9 @@ export default function LanguageSwitcher() {
     return (
         <Select
             value={selectedLanguage}
-            onChange={handleChange}
+            onChange={handleOnChange}
             MenuProps={{ disableScrollLock: true }}
+            onClose={handleOnClose}
             {...style.select}
             renderValue={(selected) => {
                 const selectedItem = languages.find(
