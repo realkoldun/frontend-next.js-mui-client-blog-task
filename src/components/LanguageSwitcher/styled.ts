@@ -4,6 +4,7 @@ export const select = {
     sx: {
         width: theme.sizes.xxs,
         height: theme.specialSizes.switcherHeight,
+        border: 'none',
     },
 };
 
@@ -11,7 +12,7 @@ export const selectedContainer = {
     sx: {
         display: theme.display.flex,
         alignItems: theme.display.align.center,
-        gap: theme.gap.l,
+        gap: theme.gap.xxs,
     },
 };
 

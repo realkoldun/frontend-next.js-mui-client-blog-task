@@ -31,13 +31,7 @@ export default function LanguageSwitcher() {
 
     const SelectedValue = ({ imgUrl, title }: LanguageType) => {
         return (
-            <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                }}
-            >
+            <Box {...style.selectedContainer}>
                 <Image src={imgUrl} alt={title} width={24} height={24} />
                 <Typography {...style.selectedText}>{title}</Typography>
             </Box>
