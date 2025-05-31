@@ -5,13 +5,21 @@ import PaginationButtons from '../PaginationButtons';
 
 import PostCard from '@/components/PostCard';
 import contentSectionStyle from '@/styles/contentSection.module.scss';
-import { PostType } from '@/types';
+import { getAllPosts } from '@/utils';
 
 interface PostListProps {
-    posts: PostType[];
+    category: string;
+    page: string;
+    locale: string;
 }
 
-export default async function PostList({ posts }: PostListProps) {
+export default async function PostList({
+    category,
+    page,
+    locale,
+}: PostListProps) {
+    const posts = await getAllPosts(category, page, locale);
+
     const t = await getTranslations('HomePage');
 
     return (

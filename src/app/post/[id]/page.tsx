@@ -21,20 +21,20 @@ export default async function PostPage({ params }: PostPageProps) {
 
     if (!post) notFound();
 
-    const blurImg = await getBase64(post.imgUrl);
+    const blurImg = await getBase64(post.image_url);
 
     return (
         <Box {...style.postPageContainer}>
-            <PostHeader {...post} />
+            <PostHeader post={post} />
             <Box {...style.imageContainer}>
                 <Image
-                    src={post.imgUrl}
+                    src={post.image_url}
                     {...imageConfig}
                     blurDataURL={blurImg}
                 />
             </Box>
             <Box>
-                <Typography {...style.mainText}>{post.text}</Typography>
+                <Typography {...style.mainText}>{post.snippet}</Typography>
             </Box>
             <SuggestionsList {...post} />
         </Box>

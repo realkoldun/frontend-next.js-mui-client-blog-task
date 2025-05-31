@@ -23,7 +23,7 @@ export type PostType = {
     uuid: string;
     category: string;
     title: string;
-    author: string;
+    source: string;
     published_at: string;
     description: string;
     snippet: string;
@@ -46,4 +46,13 @@ export type ModalWindowMessageType = {
     message: string;
     description: string;
     error?: boolean;
+};
+
+export type SearchParams = Promise<{
+    category?: string;
+    page?: string;
+}>;
+
+export type ResponseData = Omit<PostType, 'category'> & {
+    categories?: string[];
 };

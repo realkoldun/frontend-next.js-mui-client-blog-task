@@ -1,41 +1,36 @@
 'use server';
 
-import { headers } from 'next/headers';
+import { PostType, ResponseData } from '@/types';
 
-import { PostType } from '@/types';
+const MAX_SUGGESTIONS = 3;
 
-export async function getPostsByCategory(
+async function safeFetch(url: string): Promise<ResponseData[] | null> {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(
+                `Fetch error: ${response.status} ${response.statusText}`,
+            );
+        }
+        return (await response.json()).data as ResponseData[];
+    } catch (error) {
+        console.error(`Error fetching data from ${url}:`, error);
+        return null;
+    }
+}
+
+export async function getSimilarPosts(
+    id: string,
+    lang: string,
     category: string,
-    //page: string,
 ): Promise<PostType[]> {
-    const headersList = await headers();
-    const host = headersList.get('host') || 'localhost:3000';
-    const protocol = host.includes('localhost') ? 'http' : 'https';
-
-    const response = await fetch(
-        `${protocol}://${host}/api/posts?category=${category}`,
+    const responsePosts = await safeFetch(
+        `${process.env.NEWS_API_URL}/similar/${id}?api_token=${process.env.NEWS_API_KEY}&page=1&language=${lang}&limit=${MAX_SUGGESTIONS}`,
     );
-    return await response.json();
-}
+    if (!responsePosts) return [];
 
-interface GetAllPostsArgs {
-    category: string;
-    page: string;
-    lang: string;
-}
-
-type ResponseData = Omit<PostType, 'category'> & {
-    categories: string;
-};
-
-export async function getAllPosts(args: GetAllPostsArgs): Promise<PostType[]> {
-    const { category, lang, page } = args;
-    const response = await fetch(
-        `https://api.thenewsapi.com/v1/news/all?api_token=${process.env.NEWS_API_KEY}&categories=${category.toLowerCase()}&page=${page}&language=${lang}&limit=3`,
-    );
-
-    const posts = (await response.json()).data as ResponseData[];
-    return posts.map((post) => {
+    return responsePosts.map((post) => {
+        delete post['categories'];
         return {
             ...post,
             category,
@@ -43,11 +38,58 @@ export async function getAllPosts(args: GetAllPostsArgs): Promise<PostType[]> {
     }) as PostType[];
 }
 
-export async function getPostBuId(id: string) {
-    const headersList = await headers();
-    const host = headersList.get('host') || 'localhost:3000';
-    const protocol = host.includes('localhost') ? 'http' : 'https';
+export async function getAllPosts(
+    category: string,
+    page: string,
+    locale: string,
+): Promise<PostType[]> {
+    const url = `${process.env.NEWS_API_URL}/all?api_token=${process.env.NEWS_API_KEY}&categories=${category.toLowerCase()}&page=${page}&language=${locale}&limit=3`;
 
-    const response = await fetch(`${protocol}://${host}/api/posts/${id}`);
-    return await response.json();
+    const responsePosts = await safeFetch(url);
+    if (!responsePosts) return [];
+
+    return responsePosts.map((post) => {
+        delete post['categories'];
+        return {
+            ...post,
+            category,
+        };
+    }) as PostType[];
+}
+
+export async function getPostBuId(id: string): Promise<PostType | null> {
+    try {
+        const response = await fetch(
+            `${process.env.NEWS_API_URL}/uuid/${id}?api_token=${process.env.NEWS_API_KEY}`,
+        );
+        if (!response.ok) {
+            throw new Error(
+                `Fetch error: ${response.status} ${response.statusText}`,
+            );
+        }
+        const responsePost = (await response.json()) as ResponseData;
+
+        return {
+            ...responsePost,
+            category: responsePost.categories![0].toUpperCase(),
+        };
+    } catch (error) {
+        console.error(`Error fetching post by ID ${id}:`, error);
+        return null;
+    }
+}
+
+export async function getFeaturePost(
+    category: string,
+    lang: string,
+): Promise<PostType | null> {
+    const url = `${process.env.NEWS_API_URL}/top?api_token=${process.env.NEWS_API_KEY}&categories=${category.toLowerCase()}&page=1&language=${lang}&limit=1`;
+
+    const responsePosts = await safeFetch(url);
+    if (!responsePosts || responsePosts.length === 0) return null;
+
+    return {
+        ...responsePosts[0],
+        category: responsePosts[0].categories![0].toUpperCase(),
+    };
 }

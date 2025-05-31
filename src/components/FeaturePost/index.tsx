@@ -1,34 +1,30 @@
-'use client';
-
-import { MouseEvent } from 'react';
-
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useTranslations } from 'use-intl';
+import { getTranslations } from 'next-intl/server';
 
 import styles from './featurePost.module.scss';
 
 import { imageConfig } from '@/components/FeaturePost/config';
-import StyledButton from '@/components/StyledButton';
-import { PATHS } from '@/constants/paths';
-import { PostType } from '@/types';
+import ReadMoreButton from '@/components/FeaturePost/ReadMoreButton';
+import { formatDate } from '@/helpers';
+import { getFeaturePost } from '@/utils/apiUtils';
 
 interface FeaturePostComponentProps {
-    featurePost: PostType;
+    category: string;
+    locale: string;
 }
 
-export default function FeaturePost({
-    featurePost,
+export default async function FeaturePost({
+    category,
+    locale,
 }: FeaturePostComponentProps) {
-    const { uuid, author, description, published_at, image_url, title } =
-        featurePost;
-    const router = useRouter();
-    const t = useTranslations('HomePage.FeaturePost');
+    const featurePost = await getFeaturePost(category, locale);
 
-    const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        router.push(PATHS.POST + uuid);
-    };
+    if (!featurePost) return null;
+
+    const { uuid, source, description, published_at, image_url, title } =
+        featurePost;
+
+    const t = await getTranslations('HomePage.FeaturePost');
 
     return (
         <article className={styles.featurePostSection}>
@@ -43,18 +39,17 @@ export default function FeaturePost({
                             <p className={styles.metaInfo}>
                                 {t('ByAuthor')}{' '}
                                 <span className={styles.authorSpan}>
-                                    {author}
+                                    {source}
                                 </span>
                             </p>
                             <div className={styles.verticalDevider}></div>
-                            <p className={styles.metaInfo}>{published_at}</p>
+                            <p className={styles.metaInfo}>
+                                {formatDate(published_at, locale)}
+                            </p>
                         </div>
                         <p className={styles.descriptionText}>{description}</p>
                     </div>
-                    <StyledButton
-                        onClick={handleOnClick}
-                        text={t('ButtonText')}
-                    ></StyledButton>
+                    <ReadMoreButton uuid={uuid} />
                 </div>
                 <div className={styles.imageContainer}>
                     <Image

@@ -1,44 +1,33 @@
-import { JSX } from 'react';
-
 import { Box, Typography } from '@mui/material';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
 import PostCard from '@/components/PostCard';
-import { getPostsByCategory } from '@/utils';
+import { getSimilarPosts } from '@/utils';
 
 interface SuggestionsList {
-    id: string;
+    uuid: string;
     category: string;
 }
 
-const MAX_SUGGESTIONS = 3;
-
 export default async function SuggestionsList({
-    id,
+    uuid,
     category,
 }: SuggestionsList) {
-    const postsByCategory = await getPostsByCategory(category);
+    const locale = await getLocale();
+    const similarPosts = await getSimilarPosts(uuid, locale, category);
 
-    if (!postsByCategory) return null;
+    if (!similarPosts) return null;
 
     const suggestionTranslation = await getTranslations(
         'PostPage.SuggestionPost',
     );
     const categoryTranslation = await getTranslations(`Categories.${category}`);
 
-    const suggestionPosts = postsByCategory.reduce<JSX.Element[]>(
-        (acc, post) => {
-            if (post.uuid !== id && acc.length < MAX_SUGGESTIONS) {
-                acc.push(
-                    <PostCard key={post.uuid} isSuggestionCard post={post} />,
-                );
-            }
-            return acc;
-        },
-        [],
-    );
+    const suggestionPosts = similarPosts.map((post) => (
+        <PostCard key={post.uuid} isSuggestionCard post={post} />
+    ));
 
     if (suggestionPosts.length === 0) return null;
 

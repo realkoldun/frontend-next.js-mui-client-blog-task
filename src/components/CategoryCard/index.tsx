@@ -1,33 +1,40 @@
+'use client';
+
 import { MouseEvent } from 'react';
 
 import Image from 'next/image';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'use-intl';
 
 import styles from './categoryCard.module.scss';
 
 import { imageConfig } from '@/components/CategoryCard/config';
-import { CategoriesType } from '@/types';
+import { Categories } from '@/types';
 
 interface CategoryCardProps {
-    category: CategoriesType;
-    isSelected: boolean;
-    onClick: (category: CategoriesType) => void;
+    title: Categories;
 }
 
-export default function CategoryCard(props: CategoryCardProps) {
-    const { category, isSelected, onClick } = props;
-    const { title } = category;
+export default function CategoryCard({ title }: CategoryCardProps) {
     const t = useTranslations('Categories');
+    const router = useRouter();
+    const searchParams = useSearchParams();
+
+    const selectedCategory = searchParams.get('category') || '1';
 
     const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
-        onClick(category);
+        router.push(`?category=${title}`);
     };
 
     return (
         <section
             onClick={handleOnClick}
-            className={isSelected ? styles.selectedSection : styles.section}
+            className={
+                title === selectedCategory
+                    ? styles.selectedSection
+                    : styles.section
+            }
         >
             <div className={styles.container}>
                 <div className={styles.image}>
