@@ -1,14 +1,13 @@
-import { ReactNode } from 'react';
+import { lazy, ReactNode } from 'react';
 
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-
-import '@/styles/globals.scss';
 import { NextIntlClientProvider } from 'next-intl';
+import '@/styles/globals.scss';
+
+const Header = lazy(() => import('@/components/Header'));
+const Footer = lazy(() => import('@/components/Footer'));
 
 export const metadata: Metadata = {
     title: 'Modsen Blogs',

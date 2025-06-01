@@ -1,6 +1,6 @@
 'use client';
 
-import { MouseEvent, useState } from 'react';
+import { memo, MouseEvent, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -13,7 +13,7 @@ import { useCheckScreenWidth } from '@/hooks/useCheckScreenWidth';
 
 const MOBILE_SCREEN_SIZE = 500;
 
-export default function Header() {
+function Header() {
     const router = useRouter();
     const isWideScreen = useCheckScreenWidth({
         targetWidth: MOBILE_SCREEN_SIZE,
@@ -47,3 +47,5 @@ export default function Header() {
         </header>
     );
 }
+
+export default memo(Header);

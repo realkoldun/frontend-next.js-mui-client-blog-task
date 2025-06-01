@@ -1,6 +1,6 @@
 'use client';
 
-import { MouseEvent } from 'react';
+import { memo, MouseEvent } from 'react';
 
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -15,12 +15,12 @@ interface CategoryCardProps {
     title: Categories;
 }
 
-export default function CategoryCard({ title }: CategoryCardProps) {
+function CategoryCard({ title }: CategoryCardProps) {
     const t = useTranslations('Categories');
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    const selectedCategory = searchParams.get('category') || '1';
+    const selectedCategory = searchParams.get('category') || Categories.GENERAL;
 
     const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
         e.preventDefault();
@@ -52,3 +52,5 @@ export default function CategoryCard({ title }: CategoryCardProps) {
         </section>
     );
 }
+
+export default memo(CategoryCard);

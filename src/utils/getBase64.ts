@@ -11,7 +11,6 @@ export async function getBase64(imgUrl: string): Promise<string> {
         }
 
         const buffer = await response.arrayBuffer();
-        console.log('bebeb', buffer);
         const { base64 } = await getPlaiceholder(Buffer.from(buffer));
 
         return base64;

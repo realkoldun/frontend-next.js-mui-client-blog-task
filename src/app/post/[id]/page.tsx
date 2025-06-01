@@ -1,13 +1,17 @@
+import { lazy } from 'react';
+
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { getLocale, getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
 import { imageConfig } from '@/app/post/[id]/config';
 import PostHeader from '@/components/PostHeader';
-import SuggestionsList from '@/components/SuggestionsList';
-import { getBase64, getPostBuId } from '@/utils';
+import { getBase64, getPostBuId, getSimilarPosts } from '@/utils';
+
+const SuggestionsList = lazy(() => import('@/components/SuggestionsList'));
 
 interface PostPageProps {
     params: Promise<{
@@ -17,26 +21,32 @@ interface PostPageProps {
 
 export default async function PostPage({ params }: PostPageProps) {
     const { id } = await params;
+    const locale = await getLocale();
+    const t = await getTranslations('PostPage');
     const post = await getPostBuId(id);
 
     if (!post) notFound();
 
-    const blurImg = await getBase64(post.image_url);
+    const { category, image_url, snippet } = post;
+
+    const similarPosts = await getSimilarPosts(id, locale, category);
+
+    const blurImg = await getBase64(image_url);
 
     return (
         <Box {...style.postPageContainer}>
-            <PostHeader post={post} />
+            <PostHeader post={post} locale={locale} translation={t} />
             <Box {...style.imageContainer}>
-                <Image
-                    src={post.image_url}
-                    {...imageConfig}
-                    blurDataURL={blurImg}
-                />
+                <Image src={image_url} {...imageConfig} blurDataURL={blurImg} />
             </Box>
             <Box>
-                <Typography {...style.mainText}>{post.snippet}</Typography>
+                <Typography {...style.mainText}>{snippet}</Typography>
             </Box>
-            <SuggestionsList {...post} />
+            <SuggestionsList
+                posts={similarPosts}
+                category={category}
+                translation={t}
+            />
         </Box>
     );
 }

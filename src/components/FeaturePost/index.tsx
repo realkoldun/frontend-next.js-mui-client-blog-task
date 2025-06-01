@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
@@ -13,10 +15,7 @@ interface FeaturePostComponentProps {
     locale: string;
 }
 
-export default async function FeaturePost({
-    category,
-    locale,
-}: FeaturePostComponentProps) {
+async function FeaturePost({ category, locale }: FeaturePostComponentProps) {
     const featurePost = await getFeaturePost(category, locale);
 
     if (!featurePost) return null;
@@ -63,3 +62,5 @@ export default async function FeaturePost({
         </article>
     );
 }
+
+export default memo(FeaturePost);

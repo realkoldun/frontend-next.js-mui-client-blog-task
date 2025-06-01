@@ -1,7 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getLocale, getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
@@ -12,13 +11,16 @@ import { Categories } from '@/types';
 
 interface PostHeaderProps {
     post: PostType;
+    locale: string;
+    translation: (key: string) => string;
 }
 
-export default async function PostHeader({ post }: PostHeaderProps) {
+export default async function PostHeader({
+    post,
+    locale,
+    translation,
+}: PostHeaderProps) {
     const { category, title, source, published_at, image_url } = post;
-
-    const t = await getTranslations('PostPage.PostHeader');
-    const locale = await getLocale();
 
     return (
         <Box {...style.postHeaderSection}>
@@ -33,7 +35,8 @@ export default async function PostHeader({ post }: PostHeaderProps) {
                 <Box {...style.metaInfoTextContainer}>
                     <Typography {...style.authorName}>{source}</Typography>
                     <Typography {...style.dateText}>
-                        {t('Date')} {formatDate(published_at, locale)}
+                        {translation('PostHeader.Date')}{' '}
+                        {formatDate(published_at, locale)}
                     </Typography>
                 </Box>
             </Box>

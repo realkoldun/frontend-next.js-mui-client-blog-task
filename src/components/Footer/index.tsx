@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState, useTransition } from 'react';
+import { FormEvent, memo, useState, useTransition } from 'react';
 
 import Image from 'next/image';
 import { createPortal } from 'react-dom';
@@ -16,7 +16,7 @@ import { emailSubmit } from '@/helpers';
 import { usePortal } from '@/hooks';
 import { ModalWindowMessageType } from '@/types';
 
-export default function Footer() {
+function Footer() {
     const t = useTranslations('FooterSection');
 
     const [message, setMessage] = useState<ModalWindowMessageType | null>(null);
@@ -98,3 +98,5 @@ export default function Footer() {
         </footer>
     );
 }
+
+export default memo(Footer);

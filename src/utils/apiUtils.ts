@@ -1,23 +1,10 @@
 'use server';
 
+import { formatString, safeFetch } from '@/helpers';
 import { PostType, ResponseData } from '@/types';
 
 const MAX_SUGGESTIONS = 3;
-
-async function safeFetch(url: string): Promise<ResponseData[] | null> {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(
-                `Fetch error: ${response.status} ${response.statusText}`,
-            );
-        }
-        return (await response.json()).data as ResponseData[];
-    } catch (error) {
-        console.error(`Error fetching data from ${url}:`, error);
-        return null;
-    }
-}
+const MAX_STRING_LENGTH = 90;
 
 export async function getSimilarPosts(
     id: string,
@@ -33,6 +20,8 @@ export async function getSimilarPosts(
         delete post['categories'];
         return {
             ...post,
+            title: formatString(post.title, MAX_STRING_LENGTH),
+            description: formatString(post.description, MAX_STRING_LENGTH),
             category,
         };
     }) as PostType[];
@@ -52,6 +41,8 @@ export async function getAllPosts(
         delete post['categories'];
         return {
             ...post,
+            title: formatString(post.title, MAX_STRING_LENGTH),
+            description: formatString(post.description, MAX_STRING_LENGTH),
             category,
         };
     }) as PostType[];
@@ -68,7 +59,6 @@ export async function getPostBuId(id: string): Promise<PostType | null> {
             );
         }
         const responsePost = (await response.json()) as ResponseData;
-
         return {
             ...responsePost,
             category: responsePost.categories![0].toUpperCase(),
@@ -90,6 +80,11 @@ export async function getFeaturePost(
 
     return {
         ...responsePosts[0],
+        title: formatString(responsePosts[0].title, MAX_STRING_LENGTH),
+        description: formatString(
+            responsePosts[0].description,
+            MAX_STRING_LENGTH,
+        ),
         category: responsePosts[0].categories![0].toUpperCase(),
     };
 }
