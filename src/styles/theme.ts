@@ -9,6 +9,7 @@ export const theme = {
             center: 'center' as const,
             spaceAround: 'space-around' as const,
             start: 'start' as const,
+            spaceBetween: 'space-between' as const,
         },
         position: {
             relative: 'relative' as const,

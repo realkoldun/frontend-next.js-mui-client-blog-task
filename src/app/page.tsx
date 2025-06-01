@@ -1,8 +1,7 @@
 import { lazy } from 'react';
 
-import { getLocale } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 
-//import CategoriesList from '@/components/CategoriesList';
 import FeaturePost from '@/components/FeaturePost';
 import PostList from '@/components/PostList';
 import { extractSearchParams } from '@/helpers';
@@ -17,12 +16,13 @@ interface HomePageProps {
 export default async function HomePage({ searchParams }: HomePageProps) {
     const params = await extractSearchParams(searchParams);
     const lang = await getLocale();
+    const t = await getTranslations('HomePage');
 
     return (
         <main>
-            <FeaturePost {...params} locale={lang} />
-            <PostList {...params} locale={lang} />
-            <CategoriesList />
+            <FeaturePost {...params} locale={lang} translation={t} />
+            <PostList {...params} locale={lang} translation={t} />
+            <CategoriesList translation={t} />
         </main>
     );
 }

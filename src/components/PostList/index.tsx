@@ -1,5 +1,3 @@
-import { getTranslations } from 'next-intl/server';
-
 import styles from './postList.module.scss';
 import PaginationButtons from '../PaginationButtons';
 
@@ -11,21 +9,19 @@ interface PostListProps {
     category: string;
     page: string;
     locale: string;
+    translation: (key: string) => string;
 }
 
-export default async function PostList({
-    category,
-    page,
-    locale,
-}: PostListProps) {
+export default async function PostList(props: PostListProps) {
+    const { category, locale, translation, page } = props;
     const posts = await getAllPosts(category, page, locale);
-
-    const t = await getTranslations('HomePage');
 
     return (
         <section className={contentSectionStyle.contentSection}>
             <div className={styles.container}>
-                <h1 className={styles.title}>{t('PostList.SectionTitle')}</h1>
+                <h1 className={styles.title}>
+                    {translation('PostList.SectionTitle')}
+                </h1>
                 <hr className={styles.horizontalLine} />
                 <div className={styles.listContainer}>
                     {posts.map((post) => {
