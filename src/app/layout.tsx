@@ -6,7 +6,8 @@ import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import '@/styles/globals.scss';
 
-const Header = lazy(() => import('@/components/Header'));
+import Header from '@/components/Header';
+
 const Footer = lazy(() => import('@/components/Footer'));
 
 export const metadata: Metadata = {

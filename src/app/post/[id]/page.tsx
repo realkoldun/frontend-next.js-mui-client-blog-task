@@ -21,11 +21,13 @@ interface PostPageProps {
 
 export default async function PostPage({ params }: PostPageProps) {
     const { id } = await params;
-    const locale = await getLocale();
-    const t = await getTranslations('PostPage');
     const post = await getPostBuId(id);
 
     if (!post) notFound();
+
+    const locale = await getLocale();
+
+    const t = await getTranslations('PostPage');
 
     const { category, image_url, snippet } = post;
 

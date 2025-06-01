@@ -1,7 +1,6 @@
 import { memo } from 'react';
 
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
 
 import styles from './featurePost.module.scss';
 
@@ -13,9 +12,14 @@ import { getFeaturePost } from '@/utils/apiUtils';
 interface FeaturePostComponentProps {
     category: string;
     locale: string;
+    translation: (key: string) => string;
 }
 
-async function FeaturePost({ category, locale }: FeaturePostComponentProps) {
+async function FeaturePost({
+    category,
+    locale,
+    translation,
+}: FeaturePostComponentProps) {
     const featurePost = await getFeaturePost(category, locale);
 
     if (!featurePost) return null;
@@ -23,20 +27,18 @@ async function FeaturePost({ category, locale }: FeaturePostComponentProps) {
     const { uuid, source, description, published_at, image_url, title } =
         featurePost;
 
-    const t = await getTranslations('HomePage.FeaturePost');
-
     return (
         <article className={styles.featurePostSection}>
             <div className={styles.featurePostContainer}>
                 <div className={styles.informationSection}>
                     <div className={styles.informationContainer}>
                         <p className={styles.sectionTitle}>
-                            {t('SectionTitle')}
+                            {translation('FeaturePost.SectionTitle')}
                         </p>
                         <h2 className={styles.title}>{title}</h2>
                         <div className={styles.infoContainer}>
                             <p className={styles.metaInfo}>
-                                {t('ByAuthor')}{' '}
+                                {translation('FeaturePost.ByAuthor')}{' '}
                                 <span className={styles.authorSpan}>
                                     {source}
                                 </span>

@@ -29,7 +29,6 @@ export default async function SmallCategoryCard({
                     {...style.imageStyle}
                 />
             </Box>
-
             <Typography {...style.title}>{t('title')}</Typography>
         </Box>
     );
