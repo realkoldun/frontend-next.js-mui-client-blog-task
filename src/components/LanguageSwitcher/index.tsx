@@ -22,28 +22,27 @@ export default function LanguageSwitcher() {
     const router = useRouter();
     const [selectedLanguage, setSelectedLanguage] = useState<string>(locale);
 
-    const handleOnChange = (event: SelectChangeEvent) => {
-        const newLocale = event.target.value as string;
+    const handleOnChange = (event: SelectChangeEvent): void => {
+        const newLocale = event.target.value;
         setSelectedLanguage(newLocale);
         setCookie('locale', newLocale);
         handleOnClose();
         router.refresh();
     };
 
-    const handleOnClose = () => {
-        setTimeout(() => {
-            (document.activeElement as HTMLElement)?.blur();
+    const handleOnClose = (): void => {
+        requestAnimationFrame(() => {
+            const target = document.activeElement as HTMLElement;
+            target?.blur();
         });
     };
 
-    const SelectedValue = ({ imgUrl, title }: LanguageType) => {
-        return (
-            <Box {...style.selectedContainer}>
-                <Image src={imgUrl} alt={title} width={24} height={24} />
-                <Typography {...style.selectedText}>{title}</Typography>
-            </Box>
-        );
-    };
+    const SelectedValue = ({ imgUrl, title }: LanguageType) => (
+        <Box {...style.selectedContainer}>
+            <Image src={imgUrl} alt={title} width={24} height={24} />
+            <Typography {...style.selectedText}>{title}</Typography>
+        </Box>
+    );
 
     return (
         <Select
@@ -61,19 +60,13 @@ export default function LanguageSwitcher() {
                 ) : null;
             }}
         >
-            {languages.map(({ id, title, imgUrl, code }) => {
-                return (
-                    <MenuItem key={id} {...style.menuItem} value={code}>
-                        <Image
-                            src={imgUrl}
-                            alt={title}
-                            width={24}
-                            height={24}
-                        />
-                        <Typography {...style.text}>{title}</Typography>
-                    </MenuItem>
-                );
-            })}
+            {languages.map(({ id, title, imgUrl, code }) => (
+                <MenuItem key={id} {...style.menuItem} value={code}>
+                    <Image src={imgUrl} alt={title} width={24} height={24} />
+                    <Typography {...style.text}>{title}</Typography>
+                </MenuItem>
+            ))}
+            )
         </Select>
     );
 }
