@@ -1,11 +1,9 @@
 import { ResponseData } from '@/types';
 
-const MAX_CACHE_LIFE = 3000;
-
 export async function safeFetch(url: string): Promise<ResponseData[] | null> {
     try {
         const response = await fetch(url, {
-            next: { revalidate: MAX_CACHE_LIFE },
+            cache: 'force-cache',
         });
         if (!response.ok) {
             throw new Error(
