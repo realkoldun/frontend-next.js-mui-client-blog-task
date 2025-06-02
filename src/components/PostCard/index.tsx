@@ -1,18 +1,15 @@
-'use client';
-
-import { MouseEvent } from 'react';
+'use server';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
-import { useTranslations } from 'use-intl';
+import Link from 'next/link';
+import { getLocale, getTranslations } from 'next-intl/server';
 
 import normalStyles from './postCard.module.scss';
 import smallStyles from './smallPostCard.module.scss';
 
 import { imageConfig } from '@/components/PostCard/config';
 import { PATHS } from '@/constants/paths';
-import { formatDate } from '@/helpers';
+import { checkImage, formatDate } from '@/helpers';
 import { PostType } from '@/types';
 
 interface PostCardProps {
@@ -20,7 +17,10 @@ interface PostCardProps {
     isSuggestionCard?: boolean;
 }
 
-export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
+export default async function PostCard({
+    post,
+    isSuggestionCard,
+}: PostCardProps) {
     const {
         uuid,
         title,
@@ -30,23 +30,21 @@ export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
         image_url,
         published_at,
     } = post;
-    const router = useRouter();
-    const locale = useLocale();
-    const categoryTranslation = useTranslations(`Categories.${category}`);
-    const postTranslation = useTranslations('HomePage.PostCard');
 
-    const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
-        e.preventDefault();
-        router.push(PATHS.POST + uuid);
-    };
+    const locale = await getLocale();
+
+    const categoryTranslation = await getTranslations(`Categories.${category}`);
+    const postTranslation = await getTranslations('HomePage.PostCard');
 
     const currentStyle = isSuggestionCard ? smallStyles : normalStyles;
 
+    const currentImageUrl = await checkImage(image_url);
+
     return (
-        <section className={currentStyle.section} onClick={handleOnClick}>
+        <Link href={PATHS.POST + uuid} className={currentStyle.section}>
             <div className={currentStyle.imageContainer}>
                 <Image
-                    src={image_url}
+                    src={currentImageUrl}
                     alt={title}
                     {...imageConfig}
                     style={{ objectFit: 'cover' }}
@@ -74,6 +72,6 @@ export default function PostCard({ post, isSuggestionCard }: PostCardProps) {
                 <p className={currentStyle.title}>{title}</p>
                 <p className={smallStyles.description}>{description}</p>
             </div>
-        </section>
+        </Link>
     );
 }

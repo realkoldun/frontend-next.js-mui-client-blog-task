@@ -24,9 +24,9 @@ export default async function PostList(props: PostListProps) {
                 </h1>
                 <hr className={styles.horizontalLine} />
                 <div className={styles.listContainer}>
-                    {posts.map((post) => {
-                        return <PostCard key={post.uuid} post={post} />;
-                    })}
+                    {posts.map((post) => (
+                        <PostCard key={post.uuid} post={post} />
+                    ))}
                 </div>
                 <PaginationButtons />
             </div>

@@ -6,7 +6,7 @@ import styles from './featurePost.module.scss';
 
 import { imageConfig } from '@/components/FeaturePost/config';
 import ReadMoreButton from '@/components/FeaturePost/ReadMoreButton';
-import { formatDate } from '@/helpers';
+import { checkImage, formatDate } from '@/helpers';
 import { getFeaturePost } from '@/utils/apiUtils';
 
 interface FeaturePostComponentProps {
@@ -26,6 +26,8 @@ async function FeaturePost({
 
     const { uuid, source, description, published_at, image_url, title } =
         featurePost;
+
+    const currentImageUrl = await checkImage(image_url);
 
     return (
         <article className={styles.featurePostSection}>
@@ -54,7 +56,7 @@ async function FeaturePost({
                 </div>
                 <div className={styles.imageContainer}>
                     <Image
-                        src={image_url}
+                        src={currentImageUrl}
                         alt='feature post image'
                         {...imageConfig}
                         style={{ objectFit: 'cover' }}

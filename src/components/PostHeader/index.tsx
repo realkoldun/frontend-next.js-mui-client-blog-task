@@ -30,7 +30,7 @@ export default async function PostHeader({
                     alt='avatar'
                     width={48}
                     height={48}
-                    style={{ borderRadius: '50%' }}
+                    {...style.image}
                 />
                 <Box {...style.metaInfoTextContainer}>
                     <Typography {...style.authorName}>{source}</Typography>

@@ -24,6 +24,10 @@ export const metaInfoTextContainer = {
     alignItems: theme.display.align.start,
 };
 
+export const image = {
+    style: { borderRadius: '50%' },
+};
+
 export const authorName = {
     fontFamily: theme.fontFamily.sen,
     color: theme.color.purple,
