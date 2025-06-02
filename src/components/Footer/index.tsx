@@ -75,16 +75,14 @@ function Footer() {
                     <p>Hello@finsweet.com 020 7993 2905</p>
                 </div>
                 <div className={styles.infoSocialsContainer}>
-                    {socialLinks.map(({ id, title, imgUrl }) => {
-                        return (
-                            <Image
-                                key={id}
-                                src={imgUrl}
-                                alt={title}
-                                {...imageConfig}
-                            />
-                        );
-                    })}
+                    {socialLinks.map(({ id, title, imgUrl }) => (
+                        <Image
+                            key={id}
+                            src={imgUrl}
+                            alt={title}
+                            {...imageConfig}
+                        />
+                    ))}
                 </div>
             </div>
             {isModalWindowShowed &&

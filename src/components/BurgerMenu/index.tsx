@@ -1,36 +1,49 @@
 'use client';
 
-import { Dispatch, PropsWithChildren, SetStateAction } from 'react';
+import { memo, PropsWithChildren, useState } from 'react';
 
 import { Box } from '@mui/material';
 
 import * as style from './styled';
 
-interface BurgerMenuProps extends PropsWithChildren {
-    open: boolean;
-    setOpenAction: Dispatch<SetStateAction<boolean>>;
-}
+import { useCheckScreenWidth } from '@/hooks';
 
-export default function BurgerMenu({
-    open,
-    setOpenAction,
-    children,
-}: BurgerMenuProps) {
+const MOBILE_SCREEN_SIZE = 500;
+
+function BurgerMenu({ children }: PropsWithChildren) {
+    const [isBurgerMenuOpen, setBurgerMenuOpen] = useState<boolean>(false);
+
+    const isWideScreen = useCheckScreenWidth({
+        targetWidth: MOBILE_SCREEN_SIZE,
+        isWider: true,
+    });
+
     const handleChangeOpenState = (): void => {
-        setOpenAction((prevState) => !prevState);
+        setBurgerMenuOpen((prevState) => !prevState);
     };
+
+    if (typeof isWideScreen === 'undefined') return null;
+
+    if (isWideScreen) return children;
 
     return (
         <>
             <Box {...style.burgerContainer} onClick={handleChangeOpenState}>
-                <Box {...style.burgerLine(open)} />
-                <Box {...style.burgerLine(open)} />
-                <Box {...style.burgerLine(open)} />
+                {Array(3)
+                    .fill(null)
+                    .map((_, index) => (
+                        <Box
+                            key={index}
+                            {...style.burgerLine(isBurgerMenuOpen)}
+                        />
+                    ))}
             </Box>
             <Box
                 sx={{
                     ...style.menuContainer,
-                    transform: open ? 'translateY(0)' : 'translateY(-100%)',
+                    transform: isBurgerMenuOpen
+                        ? 'translateY(0)'
+                        : 'translateY(-100%)',
                     transition: 'transform 0.3s ease-in-out',
                 }}
             >
@@ -39,3 +52,5 @@ export default function BurgerMenu({
         </>
     );
 }
+
+export default memo(BurgerMenu);

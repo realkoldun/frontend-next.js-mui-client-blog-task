@@ -18,9 +18,9 @@ export default async function CategoriesList({
                     {translation('CategoryList.SectionTitle')}
                 </h2>
                 <div className={styles.list}>
-                    {categories.map(({ id, title }) => {
-                        return <CategoryCard key={id} title={title} />;
-                    })}
+                    {categories.map(({ id, title }) => (
+                        <CategoryCard key={id} title={title} />
+                    ))}
                 </div>
             </div>
         </section>
