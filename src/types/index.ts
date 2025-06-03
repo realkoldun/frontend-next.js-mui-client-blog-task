@@ -53,6 +53,18 @@ export type SearchParams = Promise<{
     page?: string;
 }>;
 
+export type ResponseMeta = {
+    found: string;
+    returned: string;
+    limit: string;
+    page: string;
+};
+
 export type ResponseData = Omit<PostType, 'category'> & {
     categories?: string[];
+};
+
+export type Response = {
+    meta?: ResponseMeta;
+    data: ResponseData[];
 };

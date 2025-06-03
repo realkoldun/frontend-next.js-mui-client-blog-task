@@ -1,6 +1,13 @@
-import { ResponseData } from '@/types';
+import { Response, ResponseData, ResponseMeta } from '@/types';
 
-export async function safeFetch(url: string): Promise<ResponseData[] | null> {
+interface SafeFetchReturnValue {
+    responsePosts: ResponseData[];
+    meta?: ResponseMeta;
+}
+
+export async function safeFetch(
+    url: string,
+): Promise<SafeFetchReturnValue | null> {
     try {
         const response = await fetch(url, {
             cache: 'force-cache',
@@ -10,7 +17,12 @@ export async function safeFetch(url: string): Promise<ResponseData[] | null> {
                 `Fetch error: ${response.status} ${response.statusText}`,
             );
         }
-        return (await response.json()).data as ResponseData[];
+        const data = (await response.json()) as Response;
+
+        return {
+            responsePosts: data.data as ResponseData[],
+            meta: data.meta as ResponseMeta,
+        };
     } catch (error) {
         console.error(`Error fetching data from ${url}:`, error);
         return null;

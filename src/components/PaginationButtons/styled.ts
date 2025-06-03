@@ -12,5 +12,16 @@ export const button = {
         border: 'none',
         fontFamily: theme.fontFamily.sen,
         cursor: 'pointer',
+        color: theme.color.black,
+        fontSize: theme.fontSize.s,
+        '&:hover': {
+            backgroundColor: theme.color.lightYellow,
+        },
+        '&.MuiButton-contained': {
+            backgroundColor: theme.color.yellow,
+            '&:hover': {
+                backgroundColor: theme.color.lightYellow,
+            },
+        },
     },
 };

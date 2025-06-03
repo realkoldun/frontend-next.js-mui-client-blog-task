@@ -5,18 +5,19 @@ import { PostType, ResponseData } from '@/types';
 
 const MAX_SUGGESTIONS = 3;
 const MAX_STRING_LENGTH = 90;
+const MAX_PAGES = 30;
 
 export async function getSimilarPosts(
     id: string,
     lang: string,
     category: string,
 ): Promise<PostType[]> {
-    const responsePosts = await safeFetch(
+    const response = await safeFetch(
         `${process.env.NEWS_API_URL}/similar/${id}?api_token=${process.env.NEWS_API_KEY}&page=1&language=${lang}&limit=${MAX_SUGGESTIONS}`,
     );
-    if (!responsePosts) return [];
+    if (!response) return [];
 
-    return responsePosts.map((post) => {
+    return response.responsePosts.map((post) => {
         delete post['categories'];
         return {
             ...post,
@@ -27,17 +28,31 @@ export async function getSimilarPosts(
     }) as PostType[];
 }
 
+interface GetAllPostsReturnValue {
+    posts: PostType[];
+    totalPages: number;
+}
+
 export async function getAllPosts(
     category: string,
     page: string,
     locale: string,
-): Promise<PostType[]> {
-    const url = `${process.env.NEWS_API_URL}/all?api_token=${process.env.NEWS_API_KEY}&categories=${category.toLowerCase()}&page=${page}&language=${locale}&limit=3`;
+): Promise<GetAllPostsReturnValue> {
+    const response = await safeFetch(
+        `${process.env.NEWS_API_URL}/all?api_token=${process.env.NEWS_API_KEY}&categories=${category.toLowerCase()}&page=${page}&language=${locale}&limit=${MAX_SUGGESTIONS}`,
+    );
+    if (!response) return { posts: [], totalPages: 0 };
 
-    const responsePosts = await safeFetch(url);
-    if (!responsePosts) return [];
+    const { responsePosts, meta } = response;
 
-    return responsePosts.map((post) => {
+    const pages = Number(meta!.found) / MAX_SUGGESTIONS;
+
+    const totalPages =
+        pages > MAX_PAGES ? MAX_PAGES : parseInt(pages.toString());
+
+    console.log(meta);
+
+    const posts = responsePosts.map((post) => {
         delete post['categories'];
         return {
             ...post,
@@ -46,6 +61,8 @@ export async function getAllPosts(
             category,
         };
     }) as PostType[];
+
+    return { posts, totalPages };
 }
 
 export async function getPostBuId(id: string): Promise<PostType | null> {
@@ -73,10 +90,14 @@ export async function getFeaturePost(
     category: string,
     lang: string,
 ): Promise<PostType | null> {
-    const url = `${process.env.NEWS_API_URL}/top?api_token=${process.env.NEWS_API_KEY}&categories=${category.toLowerCase()}&page=1&language=${lang}&limit=1`;
+    const response = await safeFetch(
+        `${process.env.NEWS_API_URL}/top?api_token=${process.env.NEWS_API_KEY}&categories=${category.toLowerCase()}&page=1&language=${lang}&limit=1`,
+    );
+    if (!response) return null;
 
-    const responsePosts = await safeFetch(url);
-    if (!responsePosts || responsePosts.length === 0) return null;
+    const { responsePosts } = response;
+
+    if (responsePosts.length === 0) return null;
 
     return {
         ...responsePosts[0],

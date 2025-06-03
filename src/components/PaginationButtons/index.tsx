@@ -1,17 +1,30 @@
 'use client';
 
+import { useMemo } from 'react';
+
 import { Box, Button } from '@mui/material';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useTranslations } from 'use-intl';
 
 import * as style from './styled';
 
-export default function PaginationButtons() {
-    const t = useTranslations('HomePage');
+import { generatePagination } from '@/helpers';
+
+interface PaginationButtonsProps {
+    totalPages: number;
+}
+
+export default function PaginationButtons({
+    totalPages,
+}: PaginationButtonsProps) {
     const searchParams = useSearchParams();
     const router = useRouter();
 
     const currentPage = Number(searchParams.get('page')) || 1;
+
+    const pagination = useMemo(
+        () => generatePagination(currentPage, totalPages),
+        [totalPages, currentPage],
+    );
 
     const handleOnClickNextPage = () => {
         const newParams = new URLSearchParams(searchParams.toString());
@@ -27,6 +40,27 @@ export default function PaginationButtons() {
         }
     };
 
+    const handleOnClickSelectedPage = (page: number) => {
+        const newParams = new URLSearchParams(searchParams.toString());
+        newParams.set('page', String(page));
+        router.push(`?${newParams.toString()}`);
+    };
+
+    const pageNumbering = pagination.map((page, index) =>
+        typeof page === 'number' ? (
+            <Button
+                {...style.button}
+                key={index}
+                variant={page === currentPage ? 'contained' : 'outlined'}
+                onClick={() => handleOnClickSelectedPage(page)}
+            >
+                {page}
+            </Button>
+        ) : (
+            <span key={index}>...</span>
+        ),
+    );
+
     return (
         <Box {...style.section}>
             <Button
@@ -34,10 +68,15 @@ export default function PaginationButtons() {
                 disabled={currentPage <= 1}
                 onClick={handleOnClickPrevPage}
             >
-                {t('Pagination.Prev')}
+                {'<'}
             </Button>
-            <Button {...style.button} onClick={handleOnClickNextPage}>
-                {t('Pagination.Next')}
+            {pageNumbering}
+            <Button
+                {...style.button}
+                disabled={currentPage === totalPages}
+                onClick={handleOnClickNextPage}
+            >
+                {'>'}
             </Button>
         </Box>
     );

@@ -14,7 +14,8 @@ interface PostListProps {
 
 export default async function PostList(props: PostListProps) {
     const { category, locale, translation, page } = props;
-    const posts = await getAllPosts(category, page, locale);
+    const { posts, totalPages } = await getAllPosts(category, page, locale);
+    console.log(totalPages);
 
     return (
         <section className={contentSectionStyle.contentSection}>
@@ -28,7 +29,7 @@ export default async function PostList(props: PostListProps) {
                         <PostCard key={post.uuid} post={post} />
                     ))}
                 </div>
-                <PaginationButtons />
+                <PaginationButtons totalPages={totalPages} />
             </div>
         </section>
     );

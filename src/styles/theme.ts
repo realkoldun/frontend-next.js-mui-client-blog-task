@@ -62,6 +62,8 @@ export const theme = {
         darkGray: '#232536',
         black: '#000000',
         white: '#FFFFFF',
+        lightYellow: '#FFD099',
+        yellow: '#FFD050',
     },
     fontFamily: {
         sen: 'SenFont',
