@@ -25,7 +25,7 @@ export const metaInfoTextContainer = {
 };
 
 export const image = {
-    style: { borderRadius: '50%' },
+    style: { borderRadius: theme.border.round },
 };
 
 export const authorName = {

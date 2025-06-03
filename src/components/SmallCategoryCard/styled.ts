@@ -16,7 +16,7 @@ export const imageContainer = {
 export const imageStyle = {
     fill: true,
     style: {
-        borderRadius: '50%',
+        borderRadius: theme.border.round,
     },
 };
 

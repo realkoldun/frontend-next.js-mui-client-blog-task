@@ -47,6 +47,9 @@ export const theme = {
     margin: {
         m: 2,
     },
+    border: {
+        round: '50%',
+    },
     fontSize: {
         xs: 14,
         s: 16,
