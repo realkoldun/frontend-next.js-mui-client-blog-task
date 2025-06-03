@@ -19,13 +19,19 @@
 .list {
   @include mixins.flex-space-between;
 
-  flex-direction: row;
-  width: constants.$full-size;
   gap: constants.$gap-s;
+  width: constants.$full-size;
   flex-wrap: wrap;
 }
 
-@media only screen and (max-width: constants.$screen-size-mobile) {
+@media only screen and (max-width: constants.$screen-size-big) {
+  .list {
+    @include mixins.flex-center;
+  }
+}
+
+
+@media only screen and (max-width: constants.$screen-size-small) {
   .list {
     gap: constants.$gap-xs;
   }

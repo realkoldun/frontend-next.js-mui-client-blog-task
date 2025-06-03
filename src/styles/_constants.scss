@@ -18,7 +18,7 @@ $color-light-yellow: #FFD099 !default;
 
 //sizes
 $full-size: 100% !default;
-$max-container-width: 1200px !default;
+$max-container-width: 1400px !default;
 $max-page-container-width: 900px !default;
 $size-xxxl: 500px !default;
 $size-xxl: 400px !default;
@@ -32,6 +32,7 @@ $size-min: 1px !default;
 //special sizes
 $big-item-height: 56px !default;
 $small-item-height: 40px !default;
+$max-card-width: 250px !default;
 $big-item-width: 200px !default;
 $small-item-width: 120px !default;
 
@@ -50,6 +51,7 @@ $gap-s: 10px !default;
 $gap-xs: 2px !default;
 
 //screen sizes
+$screen-size-big: 1200px !default;
 $screen-size-small: 800px !default;
 $screen-size-mobile: 550px !default;
 
