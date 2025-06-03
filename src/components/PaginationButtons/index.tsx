@@ -26,13 +26,13 @@ export default function PaginationButtons({
         [totalPages, currentPage],
     );
 
-    const handleOnClickNextPage = () => {
+    const handleOnClickNextPage = (): void => {
         const newParams = new URLSearchParams(searchParams.toString());
         newParams.set('page', String(currentPage + 1));
         router.push(`?${newParams.toString()}`);
     };
 
-    const handleOnClickPrevPage = () => {
+    const handleOnClickPrevPage = (): void => {
         if (currentPage > 0) {
             const newParams = new URLSearchParams(searchParams.toString());
             newParams.set('page', String(currentPage - 1));
@@ -40,7 +40,7 @@ export default function PaginationButtons({
         }
     };
 
-    const handleOnClickSelectedPage = (page: number) => {
+    const handleOnClickSelectedPage = (page: number): void => {
         const newParams = new URLSearchParams(searchParams.toString());
         newParams.set('page', String(page));
         router.push(`?${newParams.toString()}`);

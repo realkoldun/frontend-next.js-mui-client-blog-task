@@ -16,7 +16,7 @@ export default function ReadMoreButton({ uuid }: ReadMoreButtonProps) {
     const router = useRouter();
     const t = useTranslations('HomePage.FeaturePost');
 
-    const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const handleOnClick = (e: MouseEvent<HTMLButtonElement>): void => {
         e.preventDefault();
         router.push(PATHS.POST + uuid);
     };

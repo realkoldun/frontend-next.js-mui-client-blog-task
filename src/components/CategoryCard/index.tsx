@@ -22,7 +22,7 @@ function CategoryCard({ title }: CategoryCardProps) {
 
     const selectedCategory = searchParams.get('category') || Categories.GENERAL;
 
-    const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
+    const handleOnClick = (e: MouseEvent<HTMLDivElement>): void => {
         e.preventDefault();
         router.push(`?category=${title}`);
     };

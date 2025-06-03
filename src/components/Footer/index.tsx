@@ -34,10 +34,12 @@ function Footer() {
         setModalWindowOpen(false);
     };
 
-    const handleEmailSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleEmailSubmit = async (
+        e: FormEvent<HTMLFormElement>,
+    ): Promise<void> => {
         e.preventDefault();
 
-        startTransition(async () => {
+        startTransition(async (): Promise<void> => {
             const formData = new FormData(e.currentTarget);
             const result = await emailSubmit(formData);
             setMessage(result);
