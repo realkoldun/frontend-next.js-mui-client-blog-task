@@ -1,6 +1,6 @@
 import { PostType, ResponseData } from '@/types';
 
-export async function getPostBuId(id: string): Promise<PostType | null> {
+export async function getPostById(id: string): Promise<PostType | null> {
     try {
         const response = await fetch(
             `${process.env.NEWS_API_URL}/uuid/${id}?api_token=${process.env.NEWS_API_KEY}`,

@@ -7,7 +7,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
-import { checkImage, getPostBuId, getSimilarPosts } from '@/api';
+import { checkImage, getPostById, getSimilarPosts } from '@/api';
 import { imageConfig } from '@/app/post/[id]/config';
 import PostHeader from '@/components/PostHeader';
 
@@ -21,7 +21,7 @@ interface PostPageProps {
 
 export default async function PostPage({ params }: PostPageProps) {
     const { id } = await params;
-    const post = await getPostBuId(id);
+    const post = await getPostById(id);
 
     if (!post) notFound();
 
