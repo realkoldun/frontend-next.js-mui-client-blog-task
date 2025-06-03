@@ -8,11 +8,11 @@ import { useTranslations } from 'use-intl';
 
 import styles from './footer.module.scss';
 
+import { emailSubmit } from '@/api';
 import { imageConfig } from '@/components/Footer/config';
 import ModalWindow from '@/components/ModalWindow';
 import StyledButton from '@/components/StyledButton';
 import { socialLinks } from '@/constants/socialLinks';
-import { emailSubmit } from '@/helpers';
 import { usePortal } from '@/hooks';
 import { ModalWindowMessageType } from '@/types';
 
