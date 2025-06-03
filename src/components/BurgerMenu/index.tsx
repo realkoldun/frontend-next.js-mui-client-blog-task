@@ -6,6 +6,7 @@ import { Box } from '@mui/material';
 
 import * as style from './styled';
 
+import { generateArray } from '@/helpers';
 import { useCheckScreenWidth } from '@/hooks';
 
 const MOBILE_SCREEN_SIZE = 500;
@@ -29,14 +30,9 @@ function BurgerMenu({ children }: PropsWithChildren) {
     return (
         <>
             <Box {...style.burgerContainer} onClick={handleChangeOpenState}>
-                {Array(3)
-                    .fill(null)
-                    .map((_, index) => (
-                        <Box
-                            key={index}
-                            {...style.burgerLine(isBurgerMenuOpen)}
-                        />
-                    ))}
+                {generateArray(3).map((_, index) => (
+                    <Box key={index} {...style.burgerLine(isBurgerMenuOpen)} />
+                ))}
             </Box>
             <Box
                 sx={{
