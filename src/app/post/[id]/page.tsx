@@ -7,9 +7,9 @@ import { getLocale, getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
+import { checkImage, getPostBuId, getSimilarPosts } from '@/api';
 import { imageConfig } from '@/app/post/[id]/config';
 import PostHeader from '@/components/PostHeader';
-import { getBase64, getPostBuId, getSimilarPosts } from '@/utils';
 
 const SuggestionsList = lazy(() => import('@/components/SuggestionsList'));
 
@@ -33,13 +33,17 @@ export default async function PostPage({ params }: PostPageProps) {
 
     const similarPosts = await getSimilarPosts(id, locale, category);
 
-    const blurImg = await getBase64(image_url);
+    const { resultImageUrl, blurUrl } = await checkImage(image_url);
 
     return (
         <Box {...style.postPageContainer}>
             <PostHeader post={post} locale={locale} translation={t} />
             <Box {...style.imageContainer}>
-                <Image src={image_url} {...imageConfig} blurDataURL={blurImg} />
+                <Image
+                    src={resultImageUrl}
+                    {...imageConfig}
+                    blurDataURL={blurUrl}
+                />
             </Box>
             <Box>
                 <Typography {...style.mainText}>{snippet}</Typography>

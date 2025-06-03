@@ -7,9 +7,10 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import normalStyles from './postCard.module.scss';
 import smallStyles from './smallPostCard.module.scss';
 
+import { checkImage } from '@/api';
 import { imageConfig } from '@/components/PostCard/config';
 import { PATHS } from '@/constants/paths';
-import { checkImage, formatDate } from '@/helpers';
+import { formatDate } from '@/helpers';
 import { PostType } from '@/types';
 
 interface PostCardProps {
@@ -38,15 +39,16 @@ export default async function PostCard({
 
     const currentStyle = isSuggestionCard ? smallStyles : normalStyles;
 
-    const currentImageUrl = await checkImage(image_url);
+    const { resultImageUrl, blurUrl } = await checkImage(image_url);
 
     return (
         <Link href={PATHS.POST + uuid} className={currentStyle.section}>
             <div className={currentStyle.imageContainer}>
                 <Image
-                    src={currentImageUrl}
+                    src={resultImageUrl}
                     alt={title}
                     {...imageConfig}
+                    blurDataURL={blurUrl}
                     style={{ objectFit: 'cover' }}
                 />
             </div>

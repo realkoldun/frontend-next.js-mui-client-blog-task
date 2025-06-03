@@ -4,10 +4,10 @@ import Image from 'next/image';
 
 import styles from './featurePost.module.scss';
 
+import { checkImage, getFeaturePost } from '@/api';
 import { imageConfig } from '@/components/FeaturePost/config';
 import ReadMoreButton from '@/components/FeaturePost/ReadMoreButton';
-import { checkImage, formatDate } from '@/helpers';
-import { getFeaturePost } from '@/utils/apiUtils';
+import { formatDate } from '@/helpers';
 
 interface FeaturePostComponentProps {
     category: string;
@@ -27,7 +27,7 @@ async function FeaturePost({
     const { uuid, source, description, published_at, image_url, title } =
         featurePost;
 
-    const currentImageUrl = await checkImage(image_url);
+    const { resultImageUrl, blurUrl } = await checkImage(image_url);
 
     return (
         <article className={styles.featurePostSection}>
@@ -56,9 +56,10 @@ async function FeaturePost({
                 </div>
                 <div className={styles.imageContainer}>
                     <Image
-                        src={currentImageUrl}
+                        src={resultImageUrl}
                         alt='feature post image'
                         {...imageConfig}
+                        blurDataURL={blurUrl}
                         style={{ objectFit: 'cover' }}
                     />
                 </div>
