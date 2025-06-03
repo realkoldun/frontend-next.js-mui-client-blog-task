@@ -19,18 +19,19 @@ export type CategoriesType = {
     title: Categories;
 };
 
-export type PostType = {
-    uuid: string;
-    category: string;
-    title: string;
-    source: string;
-    keywords: string;
-    url: string;
-    published_at: string;
-    description: string;
-    snippet: string;
-    image_url: string;
-};
+export type PostType = Record<
+    | 'uuid'
+    | 'category'
+    | 'title'
+    | 'source'
+    | 'keywords'
+    | 'url'
+    | 'published_at'
+    | 'description'
+    | 'snippet'
+    | 'image_url',
+    string
+>;
 export type SocialLinkType = {
     id: string;
     title: string;
