@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import * as style from './styled';
 
-import { generatePagination } from '@/helpers';
+import { configUrlParams, generatePagination } from '@/helpers';
 
 interface PaginationButtonsProps {
     totalPages: number;
@@ -26,23 +26,22 @@ export default function PaginationButtons({
         [totalPages, currentPage],
     );
 
+    const setUrlParams = configUrlParams(searchParams);
+
     const handleOnClickNextPage = (): void => {
-        const newParams = new URLSearchParams(searchParams.toString());
-        newParams.set('page', String(currentPage + 1));
+        const newParams = setUrlParams('page', String(currentPage + 1));
         router.push(`?${newParams.toString()}`);
     };
 
     const handleOnClickPrevPage = (): void => {
         if (currentPage > 0) {
-            const newParams = new URLSearchParams(searchParams.toString());
-            newParams.set('page', String(currentPage - 1));
+            const newParams = setUrlParams('page', String(currentPage - 1));
             router.push(`?${newParams.toString()}`);
         }
     };
 
     const handleOnClickSelectedPage = (page: number): void => {
-        const newParams = new URLSearchParams(searchParams.toString());
-        newParams.set('page', String(page));
+        const newParams = setUrlParams('page', String(page));
         router.push(`?${newParams.toString()}`);
     };
 

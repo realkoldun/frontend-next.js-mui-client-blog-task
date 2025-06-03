@@ -1,3 +1,4 @@
+import { configUrlParams } from '@/helpers/configUrlParams';
 import { emailSubmit } from '@/helpers/emailSubmit';
 import { extractSearchParams } from '@/helpers/extractSearchParams';
 import { formatDate } from '@/helpers/formatDate';
@@ -16,4 +17,5 @@ export {
     extractSearchParams,
     generateArray,
     generatePagination,
+    configUrlParams,
 };
