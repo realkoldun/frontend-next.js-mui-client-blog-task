@@ -24,6 +24,8 @@ export type PostType = {
     category: string;
     title: string;
     source: string;
+    keywords: string;
+    url: string;
     published_at: string;
     description: string;
     snippet: string;

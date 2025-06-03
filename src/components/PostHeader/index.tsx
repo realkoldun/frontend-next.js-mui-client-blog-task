@@ -20,7 +20,7 @@ export default async function PostHeader({
     locale,
     translation,
 }: PostHeaderProps) {
-    const { category, title, source, published_at, image_url } = post;
+    const { category, title, source, published_at, image_url, keywords } = post;
 
     return (
         <Box {...style.postHeaderSection}>
@@ -46,6 +46,9 @@ export default async function PostHeader({
             <Link replace href={`/?category=${category}`}>
                 <SmallCategoryCard categoryTitle={category as Categories} />
             </Link>
+            {keywords && (
+                <Typography {...style.dateText}>{keywords}</Typography>
+            )}
         </Box>
     );
 }

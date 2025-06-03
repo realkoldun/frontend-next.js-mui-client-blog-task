@@ -30,7 +30,8 @@
     },
     "PostHeader": {
       "Date": "Пост от"
-    }
+    },
+    "ReadAll": "Нажмите, чтобы прочитать статью полностью"
   },
   "ModalWindow": {
     "SuccessMessage": "Успешно",

@@ -30,7 +30,8 @@
         },
         "PostHeader": {
             "Date": "Posted on"
-        }
+        },
+        "ReadAll": "Click here to read full article"
     },
     "ModalWindow": {
         "SuccessMessage": "Success",

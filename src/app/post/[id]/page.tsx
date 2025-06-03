@@ -2,6 +2,7 @@ import { lazy } from 'react';
 
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
 
@@ -29,7 +30,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
     const t = await getTranslations('PostPage');
 
-    const { category, image_url, snippet } = post;
+    const { category, image_url, snippet, url } = post;
 
     const similarPosts = await getSimilarPosts(id, locale, category);
 
@@ -48,6 +49,9 @@ export default async function PostPage({ params }: PostPageProps) {
             <Box>
                 <Typography {...style.mainText}>{snippet}</Typography>
             </Box>
+            <Link href={url} target='_blank' rel='noopener noreferrer'>
+                {t('ReadAll')}
+            </Link>
             <SuggestionsList
                 posts={similarPosts}
                 category={category}
