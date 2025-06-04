@@ -1,19 +1,17 @@
 'use server';
 
-import * as fs from 'fs/promises';
 import { getPlaiceholder } from 'plaiceholder';
 
-const IMAGE_ON_ERROR = '/imageOnError.png';
+const IMAGE_ON_ERROR = (await import('../../public/imageOnError.png')).default;
+
+const errorImageData = {
+    resultImageUrl: IMAGE_ON_ERROR.src,
+    blurUrl: IMAGE_ON_ERROR.blurDataURL!,
+};
 
 interface CheckImageReturnType {
     resultImageUrl: string;
     blurUrl: string;
-}
-
-async function getImageOnErrorBlur() {
-    const imgBuffer = await fs.readFile(IMAGE_ON_ERROR);
-    const { base64 } = await getPlaiceholder(Buffer.from(imgBuffer));
-    return base64;
 }
 
 export async function checkImage(url: string): Promise<CheckImageReturnType> {
@@ -24,11 +22,9 @@ export async function checkImage(url: string): Promise<CheckImageReturnType> {
             const { base64 } = await getPlaiceholder(Buffer.from(imgBuffer));
             return { resultImageUrl: url, blurUrl: base64 };
         } else {
-            const blurUrl = await getImageOnErrorBlur();
-            return { resultImageUrl: IMAGE_ON_ERROR, blurUrl };
+            return { ...errorImageData };
         }
     } catch {
-        const blurUrl = await getImageOnErrorBlur();
-        return { resultImageUrl: IMAGE_ON_ERROR, blurUrl };
+        return { ...errorImageData };
     }
 }
