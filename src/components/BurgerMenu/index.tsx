@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, PropsWithChildren, useState } from 'react';
+import { PropsWithChildren, useState } from 'react';
 
 import { Box } from '@mui/material';
 
@@ -11,7 +11,7 @@ import { useCheckScreenWidth } from '@/hooks';
 
 const MOBILE_SCREEN_SIZE = 500;
 
-function BurgerMenu({ children }: PropsWithChildren) {
+export default function BurgerMenu({ children }: PropsWithChildren) {
     const [isBurgerMenuOpen, setBurgerMenuOpen] = useState<boolean>(false);
 
     const isWideScreen = useCheckScreenWidth({
@@ -48,5 +48,3 @@ function BurgerMenu({ children }: PropsWithChildren) {
         </>
     );
 }
-
-export default memo(BurgerMenu);

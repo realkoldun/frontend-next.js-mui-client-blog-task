@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useState } from 'react';
+import { useState } from 'react';
 
 import {
     Box,
@@ -19,7 +19,7 @@ import * as style from './styled';
 import { languages } from '@/constants/languages';
 import { LanguageType } from '@/types';
 
-function LanguageSwitcher() {
+export default function LanguageSwitcher() {
     const locale = useLocale();
     const router = useRouter();
     const [selectedLanguage, setSelectedLanguage] = useState<string>(locale);
@@ -77,5 +77,3 @@ function LanguageSwitcher() {
         </Select>
     );
 }
-
-export default memo(LanguageSwitcher);
