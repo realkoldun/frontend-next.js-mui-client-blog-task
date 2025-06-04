@@ -1,4 +1,5 @@
-import { PostType, ResponseData } from '@/types';
+import { categories } from '@/constants/categories';
+import { Categories, PostType, ResponseData } from '@/types';
 
 export async function getPostById(id: string): Promise<PostType | null> {
     try {
@@ -11,9 +12,13 @@ export async function getPostById(id: string): Promise<PostType | null> {
             );
         }
         const responsePost = (await response.json()) as ResponseData;
+        const category =
+            categories.find(
+                ({ title }) => title === responsePost.categories![0],
+            )?.title ?? Categories.GENERAL;
         return {
             ...responsePost,
-            category: responsePost.categories![0].toUpperCase(),
+            category: category.toUpperCase(),
         };
     } catch (error) {
         console.error(`Error fetching post by ID ${id}:`, error);

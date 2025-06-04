@@ -1,4 +1,4 @@
-import { lazy, ReactNode } from 'react';
+import { lazy, ReactNode, Suspense } from 'react';
 
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import type { Metadata } from 'next';
@@ -32,7 +32,9 @@ export default function RootLayout({
                     <NextIntlClientProvider>
                         <Header />
                         {children}
-                        <Footer />
+                        <Suspense>
+                            <Footer />
+                        </Suspense>
                     </NextIntlClientProvider>
                 </AppRouterCacheProvider>
             </body>

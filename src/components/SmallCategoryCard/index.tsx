@@ -1,6 +1,5 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
@@ -9,27 +8,29 @@ import { Categories } from '@/types';
 
 interface SmallCategoryCardInterface {
     categoryTitle: Categories;
+    translation: (key: string) => string;
 }
 
 export default async function SmallCategoryCard({
     categoryTitle,
+    translation,
 }: SmallCategoryCardInterface) {
     const category = categories.find(({ title }) => title === categoryTitle);
 
     if (!category) return null;
 
-    const t = await getTranslations(`Categories.${category.title}`);
-
     return (
         <Box {...style.section}>
             <Box {...style.imageContainer}>
                 <Image
-                    src={t('imgUrl')}
-                    alt={t('title')}
+                    src={translation(`Categories.${category.title}.imgUrl`)}
+                    alt={translation(`Categories.${category.title}.title`)}
                     {...style.imageStyle}
                 />
             </Box>
-            <Typography {...style.title}>{t('title')}</Typography>
+            <Typography {...style.title}>
+                {translation(`Categories.${category.title}.title`)}
+            </Typography>
         </Box>
     );
 }

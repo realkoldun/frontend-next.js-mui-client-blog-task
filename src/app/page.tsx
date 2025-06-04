@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 
 import { getLocale, getTranslations } from 'next-intl/server';
 
@@ -22,7 +22,9 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         <main>
             <FeaturePost {...params} locale={lang} translation={t} />
             <PostList {...params} locale={lang} translation={t} />
-            <CategoriesList translation={t} />
+            <Suspense>
+                <CategoriesList translation={t} />
+            </Suspense>
         </main>
     );
 }

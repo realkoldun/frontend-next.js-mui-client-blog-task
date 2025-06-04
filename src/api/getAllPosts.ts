@@ -24,8 +24,6 @@ export async function getAllPosts(
     const totalPages =
         pages > MAX_PAGES ? MAX_PAGES : parseInt(pages.toString());
 
-    console.log(meta);
-
     const posts = responsePosts.map((post) => {
         delete post['categories'];
         return {

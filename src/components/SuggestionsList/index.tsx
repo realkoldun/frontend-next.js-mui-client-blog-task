@@ -1,24 +1,22 @@
 import { Box, Typography } from '@mui/material';
-import { getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
+import { getSimilarPosts } from '@/api';
 import PostCard from '@/components/PostCard';
-import { PostType } from '@/types';
 
 interface SuggestionsList {
-    posts: PostType[] | null;
+    //posts: PostType[] | null;
+    id: string;
+    locale: string;
     category: string;
     translation: (key: string) => string;
 }
 
-export default async function SuggestionsList({
-    posts,
-    category,
-    translation,
-}: SuggestionsList) {
-    if (!posts) return null;
-    const categoryTranslation = await getTranslations(`Categories.${category}`);
+export default async function SuggestionsList(props: SuggestionsList) {
+    const { id, locale, category, translation } = props;
+    const posts = await getSimilarPosts(id, locale, category);
+    if (posts.length === 0) return null;
 
     const suggestionPosts = posts.map((post) => (
         <PostCard key={post.uuid} isSuggestionCard post={post} />
@@ -29,8 +27,8 @@ export default async function SuggestionsList({
     return (
         <Box {...style.suggestionListContainer}>
             <Typography {...style.title}>
-                {translation('SuggestionPost.SectionTitle')}{' '}
-                {categoryTranslation('title')}
+                {translation('PostPage.SuggestionPost.SectionTitle')}{' '}
+                {translation(`Categories.${category}.title`)}
             </Typography>
             <Box {...style.suggestionsContainer}>{suggestionPosts}</Box>
         </Box>

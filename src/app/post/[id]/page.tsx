@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
@@ -8,7 +8,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
-import { checkImage, getPostById, getSimilarPosts } from '@/api';
+import { checkImage, getPostById } from '@/api';
 import { imageConfig } from '@/app/post/[id]/config';
 import PostHeader from '@/components/PostHeader';
 
@@ -28,17 +28,20 @@ export default async function PostPage({ params }: PostPageProps) {
 
     const locale = await getLocale();
 
-    const t = await getTranslations('PostPage');
+    const t = await getTranslations();
 
     const { category, image_url, snippet, url } = post;
-
-    const similarPosts = await getSimilarPosts(id, locale, category);
 
     const { resultImageUrl, blurUrl } = await checkImage(image_url);
 
     return (
         <Box {...style.postPageContainer}>
-            <PostHeader post={post} locale={locale} translation={t} />
+            <PostHeader
+                imageUrl={resultImageUrl}
+                post={post}
+                locale={locale}
+                translation={t}
+            />
             <Box {...style.imageContainer}>
                 <Image
                     src={resultImageUrl}
@@ -50,13 +53,16 @@ export default async function PostPage({ params }: PostPageProps) {
                 <Typography {...style.mainText}>{snippet}</Typography>
             </Box>
             <Link href={url} target='_blank' rel='noopener noreferrer'>
-                {t('ReadAll')}
+                {t('PostPage.ReadAll')}
             </Link>
-            <SuggestionsList
-                posts={similarPosts}
-                category={category}
-                translation={t}
-            />
+            <Suspense>
+                <SuggestionsList
+                    id={id}
+                    locale={locale}
+                    category={category}
+                    translation={t}
+                />
+            </Suspense>
         </Box>
     );
 }

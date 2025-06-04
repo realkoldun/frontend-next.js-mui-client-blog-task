@@ -11,22 +11,20 @@ import { Categories } from '@/types';
 
 interface PostHeaderProps {
     post: PostType;
+    imageUrl: string;
     locale: string;
     translation: (key: string) => string;
 }
 
-export default async function PostHeader({
-    post,
-    locale,
-    translation,
-}: PostHeaderProps) {
-    const { category, title, source, published_at, image_url, keywords } = post;
+export default async function PostHeader(props: PostHeaderProps) {
+    const { post, locale, translation, imageUrl } = props;
+    const { category, title, source, published_at, keywords } = post;
 
     return (
         <Box {...style.postHeaderSection}>
             <Box {...style.metaInfoContainer}>
                 <Image
-                    src={image_url}
+                    src={imageUrl}
                     alt='avatar'
                     width={48}
                     height={48}
@@ -35,7 +33,7 @@ export default async function PostHeader({
                 <Box {...style.metaInfoTextContainer}>
                     <Typography {...style.authorName}>{source}</Typography>
                     <Typography {...style.dateText}>
-                        {translation('PostHeader.Date')}{' '}
+                        {translation('PostPage.PostHeader.Date')}{' '}
                         {formatDate(published_at, locale)}
                     </Typography>
                 </Box>
@@ -44,7 +42,10 @@ export default async function PostHeader({
                 <Typography {...style.titleText}>{title}</Typography>
             </Box>
             <Link replace href={`/?category=${category}`}>
-                <SmallCategoryCard categoryTitle={category as Categories} />
+                <SmallCategoryCard
+                    translation={translation}
+                    categoryTitle={category as Categories}
+                />
             </Link>
             {keywords && (
                 <Typography {...style.dateText}>{keywords}</Typography>
