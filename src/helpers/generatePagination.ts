@@ -1,4 +1,8 @@
 const SMALL_PAGE_COUNT = 5;
+const MIN_VISIBLE_PAGES = 5;
+const START_THRESHOLD = 4;
+const PAGE_PADDING = 1;
+const END_OFFSET = 2;
 
 export function generatePagination(currentPage: number, totalPages: number) {
     const pages: (number | string)[] = [];
@@ -7,11 +11,11 @@ export function generatePagination(currentPage: number, totalPages: number) {
         return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
 
-    if (currentPage <= 4) {
-        for (let i = 1; i <= Math.min(5, totalPages); i++) {
+    if (currentPage <= START_THRESHOLD) {
+        for (let i = 1; i <= Math.min(MIN_VISIBLE_PAGES, totalPages); i++) {
             pages.push(i);
         }
-        if (totalPages > 5) {
+        if (totalPages > MIN_VISIBLE_PAGES) {
             pages.push('...', totalPages);
         }
         return pages;
@@ -19,14 +23,14 @@ export function generatePagination(currentPage: number, totalPages: number) {
 
     pages.push(1, '...');
 
-    const start = Math.max(2, currentPage - 1);
-    const end = Math.min(totalPages - 1, currentPage + 1);
+    const start = Math.max(2, currentPage - PAGE_PADDING);
+    const end = Math.min(totalPages - PAGE_PADDING, currentPage + PAGE_PADDING);
 
     for (let i = start; i <= end; i++) {
         pages.push(i);
     }
 
-    if (currentPage < totalPages - 2) {
+    if (currentPage < totalPages - END_OFFSET) {
         pages.push('...');
     }
 
