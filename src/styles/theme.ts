@@ -1,4 +1,8 @@
 export const theme = {
+    screenSizes: {
+        mobile: 550,
+    },
+
     display: {
         flex: 'flex' as const,
         flexDirection: {
@@ -9,6 +13,7 @@ export const theme = {
             center: 'center' as const,
             spaceAround: 'space-around' as const,
             start: 'start' as const,
+            spaceBetween: 'space-between' as const,
         },
         position: {
             relative: 'relative' as const,
@@ -46,6 +51,9 @@ export const theme = {
     margin: {
         m: 2,
     },
+    border: {
+        round: '50%',
+    },
     fontSize: {
         xs: 14,
         s: 16,
@@ -61,6 +69,8 @@ export const theme = {
         darkGray: '#232536',
         black: '#000000',
         white: '#FFFFFF',
+        lightYellow: '#FFD099',
+        yellow: '#FFD050',
     },
     fontFamily: {
         sen: 'SenFont',

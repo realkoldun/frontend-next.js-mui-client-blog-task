@@ -1,52 +1,34 @@
-import { JSX } from 'react';
-
 import { Box, Typography } from '@mui/material';
-import { getTranslations } from 'next-intl/server';
 
 import * as style from './styled';
 
+import { getSimilarPosts } from '@/api';
 import PostCard from '@/components/PostCard';
-import { getPostsByCategory } from '@/utils';
 
 interface SuggestionsList {
+    //posts: PostType[] | null;
     id: string;
+    locale: string;
     category: string;
+    translation: (key: string) => string;
 }
 
-const MAX_SUGGESTIONS = 3;
+export default async function SuggestionsList(props: SuggestionsList) {
+    const { id, locale, category, translation } = props;
+    const posts = await getSimilarPosts(id, locale, category);
+    if (posts.length === 0) return null;
 
-export default async function SuggestionsList({
-    id,
-    category,
-}: SuggestionsList) {
-    const postsByCategory = await getPostsByCategory(category);
-
-    if (!postsByCategory) return null;
-
-    const suggestionTranslation = await getTranslations(
-        'PostPage.SuggestionPost',
-    );
-    const categoryTranslation = await getTranslations(`Categories.${category}`);
-
-    const suggestionPosts = postsByCategory.reduce<JSX.Element[]>(
-        (acc, post) => {
-            if (post.id !== id && acc.length < MAX_SUGGESTIONS) {
-                acc.push(
-                    <PostCard key={post.id} isSuggestionCard post={post} />,
-                );
-            }
-            return acc;
-        },
-        [],
-    );
+    const suggestionPosts = posts.map((post) => (
+        <PostCard key={post.uuid} isSuggestionCard post={post} />
+    ));
 
     if (suggestionPosts.length === 0) return null;
 
     return (
         <Box {...style.suggestionListContainer}>
             <Typography {...style.title}>
-                {suggestionTranslation('SectionTitle')}{' '}
-                {categoryTranslation('title')}
+                {translation('PostPage.SuggestionPost.SectionTitle')}{' '}
+                {translation(`Categories.${category}.title`)}
             </Typography>
             <Box {...style.suggestionsContainer}>{suggestionPosts}</Box>
         </Box>

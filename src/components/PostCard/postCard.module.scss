@@ -4,7 +4,7 @@
 .section {
   @include mixins.flex-center;
 
-  justify-content: space-between;
+  justify-content: start;
   width: constants.$full-size;
   height: constants.$size-xl;
   gap: constants.$gap-m;
@@ -44,7 +44,7 @@
   position: relative;
   max-width: constants.$size-xxl;
   width: constants.$full-size;
-  min-width: 350px;
+  min-width: constants.$size-xxl;
   height: constants.$full-size;
 }
 

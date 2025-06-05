@@ -27,7 +27,7 @@ export const suggestionsContainer = {
         xs: theme.display.flexDirection.column,
     },
     'overflow-y': 'scroll' as const,
-    alignItems: { md: '', xs: theme.display.align.center },
+    alignItems: theme.display.align.start,
     justifyContent: theme.display.align.spaceAround,
     width: theme.sizes.fitContent,
     maxWidth: theme.sizes.full,

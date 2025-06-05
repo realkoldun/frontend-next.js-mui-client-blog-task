@@ -1,26 +1,27 @@
+/*
 import { Categories, PostType } from '@/types';
 
 export const posts: PostType[] = [
     {
-        id: '1',
+        uuid: '1',
         category: Categories.BUSINESS,
         title: 'Design tips for designers that cover everything you need1',
         description:
             'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
 
-        imgUrl: '/postTest.png',
+        image_url: '/postTest.png',
         author: 'Andrew Jonson',
-        date: '27th January 2022',
+        published_at: '27th January 2022',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
     {
-        id: '2',
+        uuid: '2',
         category: Categories.TECHNOLOGY,
         title: 'Design tips for designers that cover everything you need2',
         description:
             'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
 
-        imgUrl: '/postTest2.png',
+        image_url: '/postTest2.png',
         author: 'Andrew Jonson',
         date: '27th January 2022',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
@@ -74,3 +75,4 @@ export const posts: PostType[] = [
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec...',
     },
 ];
+*/

@@ -1,35 +1,33 @@
-'use client';
-
-import { MouseEvent } from 'react';
+import { memo } from 'react';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useTranslations } from 'use-intl';
 
 import styles from './featurePost.module.scss';
 
+import { checkImage, getFeaturePost } from '@/api';
 import { imageConfig } from '@/components/FeaturePost/config';
-import StyledButton from '@/components/StyledButton';
-import { PATHS } from '@/constants/paths';
+import ReadMoreButton from '@/components/FeaturePost/ReadMoreButton';
+import { formatDate } from '@/helpers';
 
 interface FeaturePostComponentProps {
-    id: string;
-    title: string;
-    author: string;
-    date: string;
-    description: string;
-    imgUrl: string;
+    category: string;
+    locale: string;
+    translation: (key: string) => string;
 }
 
-export default function FeaturePost(post: FeaturePostComponentProps) {
-    const { id, author, description, imgUrl, date, title } = post;
-    const router = useRouter();
-    const t = useTranslations('HomePage.FeaturePost');
+async function FeaturePost({
+    category,
+    locale,
+    translation,
+}: FeaturePostComponentProps) {
+    const featurePost = await getFeaturePost(category, locale);
 
-    const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        router.push(PATHS.POST + id);
-    };
+    if (!featurePost) return null;
+
+    const { uuid, source, description, published_at, image_url, title } =
+        featurePost;
+
+    const { resultImageUrl, blurUrl } = await checkImage(image_url);
 
     return (
         <article className={styles.featurePostSection}>
@@ -37,31 +35,31 @@ export default function FeaturePost(post: FeaturePostComponentProps) {
                 <div className={styles.informationSection}>
                     <div className={styles.informationContainer}>
                         <p className={styles.sectionTitle}>
-                            {t('SectionTitle')}
+                            {translation('FeaturePost.SectionTitle')}
                         </p>
                         <h2 className={styles.title}>{title}</h2>
                         <div className={styles.infoContainer}>
                             <p className={styles.metaInfo}>
-                                {t('ByAuthor')}{' '}
+                                {translation('FeaturePost.ByAuthor')}{' '}
                                 <span className={styles.authorSpan}>
-                                    {author}
+                                    {source}
                                 </span>
                             </p>
                             <div className={styles.verticalDevider}></div>
-                            <p className={styles.metaInfo}>{date}</p>
+                            <p className={styles.metaInfo}>
+                                {formatDate(published_at, locale)}
+                            </p>
                         </div>
                         <p className={styles.descriptionText}>{description}</p>
                     </div>
-                    <StyledButton
-                        onClick={handleOnClick}
-                        text={t('ButtonText')}
-                    ></StyledButton>
+                    <ReadMoreButton uuid={uuid} />
                 </div>
                 <div className={styles.imageContainer}>
                     <Image
-                        src={imgUrl}
+                        src={resultImageUrl}
                         alt='feature post image'
                         {...imageConfig}
+                        blurDataURL={blurUrl}
                         style={{ objectFit: 'cover' }}
                     />
                 </div>
@@ -69,3 +67,5 @@ export default function FeaturePost(post: FeaturePostComponentProps) {
         </article>
     );
 }
+
+export default memo(FeaturePost);

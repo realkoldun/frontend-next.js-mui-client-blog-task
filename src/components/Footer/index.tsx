@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState, useTransition } from 'react';
+import { FormEvent, memo, useState, useTransition } from 'react';
 
 import Image from 'next/image';
 import { createPortal } from 'react-dom';
@@ -8,15 +8,15 @@ import { useTranslations } from 'use-intl';
 
 import styles from './footer.module.scss';
 
+import { emailSubmit } from '@/api';
 import { imageConfig } from '@/components/Footer/config';
 import ModalWindow from '@/components/ModalWindow';
 import StyledButton from '@/components/StyledButton';
 import { socialLinks } from '@/constants/socialLinks';
-import { emailSubmit } from '@/helpers';
 import { usePortal } from '@/hooks';
 import { ModalWindowMessageType } from '@/types';
 
-export default function Footer() {
+function Footer() {
     const t = useTranslations('FooterSection');
 
     const [message, setMessage] = useState<ModalWindowMessageType | null>(null);
@@ -34,10 +34,12 @@ export default function Footer() {
         setModalWindowOpen(false);
     };
 
-    const handleEmailSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleEmailSubmit = async (
+        e: FormEvent<HTMLFormElement>,
+    ): Promise<void> => {
         e.preventDefault();
 
-        startTransition(async () => {
+        startTransition(async (): Promise<void> => {
             const formData = new FormData(e.currentTarget);
             const result = await emailSubmit(formData);
             setMessage(result);
@@ -75,16 +77,14 @@ export default function Footer() {
                     <p>Hello@finsweet.com 020 7993 2905</p>
                 </div>
                 <div className={styles.infoSocialsContainer}>
-                    {socialLinks.map(({ id, title, imgUrl }) => {
-                        return (
-                            <Image
-                                key={id}
-                                src={imgUrl}
-                                alt={title}
-                                {...imageConfig}
-                            />
-                        );
-                    })}
+                    {socialLinks.map(({ id, title, imgUrl }) => (
+                        <Image
+                            key={id}
+                            src={imgUrl}
+                            alt={title}
+                            {...imageConfig}
+                        />
+                    ))}
                 </div>
             </div>
             {isModalWindowShowed &&
@@ -98,3 +98,5 @@ export default function Footer() {
         </footer>
     );
 }
+
+export default memo(Footer);

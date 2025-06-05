@@ -1,3 +1,3 @@
 import defaultImageConfig from '@/constants/defaultImageConfig';
 
-export const imageConfig = defaultImageConfig;
+export const { placeholder, ...imageConfig } = defaultImageConfig;

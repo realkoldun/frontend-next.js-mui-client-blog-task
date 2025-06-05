@@ -1,15 +1,8 @@
-type GeneralType = {
-    id: string;
-    title: string;
-    imgUrl: string;
-    description: string;
-};
-
 export enum Categories {
     BUSINESS = 'BUSINESS',
-    STARTUP = 'STARTUP',
-    ECONOMY = 'ECONOMY',
-    TECHNOLOGY = 'TECHNOLOGY',
+    GENERAL = 'GENERAL',
+    POLITICS = 'POLITICS',
+    TECHNOLOGY = 'TECH',
 }
 export enum Languages {
     RUSSIAN = 'РУССКИЙ',
@@ -26,12 +19,19 @@ export type CategoriesType = {
     title: Categories;
 };
 
-export type PostType = GeneralType & {
-    category: Categories;
-    author: string;
-    date: string;
-    text: string;
-};
+export type PostType = Record<
+    | 'uuid'
+    | 'category'
+    | 'title'
+    | 'source'
+    | 'keywords'
+    | 'url'
+    | 'published_at'
+    | 'description'
+    | 'snippet'
+    | 'image_url',
+    string
+>;
 export type SocialLinkType = {
     id: string;
     title: string;
@@ -49,4 +49,25 @@ export type ModalWindowMessageType = {
     message: string;
     description: string;
     error?: boolean;
+};
+
+export type SearchParams = Promise<{
+    category?: string;
+    page?: string;
+}>;
+
+export type ResponseMeta = {
+    found: string;
+    returned: string;
+    limit: string;
+    page: string;
+};
+
+export type ResponseData = Omit<PostType, 'category'> & {
+    categories?: string[];
+};
+
+export type Response = {
+    meta?: ResponseMeta;
+    data: ResponseData[];
 };
