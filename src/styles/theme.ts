@@ -1,6 +1,6 @@
 export const theme = {
     screenSizes: {
-        mobile: 500,
+        mobile: 550,
     },
 
     display: {

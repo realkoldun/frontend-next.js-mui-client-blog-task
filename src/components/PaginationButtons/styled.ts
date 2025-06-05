@@ -38,7 +38,7 @@ export const button = {
 export const smallButton = {
     sx: {
         ...button.sx,
-        '@media (max-width: 700px)': {
+        [`@media (max-width: ${theme.screenSizes.mobile}px)`]: {
             fontSize: theme.fontSize.xs,
             paddingLeft: 0,
             paddingRight: 0,

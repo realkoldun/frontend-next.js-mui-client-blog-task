@@ -1,5 +1,6 @@
 const PAGE_PADDING = 1;
 const END_OFFSET = 2;
+const SMALL_PAGE_COUNT = 5;
 
 export function generatePagination(
     currentPage: number,
@@ -8,7 +9,6 @@ export function generatePagination(
 ) {
     const pages: (number | string)[] = [];
 
-    const SMALL_PAGE_COUNT = isSmallPage ? 3 : 5;
     const MIN_VISIBLE_PAGES = isSmallPage ? 4 : 5;
     const START_THRESHOLD = isSmallPage ? 3 : 4;
 
