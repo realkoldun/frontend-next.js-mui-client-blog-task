@@ -31,7 +31,7 @@ export const image = {
 export const authorName = {
     fontFamily: theme.fontFamily.sen,
     color: theme.color.purple,
-    fontSize: { xs: theme.fontSize.l, md: theme.fontSize.xl },
+    fontSize: { xs: theme.fontSize.m, md: theme.fontSize.xl },
 };
 
 export const dateText = {

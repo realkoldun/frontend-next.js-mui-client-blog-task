@@ -8,14 +8,13 @@ import * as style from './styled';
 
 import { generateArray } from '@/helpers';
 import { useCheckScreenWidth } from '@/hooks';
-
-const MOBILE_SCREEN_SIZE = 500;
+import { theme } from '@/styles/theme';
 
 export default function BurgerMenu({ children }: PropsWithChildren) {
     const [isBurgerMenuOpen, setBurgerMenuOpen] = useState<boolean>(false);
 
     const isWideScreen = useCheckScreenWidth({
-        targetWidth: MOBILE_SCREEN_SIZE,
+        targetWidth: theme.screenSizes.mobile,
         isWider: true,
     });
 

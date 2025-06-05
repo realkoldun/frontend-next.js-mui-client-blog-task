@@ -1,4 +1,8 @@
 export const theme = {
+    screenSizes: {
+        mobile: 500,
+    },
+
     display: {
         flex: 'flex' as const,
         flexDirection: {

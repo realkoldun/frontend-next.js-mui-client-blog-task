@@ -8,6 +8,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import * as style from './styled';
 
 import { configUrlParams, generatePagination } from '@/helpers';
+import { useCheckScreenWidth } from '@/hooks';
+import { theme } from '@/styles/theme';
 
 interface PaginationButtonsProps {
     totalPages: number;
@@ -21,10 +23,17 @@ export default function PaginationButtons({
 
     const currentPage = Number(searchParams.get('page')) || 1;
 
+    const isSmallPage = useCheckScreenWidth({
+        targetWidth: theme.screenSizes.mobile,
+        isWider: false,
+    });
+
     const pagination = useMemo(
-        () => generatePagination(currentPage, totalPages),
-        [totalPages, currentPage],
+        () => generatePagination(currentPage, totalPages, isSmallPage),
+        [totalPages, currentPage, isSmallPage],
     );
+
+    const buttonSize = isSmallPage ? 'small' : 'medium';
 
     const setUrlParams = configUrlParams(searchParams);
 
@@ -45,25 +54,30 @@ export default function PaginationButtons({
         router.push(`?${newParams.toString()}`);
     };
 
-    const pageNumbering = pagination.map((page, index) =>
-        typeof page === 'number' ? (
+    const pageNumbering = pagination.map((page, index) => {
+        const isCurrentPage = page === currentPage;
+        const buttonStyle = isCurrentPage ? style.button : style.smallButton;
+        return typeof page === 'number' ? (
             <Button
-                {...style.button}
+                {...buttonStyle}
                 key={index}
-                variant={page === currentPage ? 'contained' : 'outlined'}
+                size={buttonSize}
+                variant={isCurrentPage ? 'contained' : 'outlined'}
                 onClick={() => handleOnClickSelectedPage(page)}
             >
                 {page}
             </Button>
         ) : (
             <span key={index}>...</span>
-        ),
-    );
+        );
+    });
 
     return (
         <Box {...style.section}>
             <Button
                 {...style.button}
+                size={buttonSize}
+                variant='outlined'
                 disabled={currentPage <= 1}
                 onClick={handleOnClickPrevPage}
             >
@@ -71,6 +85,8 @@ export default function PaginationButtons({
             </Button>
             {pageNumbering}
             <Button
+                size={buttonSize}
+                variant='outlined'
                 {...style.button}
                 disabled={currentPage === totalPages}
                 onClick={handleOnClickNextPage}
