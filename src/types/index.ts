@@ -32,6 +32,7 @@ export type PostType = Record<
     | 'image_url',
     string
 >;
+
 export type SocialLinkType = {
     id: string;
     title: string;
