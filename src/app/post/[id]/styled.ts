@@ -29,3 +29,23 @@ export const mainText = {
     maxWidth: theme.sizes.xl,
     fontSize: { xs: theme.fontSize.s, md: theme.fontSize.s },
 };
+
+export const notFoundContainer = {
+    display: theme.display.flex,
+    flexDirection: theme.display.flexDirection.column,
+    alignItems: theme.display.align.center,
+    justifyContent: theme.display.align.center,
+    minHeight: theme.sizes.xl,
+    gap: theme.gap.xs,
+    paddingTop: theme.padding.m,
+};
+
+export const notFoundCode = {
+    fontSize: theme.fontSize.xxxl,
+    fontFamily: theme.fontFamily.sen,
+};
+
+export const notFoundText = {
+    fontFamily: theme.fontFamily.sen,
+    fontSize: theme.fontSize.xxl,
+};
