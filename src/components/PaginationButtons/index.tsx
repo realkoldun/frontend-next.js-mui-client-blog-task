@@ -18,9 +18,9 @@ interface PaginationButtonsProps {
 export default function PaginationButtons({
     totalPages,
 }: PaginationButtonsProps) {
-    const { currentParam, setNewParam } = useUrlParams('page');
+    const [urlPage, setPageToUrl] = useUrlParams('page');
 
-    const currentPage = Number(currentParam) || 1;
+    const currentPage = Number(urlPage) || 1;
 
     const isSmallPage = useCheckScreenWidth({
         targetWidth: theme.screenSizes.mobile,
@@ -30,15 +30,15 @@ export default function PaginationButtons({
     const buttonSize = isSmallPage ? 'small' : 'medium';
 
     const handleOnClickNextPage = (): void =>
-        setNewParam(String(currentPage + 1));
+        setPageToUrl(String(currentPage + 1));
 
     const handleOnClickPrevPage = (): void => {
-        if (currentPage > 1) setNewParam(String(currentPage - 1));
+        if (currentPage > 1) setPageToUrl(String(currentPage - 1));
     };
 
     const handleOnClickSelectedPage = useCallback(
-        (page: number): void => setNewParam(String(page)),
-        [setNewParam],
+        (page: number): void => setPageToUrl(String(page)),
+        [setPageToUrl],
     );
 
     return (
