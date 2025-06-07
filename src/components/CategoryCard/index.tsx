@@ -9,6 +9,7 @@ import { useTranslations } from 'use-intl';
 import styles from './categoryCard.module.scss';
 
 import { imageConfig } from '@/components/CategoryCard/config';
+import { categories } from '@/constants/categories';
 import { Categories } from '@/types';
 
 interface CategoryCardProps {
@@ -20,7 +21,11 @@ function CategoryCard({ title }: CategoryCardProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    const selectedCategory = searchParams.get('category') || Categories.GENERAL;
+    const currentCategory = searchParams.get('category');
+
+    const selectedCategory =
+        categories.find((category) => category.title === currentCategory)
+            ?.title || Categories.GENERAL;
 
     const handleOnClick = (e: MouseEvent<HTMLDivElement>): void => {
         e.preventDefault();
