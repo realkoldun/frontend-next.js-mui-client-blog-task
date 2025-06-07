@@ -1,6 +1,7 @@
 import styles from './postList.module.scss';
 import PaginationButtons from '../PaginationButtons';
 
+import { checkImage } from '@/api';
 import { GetAllPostsReturnValue } from '@/api/getAllPosts';
 import PostCard from '@/components/PostCard';
 import contentSectionStyle from '@/styles/contentSection.module.scss';
@@ -14,6 +15,10 @@ export default async function PostList(props: PostListProps) {
     const { translation, postsData } = props;
     const { posts, totalPages } = postsData;
 
+    const postsImages = await Promise.all(
+        posts.map(({ image_url }) => checkImage(image_url)),
+    );
+
     return (
         <section className={contentSectionStyle.contentSection}>
             <div className={styles.container}>
@@ -22,8 +27,12 @@ export default async function PostList(props: PostListProps) {
                 </h1>
                 <hr className={styles.horizontalLine} />
                 <div className={styles.listContainer}>
-                    {posts.map((post) => (
-                        <PostCard key={post.uuid} post={post} />
+                    {posts.map((post, index) => (
+                        <PostCard
+                            imageData={postsImages[index]}
+                            key={post.uuid}
+                            post={post}
+                        />
                     ))}
                 </div>
                 <PaginationButtons totalPages={totalPages} />

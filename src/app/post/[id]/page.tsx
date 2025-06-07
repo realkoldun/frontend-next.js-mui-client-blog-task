@@ -22,6 +22,7 @@ interface PostPageProps {
 
 export default async function PostPage({ params }: PostPageProps) {
     const { id } = await params;
+
     const post = await getPostById(id);
 
     if (!post) notFound();
