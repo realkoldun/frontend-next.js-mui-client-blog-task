@@ -1,18 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 
-import { server } from './e2e/general/server';
-
 dotenv.config();
-
-export async function startMockServer() {
-    console.log('server start');
-    server.listen();
-}
-
-export async function stopMockServer() {
-    server.close();
-}
 
 export default defineConfig({
     testDir: './e2e',

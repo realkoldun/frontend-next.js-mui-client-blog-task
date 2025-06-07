@@ -13,11 +13,15 @@ test.describe('localization tests', () => {
         await stopMockServer();
     });
     test('language switcher render', async ({ page }) => {
-        await page.route('**/news/all/**', async (route) => {
-            console.log('Intercepting:', route.request().url());
-            await route.fulfill({ json: posts });
-        });
+        await page.route(
+            'https://api.thenewsapi.com/v1/news/all/**',
+            async (route) => {
+                await route.fulfill({ json: posts });
+            },
+        );
+
         await page.on('console', (msg) => console.log('PAGE LOG:', msg.text()));
+
         await page.goto('/');
         await page.screenshot({ path: 'screenshots/lang1.png' });
         await expect(page.getByText(LANGUAGES[0])).toBeVisible();
