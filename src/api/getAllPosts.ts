@@ -2,7 +2,7 @@ import { MAX_PAGES, MAX_STRING_LENGTH, MAX_SUGGESTIONS } from '@/api/config';
 import { formatString, safeFetch } from '@/helpers';
 import { PostType } from '@/types';
 
-interface GetAllPostsReturnValue {
+export interface GetAllPostsReturnValue {
     posts: PostType[];
     totalPages: number;
 }

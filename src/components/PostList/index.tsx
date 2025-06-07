@@ -1,20 +1,18 @@
 import styles from './postList.module.scss';
 import PaginationButtons from '../PaginationButtons';
 
-import { getAllPosts } from '@/api';
+import { GetAllPostsReturnValue } from '@/api/getAllPosts';
 import PostCard from '@/components/PostCard';
 import contentSectionStyle from '@/styles/contentSection.module.scss';
 
 interface PostListProps {
-    category: string;
-    page: string;
-    locale: string;
+    postsData: GetAllPostsReturnValue;
     translation: (key: string) => string;
 }
 
 export default async function PostList(props: PostListProps) {
-    const { category, locale, translation, page } = props;
-    const { posts, totalPages } = await getAllPosts(category, page, locale);
+    const { translation, postsData } = props;
+    const { posts, totalPages } = postsData;
 
     return (
         <section className={contentSectionStyle.contentSection}>
