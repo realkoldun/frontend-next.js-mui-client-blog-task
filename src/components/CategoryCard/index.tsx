@@ -1,14 +1,15 @@
 'use client';
 
-import { memo, MouseEvent } from 'react';
+import { memo } from 'react';
 
 import Image from 'next/image';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'use-intl';
 
 import styles from './categoryCard.module.scss';
 
 import { imageConfig } from '@/components/CategoryCard/config';
+import { categories } from '@/constants/categories';
+import { useUrlParams } from '@/hooks';
 import { Categories } from '@/types';
 
 interface CategoryCardProps {
@@ -17,15 +18,13 @@ interface CategoryCardProps {
 
 function CategoryCard({ title }: CategoryCardProps) {
     const t = useTranslations('Categories');
-    const router = useRouter();
-    const searchParams = useSearchParams();
+    const [currentCategory, setCategoryToUrl] = useUrlParams('category', true);
 
-    const selectedCategory = searchParams.get('category') || Categories.GENERAL;
+    const selectedCategory =
+        categories.find((category) => category.title === currentCategory)
+            ?.title || Categories.GENERAL;
 
-    const handleOnClick = (e: MouseEvent<HTMLDivElement>): void => {
-        e.preventDefault();
-        router.push(`?category=${title}`);
-    };
+    const handleOnClick = (): void => setCategoryToUrl(title);
 
     return (
         <section

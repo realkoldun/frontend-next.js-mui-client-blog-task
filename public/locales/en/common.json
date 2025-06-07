@@ -40,5 +40,9 @@
         "InvalidEmailDescription": "Please check it",
         "ServerErrorMessage": "Error",
         "ServerErrorDescription": "Something went wrong"
+    },
+    "NotFound": {
+        "Title": "Sorry, post not found",
+        "ReturnHome": "Return home"
     }
 }

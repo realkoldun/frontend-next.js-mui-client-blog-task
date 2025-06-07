@@ -40,6 +40,9 @@
     "InvalidEmailDescription": "Пожалуйста, проверьте его",
     "ServerErrorMessage": "Ошибка",
     "ServerErrorDescription": "Что-то пошло не так"
+  },
+  "NotFound": {
+    "Title": "Извините, пост не найден",
+    "ReturnHome": "Вернуться на главную"
   }
-
 }

@@ -4,23 +4,20 @@ import Image from 'next/image';
 
 import styles from './featurePost.module.scss';
 
-import { checkImage, getFeaturePost } from '@/api';
+import { checkImage } from '@/api';
 import { imageConfig } from '@/components/FeaturePost/config';
 import ReadMoreButton from '@/components/FeaturePost/ReadMoreButton';
 import { formatDate } from '@/helpers';
+import { PostType } from '@/types';
 
 interface FeaturePostComponentProps {
-    category: string;
+    featurePost: PostType | null;
     locale: string;
     translation: (key: string) => string;
 }
 
-async function FeaturePost({
-    category,
-    locale,
-    translation,
-}: FeaturePostComponentProps) {
-    const featurePost = await getFeaturePost(category, locale);
+async function FeaturePost(props: FeaturePostComponentProps) {
+    const { featurePost, locale, translation } = props;
 
     if (!featurePost) return null;
 

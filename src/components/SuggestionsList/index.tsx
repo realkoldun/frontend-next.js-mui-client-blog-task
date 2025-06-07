@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 
 import * as style from './styled';
 
-import { getSimilarPosts } from '@/api';
+import { checkImage, getSimilarPosts } from '@/api';
 import PostCard from '@/components/PostCard';
 
 interface SuggestionsList {
@@ -18,8 +18,17 @@ export default async function SuggestionsList(props: SuggestionsList) {
     const posts = await getSimilarPosts(id, locale, category);
     if (posts.length === 0) return null;
 
-    const suggestionPosts = posts.map((post) => (
-        <PostCard key={post.uuid} isSuggestionCard post={post} />
+    const postsImages = await Promise.all(
+        posts.map(({ image_url }) => checkImage(image_url)),
+    );
+
+    const suggestionPosts = posts.map((post, index) => (
+        <PostCard
+            imageData={postsImages[index]}
+            key={post.uuid}
+            isSuggestionCard
+            post={post}
+        />
     ));
 
     if (suggestionPosts.length === 0) return null;
