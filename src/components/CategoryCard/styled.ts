@@ -4,7 +4,7 @@ export const categoryCardSection = (isSelected: boolean) => ({
     component: 'section' as const,
     width: {
         md: theme.sizes.s,
-        sm: theme.sizes.s,
+        sm: theme.specialSizes.maxCardWidth,
         xs: theme.sizes.full,
     },
     height: { md: theme.sizes.xs, sm: theme.sizes.xxs, xs: theme.sizes.xs },
@@ -30,7 +30,7 @@ export const container = {
     justifyContent: theme.display.align.center,
     width: theme.sizes.full,
     height: theme.sizes.full,
-    gap: { md: theme.gap.xxs, sm: theme.gap.xxs, xs: 0 },
+    gap: { md: theme.gap.xxs, xs: 0 },
     padding: { sm: theme.padding.s, xs: 0 },
 };
 
@@ -38,16 +38,19 @@ export const title = {
     fontFamily: theme.fontFamily.sen,
     fontSize: {
         md: theme.fontSize.l,
-        sm: theme.fontSize.m,
+        sm: theme.fontSize.s,
         xs: theme.fontSize.l,
     },
 };
 
 export const description = {
-    fontSize: { md: theme.fontSize.s, ms: theme.fontSize.xs },
+    fontSize: {
+        md: theme.fontSize.s,
+        ms: theme.fontSize.xs,
+        xs: theme.fontSize.s,
+    },
     fontFamily: theme.fontFamily.sen,
     color: theme.color.darkGray,
-    //maxWidth: { sm: theme.sizes.xs, xs: theme.sizes.full },
 };
 
 export const image = {

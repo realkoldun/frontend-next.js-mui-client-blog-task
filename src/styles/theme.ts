@@ -69,7 +69,7 @@ export const theme = {
     color: {
         purple: '#592EA9',
         gray: '#6D6E76',
-        darkGray: '#232536',
+        darkGray: '#2E3040',
         black: '#000000',
         white: '#FFFFFF',
         lightYellow: '#FFD099',

@@ -1,12 +1,13 @@
 'use client';
 
-import { FormEvent, memo, useState, useTransition } from 'react';
+import { FormEvent, useState, useTransition } from 'react';
 
+import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import { createPortal } from 'react-dom';
 import { useTranslations } from 'use-intl';
 
-import styles from './footer.module.scss';
+import * as style from './styled';
 
 import { emailSubmit } from '@/api';
 import { imageConfig } from '@/components/Footer/config';
@@ -16,7 +17,7 @@ import { socialLinks } from '@/constants/socialLinks';
 import { usePortal } from '@/hooks';
 import { ModalWindowMessageType } from '@/types';
 
-function Footer() {
+export default function Footer() {
     const t = useTranslations('FooterSection');
 
     const [message, setMessage] = useState<ModalWindowMessageType | null>(null);
@@ -50,33 +51,33 @@ function Footer() {
     const isModalWindowShowed = message && modalRef && isModalWindowOpen;
 
     return (
-        <footer className={styles.footerSection}>
-            <section className={styles.subscribeContainer}>
-                <div className={styles.subscribeTextContainer}>
-                    <p className={styles.subscribeText}>{t('SubscribeText')}</p>
-                </div>
-                <form
-                    onSubmit={handleEmailSubmit}
-                    className={styles.subscribeInputContainer}
-                >
+        <Box {...style.section}>
+            <Box {...style.subscribeContainer}>
+                <Box {...style.subscribeTextContainer}>
+                    <Typography {...style.subscribeText}>
+                        {t('SubscribeText')}
+                    </Typography>
+                </Box>
+                <Box onSubmit={handleEmailSubmit} {...style.inputContainer}>
                     <input
                         name='email'
                         placeholder={t('SubscribeInputPlaceholder')}
-                        className={styles.subscribeInput}
+                        style={{ ...style.input }}
                     />
                     <StyledButton
                         disabled={pending}
                         submit
                         text={t('SubscribeButtonText')}
+                        isWide={true}
                     />
-                </form>
-            </section>
-            <div className={styles.infoContainer}>
-                <div>
-                    <p>Finstreet 118 2561 Fintown</p>
-                    <p>Hello@finsweet.com 020 7993 2905</p>
-                </div>
-                <div className={styles.infoSocialsContainer}>
+                </Box>
+            </Box>
+            <Box {...style.infoContainer}>
+                <Box>
+                    <Typography>Finstreet 118 2561 Fintown</Typography>
+                    <Typography>Hello@finsweet.com 020 7993 2905</Typography>
+                </Box>
+                <Box {...style.infoSocialsContainer}>
                     {socialLinks.map(({ id, title, imgUrl }) => (
                         <Image
                             key={id}
@@ -85,8 +86,8 @@ function Footer() {
                             {...imageConfig}
                         />
                     ))}
-                </div>
-            </div>
+                </Box>
+            </Box>
             {isModalWindowShowed &&
                 createPortal(
                     <ModalWindow
@@ -95,8 +96,6 @@ function Footer() {
                     />,
                     modalRef,
                 )}
-        </footer>
+        </Box>
     );
 }
-
-export default memo(Footer);
