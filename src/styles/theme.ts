@@ -35,12 +35,14 @@ export const theme = {
     padding: {
         xl: '80px',
         m: '20px',
+        s: '5px',
     },
     specialSizes: {
         switcherHeight: 50,
         modalWindowBottomPosition: 30,
         modalWindowImageSize: 30,
         maxContainerWidth: '1400px',
+        maxCardWidth: '250px',
     },
     gap: {
         l: 10,

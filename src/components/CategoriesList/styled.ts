@@ -26,10 +26,7 @@ export const title = {
 
 export const list = {
     display: theme.display.flex,
-    justifyContent: {
-        lg: theme.display.align.center,
-        md: theme.display.align.spaceBetween,
-    },
+    justifyContent: theme.display.align.center,
     alignItems: {
         lg: theme.display.align.center,
         md: '',

@@ -1,11 +1,10 @@
 'use client';
 
-import { memo } from 'react';
-
+import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useTranslations } from 'use-intl';
 
-import styles from './categoryCard.module.scss';
+import * as style from './styled';
 
 import { imageConfig } from '@/components/CategoryCard/config';
 import { categories } from '@/constants/categories';
@@ -16,7 +15,7 @@ interface CategoryCardProps {
     title: Categories;
 }
 
-function CategoryCard({ title }: CategoryCardProps) {
+export default function CategoryCard({ title }: CategoryCardProps) {
     const t = useTranslations('Categories');
     const [currentCategory, setCategoryToUrl] = useUrlParams('category', true);
 
@@ -27,29 +26,23 @@ function CategoryCard({ title }: CategoryCardProps) {
     const handleOnClick = (): void => setCategoryToUrl(title);
 
     return (
-        <section
+        <Box
             onClick={handleOnClick}
-            className={
-                title === selectedCategory
-                    ? styles.selectedSection
-                    : styles.section
-            }
+            {...style.categoryCardSection(title === selectedCategory)}
         >
-            <div className={styles.container}>
-                <div className={styles.image}>
+            <Box {...style.container}>
+                <Box {...style.image}>
                     <Image
                         src={t(`${title}.imgUrl`)}
                         alt={t(`${title}.title`)}
                         {...imageConfig}
                     />
-                </div>
-                <p className={styles.title}>{t(`${title}.title`)}</p>
-                <p className={styles.description}>
+                </Box>
+                <Typography {...style.title}>{t(`${title}.title`)}</Typography>
+                <Typography {...style.description}>
                     {t(`${title}.description`)}
-                </p>
-            </div>
-        </section>
+                </Typography>
+            </Box>
+        </Box>
     );
 }
-
-export default memo(CategoryCard);
