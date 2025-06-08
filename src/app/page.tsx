@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 
+import { Box } from '@mui/material';
 import { getLocale, getTranslations } from 'next-intl/server';
 
 import { getAllPosts, getFeaturePost } from '@/api';
@@ -25,7 +26,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     ]);
 
     return (
-        <main>
+        <Box component='main'>
             <FeaturePost
                 featurePost={featurePost}
                 locale={locale}
@@ -35,6 +36,6 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <Suspense>
                 <CategoriesList translation={t} />
             </Suspense>
-        </main>
+        </Box>
     );
 }

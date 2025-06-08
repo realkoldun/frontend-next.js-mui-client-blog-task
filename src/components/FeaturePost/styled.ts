@@ -1,0 +1,96 @@
+import { theme } from '@/styles/theme';
+
+export const featurePostSection = {
+    component: 'section' as const,
+    display: theme.display.flex,
+    alignItems: theme.display.align.center,
+    justifyContent: theme.display.align.center,
+    height: { md: theme.sizes.l, sm: theme.sizes.full },
+    padding: { md: theme.padding.m, xs: theme.padding.m },
+    margonTop: { sm: theme.padding.xl },
+    sx: {
+        backgroundColor: theme.color.lightGray,
+    },
+};
+
+export const featurePostContainer = {
+    display: theme.display.flex,
+    justifyContent: theme.display.align.spaceBetween,
+    alignItems: theme.display.align.center,
+    flexDirection: {
+        sm: theme.display.flexDirection.row,
+        xs: theme.display.flexDirection.column,
+    },
+    width: theme.sizes.full,
+    maxWidth: theme.specialSizes.maxContainerWidth,
+    height: theme.sizes.full,
+    gap: theme.gap.xxs,
+};
+
+export const image = {
+    objectFit: 'cover' as const,
+};
+
+export const informationSection = {
+    display: theme.display.flex,
+    alignItems: theme.display.align.start,
+    flexDirection: theme.display.flexDirection.column,
+    maxWidth: 900,
+    gap: theme.gap.m,
+};
+
+export const informationContainer = {
+    display: theme.display.flex,
+    alignItems: theme.display.align.start,
+    flexDirection: theme.display.flexDirection.column,
+    gap: theme.gap.xs,
+};
+
+export const sectionTitle = {
+    fontSize: { md: theme.fontSize.s, sm: theme.fontSize.xs },
+    letterSpacing: theme.gap.xxs,
+    color: theme.color.darkBlue,
+};
+export const title = {
+    fontFamily: theme.fontFamily.senBold,
+    fontSize: { md: theme.fontSize.xl, xs: theme.fontSize.s },
+    color: theme.color.darkBlue,
+};
+
+export const infoContainer = {
+    display: theme.display.flex,
+    alignItems: theme.display.align.center,
+    width: 'fit-content',
+    gap: theme.gap.xs,
+    height: theme.fontSize.l,
+};
+
+export const metaInfo = {
+    fontSize: { md: theme.fontSize.s, sm: theme.fontSize.xs },
+};
+
+export const authorSpan = {
+    color: theme.color.purple,
+    fontSize: { sm: theme.fontSize.xs },
+};
+
+export const descriptionText = {
+    color: theme.color.gray,
+    fontSize: { sm: theme.fontSize.xs },
+};
+
+export const divider = {
+    height: theme.sizes.full,
+    sx: {
+        borderLeft: `1px ${theme.color.black} solid`,
+    },
+};
+
+export const imageContainer = {
+    position: theme.display.position.relative,
+    width: theme.sizes.full,
+    maxWidth: theme.sizes.l,
+    minWidth: { md: theme.sizes.m, sm: theme.sizes.s, xs: theme.sizes.m },
+    height: { md: theme.sizes.full, sm: theme.sizes.s },
+    maxHeight: theme.sizes.s,
+};

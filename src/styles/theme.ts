@@ -40,6 +40,7 @@ export const theme = {
         switcherHeight: 50,
         modalWindowBottomPosition: 30,
         modalWindowImageSize: 30,
+        maxContainerWidth: '1400px',
     },
     gap: {
         l: 10,
@@ -71,6 +72,8 @@ export const theme = {
         white: '#FFFFFF',
         lightYellow: '#FFD099',
         yellow: '#FFD050',
+        lightGray: '#f4f4f4',
+        darkBlue: '#232536',
     },
     fontFamily: {
         sen: 'SenFont',
