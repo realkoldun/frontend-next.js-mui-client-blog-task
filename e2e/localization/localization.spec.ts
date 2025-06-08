@@ -1,17 +1,10 @@
 import { expect, test } from '@playwright/test';
 
-import { startMockServer, stopMockServer } from '../../playwright.config';
 import posts from '../mock/posts.json';
 
 const LANGUAGES = ['ENGLISH', 'РУССКИЙ'];
 
 test.describe('localization tests', () => {
-    test.beforeAll(async () => {
-        await startMockServer();
-    });
-    test.afterAll(async () => {
-        await stopMockServer();
-    });
     test('language switcher render', async ({ page }) => {
         await page.route(
             'https://api.thenewsapi.com/v1/news/all/**',

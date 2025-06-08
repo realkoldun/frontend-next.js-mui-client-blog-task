@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+//export const server = setupServer(...handlers);
+
 export default defineConfig({
     testDir: './e2e',
     /* Run tests in files in parallel */
