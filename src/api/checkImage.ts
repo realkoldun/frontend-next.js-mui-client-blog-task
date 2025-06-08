@@ -9,7 +9,7 @@ const errorImageData = {
     blurUrl: IMAGE_ON_ERROR.blurDataURL!,
 };
 
-interface CheckImageReturnType {
+export interface CheckImageReturnType {
     resultImageUrl: string;
     blurUrl: string;
 }
