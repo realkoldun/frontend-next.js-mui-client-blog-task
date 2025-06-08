@@ -7,7 +7,7 @@ export const featurePostSection = {
     justifyContent: theme.display.align.center,
     height: { md: theme.sizes.l, sm: theme.sizes.full },
     padding: { md: theme.padding.m, xs: theme.padding.m },
-    margonTop: { sm: theme.padding.xl },
+    marginTop: { sm: theme.padding.xl },
     sx: {
         backgroundColor: theme.color.lightGray,
     },
@@ -70,6 +70,7 @@ export const metaInfo = {
 };
 
 export const authorSpan = {
+    component: 'span' as const,
     color: theme.color.purple,
     fontSize: { sm: theme.fontSize.xs },
 };
