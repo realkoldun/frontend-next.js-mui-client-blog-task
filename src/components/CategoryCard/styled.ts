@@ -1,3 +1,4 @@
+import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 
 export const categoryCardSection = (isSelected: boolean) => ({
@@ -24,8 +25,8 @@ export const categoryCardSection = (isSelected: boolean) => ({
 });
 
 export const container = {
-    display: theme.display.flex,
-    alignItems: theme.display.align.start,
+    ...mixins.flexStart,
+
     flexDirection: theme.display.flexDirection.column,
     justifyContent: theme.display.align.center,
     width: theme.sizes.full,

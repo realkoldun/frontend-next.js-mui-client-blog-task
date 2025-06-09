@@ -1,3 +1,4 @@
+import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 
 export const select = {
@@ -10,16 +11,17 @@ export const select = {
 
 export const selectedContainer = {
     sx: {
-        display: theme.display.flex,
-        alignItems: theme.display.align.center,
+        ...mixins.flexCenter,
+
+        justifyContent: '',
         gap: theme.gap.xxs,
     },
 };
 
 export const menuItem = {
     sx: {
-        display: theme.display.flex,
-        justifyContent: theme.display.align.spaceAround,
+        ...mixins.flexSpaceAround,
+
         width: theme.sizes.xxs,
     },
 };

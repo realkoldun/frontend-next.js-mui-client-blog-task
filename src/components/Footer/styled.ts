@@ -1,10 +1,10 @@
+import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 
 export const section = {
+    ...mixins.flexCenter,
+
     component: 'footer' as const,
-    display: theme.display.flex,
-    alignItems: theme.display.align.center,
-    justifyContent: theme.display.align.center,
     flexDirection: theme.display.flexDirection.column,
     padding: `${theme.sizes.xs} ${theme.padding.m} ${theme.padding.m}`,
     height: theme.sizes.l,
@@ -16,8 +16,8 @@ export const section = {
 };
 
 export const subscribeContainer = {
-    display: theme.display.flex,
-    alignItems: theme.display.align.center,
+    ...mixins.flexCenter,
+
     justifyContent: {
         md: theme.display.align.spaceBetween,
         sm: theme.display.align.center,
@@ -41,8 +41,8 @@ export const subscribeContainer = {
 };
 
 export const subscribeTextContainer = {
-    display: theme.display.flex,
-    justifyContent: theme.display.align.spaceBetween,
+    ...mixins.flexSpaceBetween,
+
     maxWidth: { md: theme.sizes.full, sm: theme.sizes.l },
 };
 
@@ -56,10 +56,9 @@ export const subscribeText = {
 };
 
 export const inputContainer = {
+    ...mixins.flexCenter,
+
     component: 'form' as const,
-    display: theme.display.flex,
-    alignItems: theme.display.align.center,
-    justifyContent: theme.display.align.center,
     minWidth: { md: theme.sizes.l, sm: 0 },
     flexDirection: {
         md: theme.display.flexDirection.row,
@@ -86,8 +85,8 @@ export const input = {
 };
 
 export const infoContainer = {
-    display: theme.display.flex,
-    justifyContent: theme.display.align.spaceBetween,
+    ...mixins.flexSpaceBetween,
+
     flexDirection: {
         md: theme.display.flexDirection.row,
         sm: theme.display.flexDirection.column,
@@ -101,7 +100,7 @@ export const infoContainer = {
 };
 
 export const infoSocialsContainer = {
-    display: theme.display.flex,
-    justifyContent: theme.display.align.spaceBetween,
+    ...mixins.flexSpaceBetween,
+
     width: '144px',
 };

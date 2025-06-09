@@ -8,6 +8,7 @@ export const theme = {
         flexDirection: {
             row: 'row' as const,
             column: 'column' as const,
+            reverseColumn: 'column-reverse' as const,
         },
         align: {
             center: 'center' as const,

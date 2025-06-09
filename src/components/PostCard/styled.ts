@@ -1,9 +1,10 @@
+import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 
 export const postSection = {
+    ...mixins.flexCenter,
+
     component: 'section' as const,
-    display: theme.display.flex,
-    alignItems: theme.display.align.center,
     justifyContent: {
         md: theme.display.align.start,
         sm: theme.display.align.center,

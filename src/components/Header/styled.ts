@@ -1,13 +1,13 @@
+import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 
 export const section = {
+    ...mixins.flexCenter,
+
     component: 'header' as const,
-    display: theme.display.flex,
-    alignItems: theme.display.align.center,
-    justifyContent: theme.display.align.center,
     width: theme.sizes.full,
     height: theme.padding.xl,
-    padding: { md: `0 ${theme.padding.xl}`, sm: `0 ${theme.padding.m}` },
+    padding: { md: `0 ${theme.padding.xl}`, xs: `0 ${theme.padding.m}` },
     position: theme.display.position.fixed,
 
     sx: {
@@ -18,9 +18,9 @@ export const section = {
 };
 
 export const container = {
-    display: theme.display.flex,
+    ...mixins.flexSpaceBetween,
+
     alignItems: theme.display.align.center,
-    justifyContent: theme.display.align.spaceBetween,
     width: theme.sizes.full,
     maxWidth: theme.specialSizes.maxContainerWidth,
     height: theme.sizes.full,

@@ -1,25 +1,25 @@
+import { mixins } from '@/styles/mixins';
+import { sectionGeneralStyles } from '@/styles/sectionGeneralStyles';
 import { theme } from '@/styles/theme';
 
 export const featurePostSection = {
-    component: 'section' as const,
-    display: theme.display.flex,
-    alignItems: theme.display.align.center,
-    justifyContent: theme.display.align.center,
+    ...sectionGeneralStyles.section,
+
     height: { md: theme.sizes.l, sm: theme.sizes.full },
     padding: { md: theme.padding.m, xs: theme.padding.m },
-    marginTop: { sm: theme.padding.xl },
+    marginTop: { xs: theme.padding.xl },
     sx: {
         backgroundColor: theme.color.lightGray,
     },
 };
 
 export const featurePostContainer = {
-    display: theme.display.flex,
-    justifyContent: theme.display.align.spaceBetween,
+    ...mixins.flexSpaceBetween,
+
     alignItems: theme.display.align.center,
     flexDirection: {
         sm: theme.display.flexDirection.row,
-        xs: theme.display.flexDirection.column,
+        xs: theme.display.flexDirection.reverseColumn,
     },
     width: theme.sizes.full,
     maxWidth: theme.specialSizes.maxContainerWidth,
@@ -32,16 +32,16 @@ export const image = {
 };
 
 export const informationSection = {
-    display: theme.display.flex,
-    alignItems: theme.display.align.start,
+    ...mixins.flexStart,
+
     flexDirection: theme.display.flexDirection.column,
     maxWidth: 900,
     gap: theme.gap.m,
 };
 
 export const informationContainer = {
-    display: theme.display.flex,
-    alignItems: theme.display.align.start,
+    ...mixins.flexStart,
+
     flexDirection: theme.display.flexDirection.column,
     gap: theme.gap.xs,
 };
@@ -58,9 +58,10 @@ export const title = {
 };
 
 export const infoContainer = {
-    display: theme.display.flex,
-    alignItems: theme.display.align.center,
-    width: 'fit-content',
+    ...mixins.flexCenter,
+
+    justifyContent: '',
+    width: 'fit-content' as const,
     gap: theme.gap.xs,
     height: theme.fontSize.l,
 };
@@ -91,7 +92,7 @@ export const imageContainer = {
     position: theme.display.position.relative,
     width: theme.sizes.full,
     maxWidth: theme.sizes.l,
-    minWidth: { md: theme.sizes.m, sm: theme.sizes.s, xs: theme.sizes.m },
-    height: { md: theme.sizes.full, sm: theme.sizes.s },
+    minWidth: { md: theme.sizes.m, sm: theme.sizes.s, xs: theme.sizes.s },
+    height: { md: theme.sizes.full, xs: theme.sizes.s },
     maxHeight: theme.sizes.s,
 };

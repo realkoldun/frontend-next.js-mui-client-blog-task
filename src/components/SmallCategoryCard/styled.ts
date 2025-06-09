@@ -1,8 +1,9 @@
+import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 
 export const section = {
-    display: theme.display.flex,
-    alignItems: theme.display.align.center,
+    ...mixins.flexCenter,
+
     width: { xs: theme.sizes.xxs, md: theme.sizes.xs },
     justifyContent: theme.display.align.spaceBetween,
 };
