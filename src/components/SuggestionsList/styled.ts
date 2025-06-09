@@ -1,3 +1,4 @@
+import { sectionGeneralStyles } from '@/styles/sectionGeneralStyles';
 import { theme } from '@/styles/theme';
 
 export const suggestionListContainer = {
@@ -14,11 +15,7 @@ export const suggestionListContainer = {
     gap: theme.gap.xs,
 };
 
-export const title = {
-    width: { ms: '', xs: theme.sizes.full },
-    fontFamily: theme.fontFamily.senBold,
-    fontSize: { xs: theme.fontSize.l, md: theme.fontSize.xxl },
-};
+export const title = sectionGeneralStyles.title;
 
 export const suggestionsContainer = {
     display: theme.display.flex,
@@ -27,9 +24,12 @@ export const suggestionsContainer = {
         xs: theme.display.flexDirection.column,
     },
     'overflow-y': 'scroll' as const,
-    alignItems: theme.display.align.start,
+    alignItems: {
+        md: theme.display.align.start,
+        xs: theme.display.align.center,
+    },
     justifyContent: theme.display.align.spaceAround,
     width: theme.sizes.fitContent,
     maxWidth: theme.sizes.full,
-    gap: { md: theme.gap.l, xs: theme.gap.m },
+    gap: { md: theme.gap.l, xs: theme.gap.xxs },
 };

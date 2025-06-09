@@ -1,10 +1,11 @@
+import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 
 export const burgerContainer = {
+    ...mixins.flexSpaceAround,
+
     component: 'section' as const,
-    display: theme.display.flex,
     flexDirection: theme.display.flexDirection.column,
-    justifyContent: theme.display.align.spaceAround,
     background: 'transparent' as const,
     border: 'none' as const,
     cursor: 'pointer' as const,
@@ -26,9 +27,9 @@ export const burgerLine = (isOpen: boolean) => ({
 });
 
 export const menuContainer = {
-    display: theme.display.flex,
+    ...mixins.flexCenter,
+
     flexDirection: theme.display.flexDirection.column,
-    alignItems: theme.display.align.center,
     justifyContent: 'normal' as const,
     fontSize: theme.fontSize.l,
     paddingTop: theme.padding.m,

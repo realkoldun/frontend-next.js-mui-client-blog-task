@@ -1,10 +1,11 @@
-import styles from './postList.module.scss';
+import { Box, Divider, Typography } from '@mui/material';
+
 import PaginationButtons from '../PaginationButtons';
+import * as style from './styled';
 
 import { checkImage } from '@/api';
 import { GetAllPostsReturnValue } from '@/api/getAllPosts';
 import PostCard from '@/components/PostCard';
-import contentSectionStyle from '@/styles/contentSection.module.scss';
 
 interface PostListProps {
     postsData: GetAllPostsReturnValue;
@@ -20,13 +21,13 @@ export default async function PostList(props: PostListProps) {
     );
 
     return (
-        <section className={contentSectionStyle.contentSection}>
-            <div className={styles.container}>
-                <h1 className={styles.title}>
+        <Box {...style.postListSection}>
+            <Box {...style.postListContainer}>
+                <Typography {...style.title}>
                     {translation('PostList.SectionTitle')}
-                </h1>
-                <hr className={styles.horizontalLine} />
-                <div className={styles.listContainer}>
+                </Typography>
+                <Divider {...style.line} />
+                <Box {...style.listContainer}>
                     {posts.map((post, index) => (
                         <PostCard
                             imageData={postsImages[index]}
@@ -34,9 +35,9 @@ export default async function PostList(props: PostListProps) {
                             post={post}
                         />
                     ))}
-                </div>
+                </Box>
                 <PaginationButtons totalPages={totalPages} />
-            </div>
-        </section>
+            </Box>
+        </Box>
     );
 }

@@ -1,9 +1,11 @@
+import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 
 export const postHeaderSection = {
+    ...mixins.flexCenter,
+
     component: 'section' as const,
-    display: theme.display.flex,
-    justifyContent: theme.display.align.center,
+    alignItems: '',
     flexDirection: theme.display.flexDirection.column,
     maxWidth: theme.sizes.xl,
     minHeight: { xs: theme.sizes.xs, md: theme.sizes.s },
@@ -11,17 +13,17 @@ export const postHeaderSection = {
 };
 
 export const metaInfoContainer = {
-    display: theme.display.flex,
+    ...mixins.flexCenter,
+
     justifyContent: theme.display.align.start,
     width: theme.sizes.full,
     gap: theme.gap.xxs,
-    alignItems: theme.display.align.center,
 };
 
 export const metaInfoTextContainer = {
-    display: theme.display.flex,
+    ...mixins.flexStart,
+
     flexDirection: theme.display.flexDirection.column,
-    alignItems: theme.display.align.start,
 };
 
 export const image = {

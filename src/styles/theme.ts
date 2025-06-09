@@ -8,6 +8,7 @@ export const theme = {
         flexDirection: {
             row: 'row' as const,
             column: 'column' as const,
+            reverseColumn: 'column-reverse' as const,
         },
         align: {
             center: 'center' as const,
@@ -35,11 +36,14 @@ export const theme = {
     padding: {
         xl: '80px',
         m: '20px',
+        s: '5px',
     },
     specialSizes: {
         switcherHeight: 50,
         modalWindowBottomPosition: 30,
         modalWindowImageSize: 30,
+        maxContainerWidth: '1400px',
+        maxCardWidth: '250px',
     },
     gap: {
         l: 10,
@@ -66,11 +70,13 @@ export const theme = {
     color: {
         purple: '#592EA9',
         gray: '#6D6E76',
-        darkGray: '#232536',
+        darkGray: '#2E3040',
         black: '#000000',
         white: '#FFFFFF',
         lightYellow: '#FFD099',
         yellow: '#FFD050',
+        lightGray: '#f4f4f4',
+        darkBlue: '#232536',
     },
     fontFamily: {
         sen: 'SenFont',

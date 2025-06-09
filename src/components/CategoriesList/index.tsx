@@ -1,8 +1,9 @@
-import styles from './categoriesList.module.scss';
+import { Box, Typography } from '@mui/material';
+
+import * as style from './styled';
 
 import CategoryCard from '@/components/CategoryCard';
 import { categories } from '@/constants/categories';
-import contentSectionStyle from '@/styles/contentSection.module.scss';
 
 interface CategoriesListProps {
     translation: (key: string) => string;
@@ -12,17 +13,17 @@ export default async function CategoriesList({
     translation,
 }: CategoriesListProps) {
     return (
-        <section className={contentSectionStyle.contentSection}>
-            <div className={styles.container}>
-                <h2 className={styles.title}>
+        <Box {...style.categoryListSection}>
+            <Box {...style.container}>
+                <Typography {...style.title}>
                     {translation('CategoryList.SectionTitle')}
-                </h2>
-                <div className={styles.list}>
+                </Typography>
+                <Box {...style.list}>
                     {categories.map(({ id, title }) => (
                         <CategoryCard key={id} title={title} />
                     ))}
-                </div>
-            </div>
-        </section>
+                </Box>
+            </Box>
+        </Box>
     );
 }

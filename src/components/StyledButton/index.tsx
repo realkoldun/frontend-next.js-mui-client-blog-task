@@ -1,24 +1,27 @@
 import { MouseEvent } from 'react';
 
-import styles from './button.module.scss';
+import { Button } from '@mui/material';
+
+import * as style from './styled';
 
 interface StyledButtonProps {
     text: string;
     onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
     submit?: boolean;
     disabled?: boolean;
+    isWide?: boolean;
 }
 
 export default function StyledButton(props: StyledButtonProps) {
-    const { text, onClick, disabled, submit } = props;
+    const { text, onClick, disabled, submit, isWide } = props;
     return (
-        <button
+        <Button
             type={submit ? 'submit' : 'button'}
             onClick={onClick}
-            className={styles.button}
+            {...style.button({ isWide })}
             disabled={disabled}
         >
             {text}
-        </button>
+        </Button>
     );
 }

@@ -1,8 +1,9 @@
+import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 
 export const modalWindowContainer = {
-    display: theme.display.flex,
-    justifyContent: theme.display.align.spaceAround,
+    ...mixins.flexSpaceAround,
+
     alignItems: theme.display.align.center,
     position: theme.display.position.fixed,
     zIndex: theme.sizes.s,

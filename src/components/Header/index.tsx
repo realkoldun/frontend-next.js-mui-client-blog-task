@@ -1,6 +1,7 @@
+import { Box, Typography } from '@mui/material';
 import Link from 'next/link';
 
-import styles from './header.module.scss';
+import * as style from './styled';
 
 import BurgerMenu from '@/components/BurgerMenu';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -8,15 +9,15 @@ import { PATHS } from '@/constants/paths';
 
 export default async function Header() {
     return (
-        <header className={styles.headerSection}>
-            <div className={styles.headerContainer}>
-                <Link href={PATHS.HOME} className={styles.headerText}>
-                    Modsen Blog
+        <Box {...style.section}>
+            <Box {...style.container}>
+                <Link href={PATHS.HOME}>
+                    <Typography {...style.text}>Modsen Blog</Typography>
                 </Link>
                 <BurgerMenu>
                     <LanguageSwitcher />
                 </BurgerMenu>
-            </div>
-        </header>
+            </Box>
+        </Box>
     );
 }

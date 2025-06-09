@@ -1,20 +1,19 @@
+import { mixins } from '@/styles/mixins';
 import { theme } from '@/styles/theme';
 
 export const section = {
-    display: theme.display.flex,
+    ...mixins.flexCenter,
+
     flexDirection: {
         xs: theme.display.flexDirection.column,
         md: theme.display.flexDirection.row,
     },
-    alignItems: theme.display.align.center,
-    justifyContent: theme.display.align.center,
     gap: theme.gap.s,
 };
 
 export const pagesContainer = {
-    display: theme.display.flex,
-    alignItems: theme.display.align.center,
-    justifyContent: theme.display.align.center,
+    ...mixins.flexCenter,
+
     gap: { xs: theme.gap.xxs, md: theme.gap.xs },
 };
 

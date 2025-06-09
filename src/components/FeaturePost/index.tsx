@@ -1,8 +1,7 @@
-import { memo } from 'react';
-
+import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
-import styles from './featurePost.module.scss';
+import * as style from './styled';
 
 import { checkImage } from '@/api';
 import { imageConfig } from '@/components/FeaturePost/config';
@@ -16,7 +15,7 @@ interface FeaturePostComponentProps {
     translation: (key: string) => string;
 }
 
-async function FeaturePost(props: FeaturePostComponentProps) {
+export default async function FeaturePost(props: FeaturePostComponentProps) {
     const { featurePost, locale, translation } = props;
 
     if (!featurePost) return null;
@@ -27,42 +26,41 @@ async function FeaturePost(props: FeaturePostComponentProps) {
     const { resultImageUrl, blurUrl } = await checkImage(image_url);
 
     return (
-        <article className={styles.featurePostSection}>
-            <div className={styles.featurePostContainer}>
-                <div className={styles.informationSection}>
-                    <div className={styles.informationContainer}>
-                        <p className={styles.sectionTitle}>
+        <Box {...style.featurePostSection}>
+            <Box {...style.featurePostContainer}>
+                <Box {...style.informationSection}>
+                    <Box {...style.informationContainer}>
+                        <Typography {...style.sectionTitle}>
                             {translation('FeaturePost.SectionTitle')}
-                        </p>
-                        <h2 className={styles.title}>{title}</h2>
-                        <div className={styles.infoContainer}>
-                            <p className={styles.metaInfo}>
+                        </Typography>
+                        <Typography {...style.title}>{title}</Typography>
+                        <Box {...style.infoContainer}>
+                            <Typography {...style.metaInfo}>
                                 {translation('FeaturePost.ByAuthor')}{' '}
-                                <span className={styles.authorSpan}>
+                                <Typography {...style.authorSpan}>
                                     {source}
-                                </span>
-                            </p>
-                            <div className={styles.verticalDevider}></div>
-                            <p className={styles.metaInfo}>
+                                </Typography>
+                            </Typography>
+                            <Box {...style.divider}></Box>
+                            <Typography {...style.metaInfo}>
                                 {formatDate(published_at, locale)}
-                            </p>
-                        </div>
-                        <p className={styles.descriptionText}>{description}</p>
-                    </div>
+                            </Typography>
+                        </Box>
+                        <Typography {...style.descriptionText}>
+                            {description}
+                        </Typography>
+                    </Box>
                     <ReadMoreButton uuid={uuid} />
-                </div>
-                <div className={styles.imageContainer}>
+                </Box>
+                <Box {...style.imageContainer}>
                     <Image
                         src={resultImageUrl}
-                        alt='feature post image'
                         {...imageConfig}
                         blurDataURL={blurUrl}
-                        style={{ objectFit: 'cover' }}
+                        style={{ ...style.image }}
                     />
-                </div>
-            </div>
-        </article>
+                </Box>
+            </Box>
+        </Box>
     );
 }
-
-export default memo(FeaturePost);
