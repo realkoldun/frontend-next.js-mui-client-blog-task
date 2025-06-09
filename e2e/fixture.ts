@@ -11,7 +11,7 @@ import path from 'path';
 import { parse } from 'url';
 
 //import * as json from '../.next/prerender-manifest.json' assert { type: 'json' };
-//если будет ошибка, то нужно убрать импорт, собрать проект и тогда манифест появится
+//файл появляется и исчезает при сборке
 
 export const test = base.extend<{
     dynamicPage: Page;
