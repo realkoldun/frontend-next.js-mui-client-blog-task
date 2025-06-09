@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import CategoryCard from '@/components/CategoryCard';
+import { categories } from '@/constants/categories';
 import { Categories } from '@/types';
 
 const meta: Meta<typeof CategoryCard> = {
@@ -8,6 +9,14 @@ const meta: Meta<typeof CategoryCard> = {
     component: CategoryCard,
     args: {
         title: Categories.GENERAL,
+    },
+    argTypes: {
+        title: {
+            control: {
+                type: 'radio',
+            },
+            options: categories.map((category) => category.title),
+        },
     },
 };
 
@@ -18,15 +27,5 @@ export const Default: StoryObj<typeof CategoryCard> = {
         nextjs: {
             appDirectory: true,
         },
-    },
-};
-export const Technology: StoryObj<typeof CategoryCard> = {
-    parameters: {
-        nextjs: {
-            appDirectory: true,
-        },
-    },
-    args: {
-        title: Categories.TECHNOLOGY,
     },
 };

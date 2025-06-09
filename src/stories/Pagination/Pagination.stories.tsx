@@ -19,23 +19,3 @@ export const Default: StoryObj<typeof PaginationButtons> = {
         },
     },
 };
-export const FewPages: StoryObj<typeof PaginationButtons> = {
-    parameters: {
-        nextjs: {
-            appDirectory: true,
-        },
-    },
-    args: {
-        totalPages: 3,
-    },
-};
-export const ManyPages: StoryObj<typeof PaginationButtons> = {
-    parameters: {
-        nextjs: {
-            appDirectory: true,
-        },
-    },
-    args: {
-        totalPages: 50,
-    },
-};
