@@ -5,5 +5,6 @@ dotenv.config();
 
 export default defineConfig({
     globalSetup: './playwright.setup.ts',
+    //нужно удалить при использовании другого способа
     testDir: './e2e',
 });
