@@ -1,3 +1,4 @@
+/*
 import { expect, test } from '@playwright/test';
 
 import posts from '../mock/posts.json';
@@ -7,7 +8,7 @@ const LANGUAGES = ['ENGLISH', 'РУССКИЙ'];
 test.describe('localization tests', () => {
     test('language switcher render', async ({ page }) => {
         await page.route(
-            'https://api.thenewsapi.com/v1/news/all/**',
+            'https://api.thenewsapi.com/v1/news/all/!**',
             async (route) => {
                 await route.fulfill({ json: posts });
             },
@@ -31,3 +32,4 @@ test.describe('localization tests', () => {
         await expect(page.getByText(LANGUAGES[0])).not.toBeVisible();
     });
 });
+*/

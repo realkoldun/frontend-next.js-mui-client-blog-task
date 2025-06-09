@@ -1,3 +1,5 @@
+/** @type {import('next').NextConfig} */
+
 import withPlaiceholder from '@plaiceholder/next';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
@@ -7,6 +9,9 @@ const nextConfig: NextConfig = {
         EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
         EMAIL_TEMPLATE_ID: process.env.EMAIL_TEMPLATE_ID,
         EMAIL_PUBLIC_KEY: process.env.EMAIL_PUBLIC_KEY,
+    },
+    publicRuntimeConfig: {
+        NEWS_API_URL: process.env.NEWS_API_URL,
     },
     images: {
         remotePatterns: [
