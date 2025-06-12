@@ -5,20 +5,16 @@ import translation from '@/../public/locales/en/common.json' assert { type: 'jso
 test.describe('email send tests', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/');
-        translation;
     });
 
     test('success send', async ({ page }) => {
-        await page.route(
-            'https://api.emailjs.com/api/v1.0/email/send',
-            async (route) => {
-                await route.fulfill({
-                    status: 200,
-                    contentType: 'application/json',
-                    body: JSON.stringify({ success: true }),
-                });
-            },
-        );
+        await page.route(process.env.EMAIL_API_URL!, async (route) => {
+            await route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: JSON.stringify({ success: true }),
+            });
+        });
         const emailInput = await page.getByPlaceholder('Enter your email');
         await emailInput.fill('anton.kitaev.97@gmail.com');
 
@@ -35,16 +31,13 @@ test.describe('email send tests', () => {
     });
 
     test('error send', async ({ page }) => {
-        await page.route(
-            'https://api.emailjs.com/api/v1.0/email/send',
-            async (route) => {
-                await route.fulfill({
-                    status: 401,
-                    contentType: 'application/json',
-                    body: JSON.stringify({ success: false }),
-                });
-            },
-        );
+        await page.route(process.env.EMAIL_API_URL!, async (route) => {
+            await route.fulfill({
+                status: 401,
+                contentType: 'application/json',
+                body: JSON.stringify({ success: false }),
+            });
+        });
         const emailInput = await page.getByPlaceholder('Enter your email');
         await emailInput.fill('anton.kitaev.97@gmail.com');
 

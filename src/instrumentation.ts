@@ -6,8 +6,5 @@ export async function register() {
         const server = setupServer(...handlers);
 
         server.listen();
-        server.events.on('request:start', ({ request }) => {
-            console.log('MSW intercepted 2:', request.method, request.url);
-        });
     }
 }
