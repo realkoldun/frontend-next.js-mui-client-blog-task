@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test';
 import { Page } from 'playwright';
 
+import localizationEn from '@/../public/locales/en/common.json' assert { type: 'json' };
+import localizationRu from '@/../public/locales/ru/common.json' assert { type: 'json' };
 import { register } from '@/instrumentation';
 
 const LANGUAGES = ['ENGLISH', 'РУССКИЙ'];
@@ -33,21 +35,33 @@ test.describe('localization tests', () => {
     test('switch language on feature post', async ({ page }) => {
         await changeLanguage(page);
 
-        await expect(page.getByText('Избранный пост')).toBeVisible();
-        await expect(page.getByText('Feature post')).not.toBeVisible();
+        await expect(
+            page.getByText(localizationRu.HomePage.FeaturePost.SectionTitle),
+        ).toBeVisible();
+        await expect(
+            page.getByText(localizationEn.HomePage.FeaturePost.SectionTitle),
+        ).not.toBeVisible();
     });
 
     test('switch language on all posts', async ({ page }) => {
         await changeLanguage(page);
 
-        await expect(page.getByText('Все посты')).toBeVisible();
-        await expect(page.getByText('All posts')).not.toBeVisible();
+        await expect(
+            page.getByText(localizationRu.HomePage.PostList.SectionTitle),
+        ).toBeVisible();
+        await expect(
+            page.getByText(localizationEn.HomePage.PostList.SectionTitle),
+        ).not.toBeVisible();
     });
 
     test('switch language on all categories', async ({ page }) => {
         await changeLanguage(page);
 
-        await expect(page.getByText('Все категории')).toBeVisible();
-        await expect(page.getByText('All categories')).not.toBeVisible();
+        await expect(
+            page.getByText(localizationRu.HomePage.CategoryList.SectionTitle),
+        ).toBeVisible();
+        await expect(
+            page.getByText(localizationEn.HomePage.CategoryList.SectionTitle),
+        ).not.toBeVisible();
     });
 });
