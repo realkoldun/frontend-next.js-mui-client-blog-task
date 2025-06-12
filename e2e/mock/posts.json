@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "found": "3",
+    "returned": "3",
+    "limit": "10",
+    "page": "30"
+  },
+  "data": [
+    {
+      "uuid": "1a2b3c4d-5678-90ef-ghij-klmnopqrstuv",
+      "categories": ["TECH"],
+      "title": "Будущее ИИ: прогнозы на 2030 год",
+      "source": "AI Journal",
+      "keywords": "",
+      "url": "",
+      "published_at": "2025-06-02T14:30:00Z",
+      "description": "Эксперты обсуждают, как искусственный интеллект изменит мир к 2030 году.",
+      "snippet": "С развитием нейросетей и вычислительных мощностей прогнозируется значительный скачок в сфере ИИ...",
+      "image_url": "http://localhost:3000/featurePostMockImg.png"
+    },
+    {
+      "uuid": "5e6f7g8h-1234-56ij-klmn-opqrstuvwxyz",
+      "categories": ["BUSINESS"],
+      "title": "Новая эра финтеха: как технологии меняют финансовый рынок",
+      "source": "Finance Weekly",
+      "keywords": "",
+      "url": "",
+      "published_at": "2025-06-01T09:15:00Z",
+      "description": "Блокчейн, искусственный интеллект и автоматизация трансформируют экономику.",
+      "snippet": "Компании внедряют инновационные решения, чтобы повысить прозрачность и эффективность финансовых операций...",
+      "image_url": "http://localhost:3000/postTest.png"
+    },
+    {
+      "uuid": "9i0j1k2l-7890-12ab-cdef-ghijklmnopqrs",
+      "categories": ["POLITICS"],
+      "title": "Влияние цифровых технологий на мировую дипломатию",
+      "source": "Global Affairs",
+      "keywords": "",
+      "url": "",
+      "published_at": "2025-06-02T18:45:00Z",
+      "description": "Как социальные сети и цифровые платформы формируют международные отношения.",
+      "snippet": "Сегодняшние политические лидеры используют новые инструменты для коммуникации с гражданами...",
+      "image_url": "http://localhost:3000/postTest.png"
+    }
+  ]
+}
