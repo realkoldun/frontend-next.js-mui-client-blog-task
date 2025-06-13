@@ -8,9 +8,6 @@ export async function register() {
         const { setupServer } = await import('msw/node');
         const server = setupServer(...handlers);
 
-        /*server.events.on('request:start', ({ request }) => {
-            console.log('MSW intercepted 2:', request.method, request.url);
-        });*/
         server.listen();
     }
 }
