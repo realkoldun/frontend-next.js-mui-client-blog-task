@@ -91,9 +91,6 @@ jobs:
             - name: Clean .next folder
               run: rm -rf .next
 
-            - name: Build with Next.js
-              run: ${{ steps.detect-package-manager.outputs.runner }} build
-
             - name: Vercel deploy
               run: |
                 npm i -g vercel
