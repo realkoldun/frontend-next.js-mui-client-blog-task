@@ -1,18 +1,14 @@
 import { expect, test } from '@playwright/test';
 
-import posts from '../../mock/posts.json' assert { type: 'json' };
-
-import { formatDate } from '@/helpers';
-import { register } from '@/instrumentation';
+import { PATHS } from '@/../src/constants/paths';
+import { formatDate } from '@/../src/helpers';
+import posts from '@/mock/posts.json' assert { type: 'json' };
 
 test.describe('render test', () => {
     const mainPost = posts.data[0];
-    test.beforeAll(async () => {
-        await register();
-    });
 
     test.beforeEach(async ({ page }) => {
-        await page.goto(`/post/${mainPost.uuid}`);
+        await page.goto(`${PATHS.POST}${mainPost.uuid}`);
     });
 
     test('Render post header', async ({ page }) => {

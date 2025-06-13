@@ -1,15 +1,10 @@
 import { test } from '@playwright/test';
 
-import posts from '../../mock/posts.json' assert { type: 'json' };
-
-import { PATHS } from '@/constants/paths';
-import { register } from '@/instrumentation';
+import { PATHS } from '@/../src/constants/paths';
+import posts from '@/mock/posts.json' assert { type: 'json' };
 
 test.describe('render test', () => {
     const mainPost = posts.data[1];
-    test.beforeAll(async () => {
-        await register();
-    });
 
     test('Go to post', async ({ page }) => {
         await page.goto(`/`);
@@ -22,7 +17,7 @@ test.describe('render test', () => {
         await page.goto(`${PATHS.POST}${mainPost.uuid}`);
         await page.getByText('Modsen blog').click();
 
-        await page.waitForURL(`/`);
+        await page.waitForURL(PATHS.HOME);
     });
 
     test('Go to selected category', async ({ page }) => {

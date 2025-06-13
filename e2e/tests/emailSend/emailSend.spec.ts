@@ -1,13 +1,9 @@
 import { test } from '@playwright/test';
 
 import translation from '@/../public/locales/en/common.json' assert { type: 'json' };
-import { register } from '@/instrumentation';
+import * as constants from '@/fixtures';
 
 test.describe('email send tests', () => {
-    test.beforeAll(async () => {
-        await register();
-    });
-
     test.beforeEach(async ({ page }) => {
         await page.goto('/');
     });
@@ -21,7 +17,7 @@ test.describe('email send tests', () => {
             });
         });
         const emailInput = await page.getByPlaceholder('Enter your email');
-        await emailInput.fill('anton.kitaev.97@gmail.com');
+        await emailInput.fill(constants.VALID_EMAIL);
 
         await page.getByText(translation.ModalWindow.SuccessMessage);
         await page.getByText(translation.ModalWindow.SuccessDescription);
@@ -29,7 +25,7 @@ test.describe('email send tests', () => {
 
     test('invalid email', async ({ page }) => {
         const emailInput = await page.getByPlaceholder('Enter your email');
-        await emailInput.fill('invalid email');
+        await emailInput.fill(constants.INVALID_EMAIL);
 
         await page.getByText(translation.ModalWindow.InvalidEmailMessage);
         await page.getByText(translation.ModalWindow.InvalidEmailDescription);
@@ -44,7 +40,7 @@ test.describe('email send tests', () => {
             });
         });
         const emailInput = await page.getByPlaceholder('Enter your email');
-        await emailInput.fill('anton.kitaev.97@gmail.com');
+        await emailInput.fill(constants.VALID_EMAIL);
 
         await page.getByText(translation.ModalWindow.ServerErrorMessage);
         await page.getByText(translation.ModalWindow.ServerErrorDescription);

@@ -3,7 +3,7 @@ import { Page } from 'playwright';
 
 import localizationEn from '@/../public/locales/en/common.json' assert { type: 'json' };
 import localizationRu from '@/../public/locales/ru/common.json' assert { type: 'json' };
-import { register } from '@/instrumentation';
+import { PATHS } from '@/../src/constants/paths';
 
 const LANGUAGES = ['ENGLISH', 'РУССКИЙ'];
 
@@ -14,12 +14,9 @@ test.describe('localization tests', () => {
 
         await page.waitForTimeout(1000);
     };
-    test.beforeAll(async () => {
-        await register();
-    });
 
     test.beforeEach(async ({ page }) => {
-        await page.goto(`/`);
+        await page.goto(PATHS.HOME);
     });
 
     test('language switcher render', async ({ page }) => {
