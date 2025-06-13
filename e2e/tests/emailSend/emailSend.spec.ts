@@ -1,8 +1,13 @@
 import { test } from '@playwright/test';
 
 import translation from '@/../public/locales/en/common.json' assert { type: 'json' };
+import { register } from '@/instrumentation';
 
 test.describe('email send tests', () => {
+    test.beforeAll(async () => {
+        await register();
+    });
+
     test.beforeEach(async ({ page }) => {
         await page.goto('/');
     });

@@ -15,10 +15,12 @@ export const handlers = [
         return HttpResponse.json(post);
     }),
     http.get(`${process.env.NEWS_API_URL}/similar/**`, ({ request }) => {
-        const requestUuid = request.url.match(/\/uuid\/([^?]+)/);
+        console.log(request);
+        const requestUuid = request.url.match(/\/similar\/([^?]+)/);
+        console.log('bebebebebebebbebeb', requestUuid![1]);
         const result = posts.data.filter(
             ({ uuid }) => uuid !== requestUuid![1],
         );
-        return HttpResponse.json(result);
+        return HttpResponse.json({ meta: posts.meta, data: result });
     }),
 ];

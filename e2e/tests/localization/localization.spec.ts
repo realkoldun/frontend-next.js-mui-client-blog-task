@@ -11,6 +11,8 @@ test.describe('localization tests', () => {
     const changeLanguage = async (page: Page) => {
         await page.getByText(LANGUAGES[0]).click();
         await page.getByText(LANGUAGES[1]).click();
+
+        await page.waitForTimeout(1000);
     };
     test.beforeAll(async () => {
         await register();

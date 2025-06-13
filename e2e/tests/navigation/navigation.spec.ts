@@ -19,14 +19,14 @@ test.describe('render test', () => {
     });
 
     test('Go to home page', async ({ page }) => {
-        await page.goto(`${PATHS.POST}/${mainPost.uuid}`);
+        await page.goto(`${PATHS.POST}${mainPost.uuid}`);
         await page.getByText('Modsen blog').click();
 
         await page.waitForURL(`/`);
     });
 
     test('Go to selected category', async ({ page }) => {
-        await page.goto(`${PATHS.POST}/${mainPost.uuid}`);
+        await page.goto(`${PATHS.POST}${mainPost.uuid}`);
         await page.getByText(`${mainPost.categories[0]}`).first().click();
 
         await page.waitForURL(`?category=${mainPost.categories[0]}`);
