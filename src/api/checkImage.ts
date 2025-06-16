@@ -2,6 +2,8 @@
 
 import { getPlaiceholder } from 'plaiceholder';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-expect-error
 const IMAGE_ON_ERROR = (await import('../../public/imageOnError.png')).default;
 
 const errorImageData = {

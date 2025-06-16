@@ -1,24 +1,26 @@
 import { SocialLinkType } from '@/types';
 
+const SOCIAL_LINKS_PATH = '/icons/social';
+
 export const socialLinks: SocialLinkType[] = [
     {
         id: '1',
         title: 'instagram',
-        imgUrl: '/instagram.svg',
+        imgUrl: SOCIAL_LINKS_PATH + '/instagram.svg',
     },
     {
         id: '2',
         title: 'linkedIn',
-        imgUrl: '/linkedIn.svg',
+        imgUrl: SOCIAL_LINKS_PATH + '/linkedIn.svg',
     },
     {
         id: '3',
         title: 'twitter',
-        imgUrl: '/twitter.svg',
+        imgUrl: SOCIAL_LINKS_PATH + '/twitter.svg',
     },
     {
         id: '4',
         title: 'facebook',
-        imgUrl: '/facebook.svg',
+        imgUrl: SOCIAL_LINKS_PATH + '/facebook.svg',
     },
 ];
