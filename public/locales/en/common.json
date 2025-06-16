@@ -1,0 +1,48 @@
+{
+    "HomePage": {
+        "FeaturePost": {
+            "SectionTitle": "Feature post",
+            "ByAuthor": "By",
+            "ButtonText": "Read more >"
+        },
+        "PostList": {
+            "SectionTitle": "All posts"
+        },
+        "PostCard": {
+            "ByAuthor": "By"
+        },
+        "Pagination": {
+            "Next": "Next >",
+            "Prev": "< Prev"
+        },
+        "CategoryList": {
+            "SectionTitle": "All categories"
+        }
+    },
+    "FooterSection": {
+        "SubscribeText": "Subscribe to our news letter to get latest updates and news",
+        "SubscribeButtonText": "Subscribe",
+        "SubscribeInputPlaceholder": "Enter Your Email"
+    },
+    "PostPage": {
+        "SuggestionPost": {
+            "SectionTitle": "What to read next on"
+        },
+        "PostHeader": {
+            "Date": "Posted on"
+        },
+        "ReadAll": "Click here to read full article"
+    },
+    "ModalWindow": {
+        "SuccessMessage": "Success",
+        "SuccessDescription": "Your email was send successfully",
+        "InvalidEmailMessage": "Incorrect email",
+        "InvalidEmailDescription": "Please check it",
+        "ServerErrorMessage": "Error",
+        "ServerErrorDescription": "Something went wrong"
+    },
+    "NotFound": {
+        "Title": "Sorry, post not found",
+        "ReturnHome": "Return home"
+    }
+}

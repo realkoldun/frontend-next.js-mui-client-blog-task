@@ -1,0 +1,13 @@
+@use '@/styles/_constants';
+@use '@/styles/_mixins';
+
+.contentSection {
+  @include mixins.flex-center;
+
+  width: constants.$full-size;
+  padding: constants.$padding-xl;
+
+  @media only screen and (max-width: constants.$screen-size-small) {
+    padding: constants.$padding-l;
+  }
+}

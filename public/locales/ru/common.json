@@ -1,0 +1,48 @@
+{
+  "HomePage": {
+    "FeaturePost": {
+      "SectionTitle": "Избранный пост",
+      "ByAuthor": "От",
+      "ButtonText": "Подробнее >"
+    },
+    "PostList": {
+      "SectionTitle": "Все посты"
+    },
+    "PostCard": {
+      "ByAuthor": "От"
+    },
+    "Pagination": {
+      "Next": "Далее >",
+      "Prev": "< Назад"
+    },
+    "CategoryList": {
+      "SectionTitle": "Все категории"
+    }
+  },
+  "FooterSection": {
+    "SubscribeText": "Подпишитесь на нашу рассылку, чтобы получать последние обновления и новости",
+    "SubscribeButtonText": "Подписаться",
+    "SubscribeInputPlaceholder": "Введите свой email"
+  },
+  "PostPage": {
+    "SuggestionPost": {
+      "SectionTitle": "Читать также:"
+    },
+    "PostHeader": {
+      "Date": "Пост от"
+    },
+    "ReadAll": "Нажмите, чтобы прочитать статью полностью"
+  },
+  "ModalWindow": {
+    "SuccessMessage": "Успешно",
+    "SuccessDescription": "Ваше письмо было успешно отправлено",
+    "InvalidEmailMessage": "Некорректный email",
+    "InvalidEmailDescription": "Пожалуйста, проверьте его",
+    "ServerErrorMessage": "Ошибка",
+    "ServerErrorDescription": "Что-то пошло не так"
+  },
+  "NotFound": {
+    "Title": "Извините, пост не найден",
+    "ReturnHome": "Вернуться на главную"
+  }
+}

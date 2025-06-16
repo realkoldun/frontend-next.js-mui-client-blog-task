@@ -1,0 +1,44 @@
+import { lazy, ReactNode, Suspense } from 'react';
+
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { NextIntlClientProvider } from 'next-intl';
+import '@/styles/globals.scss';
+
+import Header from '@/components/Header';
+
+const Footer = lazy(() => import('@/components/Footer'));
+
+export const metadata: Metadata = {
+    title: 'Modsen Blogs',
+    description: 'Explore latest news',
+    keywords: 'blogs,news,new,blog,world,economy,general,politics,technology',
+};
+
+const interFont = Inter({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700'],
+});
+
+export default function RootLayout({
+    children,
+}: Readonly<{
+    children: ReactNode;
+}>) {
+    return (
+        <html lang='en'>
+            <body className={interFont.className}>
+                <AppRouterCacheProvider>
+                    <NextIntlClientProvider>
+                        <Header />
+                        {children}
+                        <Suspense>
+                            <Footer />
+                        </Suspense>
+                    </NextIntlClientProvider>
+                </AppRouterCacheProvider>
+            </body>
+        </html>
+    );
+}

@@ -1,0 +1,28 @@
+{
+  "Categories": {
+    "BUSINESS": {
+      "id": "1",
+      "title": "БИЗНЕС",
+      "description": "Успешные стратегии, тренды и решения для роста компаний.",
+      "imgUrl": "/icons/categories/businessCategoryIcon.svg"
+    },
+    "GENERAL": {
+      "id": "2",
+      "title": "ОБЩЕЕ",
+      "description": "Актуальные события со всего мира: политика, экономика, технологии и культура.",
+      "imgUrl": "/icons/categories/startupCategoryIcon.svg"
+    },
+    "POLITICS": {
+      "id": "3",
+      "title": "ПОЛИТИКА",
+      "description": "Последние политические события, решения мировых лидеров и тенденции, формирующие будущее.",
+      "imgUrl": "/icons/categories/economyCategoryIcon.svg"
+    },
+    "TECH": {
+      "id": "4",
+      "title": "ТЕХНОЛОГИИ",
+      "description": "Последние разработки, гаджеты и будущее цифрового мира.",
+      "imgUrl": "/icons/categories/technologyCategoryIcon.svg"
+    }
+  }
+}

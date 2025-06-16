@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://frontend-nextjs-mui-client-blog-task.vercel.app/sitemap.xml
